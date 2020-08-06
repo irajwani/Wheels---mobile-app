@@ -174,7 +174,7 @@ emptyField = "User has not input this information"
 
 
 export default {
-    companyName: "Awitan",
+    companyName: "Cycling Wycling",
 
     privacy: {
         title: "Privacy Policy",

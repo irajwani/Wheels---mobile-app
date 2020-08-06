@@ -15,7 +15,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* QeematTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* QeematTests.m */; };
-		6ABFE80D24C096D800D2E03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6ABFE80C24C096D800D2E03E /* GoogleService-Info.plist */; };
+		6AAEF1DD24CD80E100D00588 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AAEF1DC24CD80E100D00588 /* GoogleService-Info.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		826325161236FCFE2F59285D /* libPods-Qeemat-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B86852D795CCC35D2E32E34 /* libPods-Qeemat-tvOS.a */; };
 		8C7044D2C569AFC4D604DC29 /* libPods-Qeemat-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C603378641B01FD444AD71 /* libPods-Qeemat-tvOSTests.a */; };
@@ -59,7 +59,7 @@
 		5A44F29BCE5EF16428E7C43F /* libPods-Qeemat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Qeemat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A97417A9A256782F87A71EA /* libPods-Qeemat-QeematTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Qeemat-QeematTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A22119A24C15CA200AB5845 /* Qeemat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Qeemat.entitlements; path = Qeemat/Qeemat.entitlements; sourceTree = "<group>"; };
-		6ABFE80C24C096D800D2E03E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6AAEF1DC24CD80E100D00588 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B86852D795CCC35D2E32E34 /* libPods-Qeemat-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Qeemat-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BE7F85843382B44A4D0390A /* Pods-Qeemat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qeemat.release.xcconfig"; path = "Target Support Files/Pods-Qeemat/Pods-Qeemat.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Qeemat/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				6ABFE80C24C096D800D2E03E /* GoogleService-Info.plist */,
+				6AAEF1DC24CD80E100D00588 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* Qeemat */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* QeematTests */,
@@ -349,7 +349,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				6ABFE80D24C096D800D2E03E /* GoogleService-Info.plist in Resources */,
+				6AAEF1DD24CD80E100D00588 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,7 +758,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.appstack.qeemat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appstack.wheels;
 				PRODUCT_NAME = Qeemat;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -782,7 +782,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.appstack.qeemat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appstack.wheels;
 				PRODUCT_NAME = Qeemat;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

@@ -1,6 +1,7 @@
 export const INITIAL_STATE = {
     isLoading: false,
-    claims: [],
+    products: [],
+    cart: [],
     message: false,
     errorMessage: null,
     addStatus: 'idle',

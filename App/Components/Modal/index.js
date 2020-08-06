@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, Modal as RNModal, StyleSheet } from 'react-native';
 
 import Modal, { ModalContent, SlideAnimation, ModalTitle, ModalFooter, ModalButton } from 'react-native-modals';
 import { Colors, Metrics, Helpers, Fonts } from '../../Theme';
 import shadowStyles from '../../StyleSheets/shadowStyles';
+
+import DocModal from './DocModal';
+
+const AuthModal = ({ visible, children}) => (
+    <RNModal
+        animationType="slide"
+        transparent={false}
+        visible={visible}
+      >
+        {children} 
+    </RNModal>
+)
 
 const CustomModal = ({ title, visible, toggleModal, actionText, onPress, children}) => (
     <Modal
@@ -41,9 +53,14 @@ const CustomModal = ({ title, visible, toggleModal, actionText, onPress, childre
     </Modal>
 )
 
-export default CustomModal;
+export {CustomModal, AuthModal, DocModal};
 
 const styles = StyleSheet.create({
+
+    authModal: {
+        width: Metrics.screenWidth,
+    },
+    
     modal: {
         width: Metrics.screenWidth - Metrics.baseMargin*2,
         backgroundColor: Colors.white,

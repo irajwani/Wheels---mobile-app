@@ -1,7 +1,9 @@
 import './AuthButton'
 import './Submit'
+import './SortButton'
 
 export default {
     AuthButton,
-    Submit
+    Submit,
+    SortButton
 }

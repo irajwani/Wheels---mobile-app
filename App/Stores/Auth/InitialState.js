@@ -19,23 +19,13 @@ export const INITIAL_STATE = {
             //To Separate Private-ish from public
             displayName: "",
             photoUrl: "",
-            about: "",
-            location: "",
-            interests: {
-                genres: [],
-                instruments: [],
-                activities: [],
-            },
-            gallery: [],
-            links: [],  
+            
         },
-        journal: [],
+        wishlist: [],
         session: {
             status: "online",
-            lastSeen: false,
-            lastAt: false,
-        },
-        awitanerId: "",
+            lastSeen: false,            
+        },        
         token: "",
         createdAt: false,
         

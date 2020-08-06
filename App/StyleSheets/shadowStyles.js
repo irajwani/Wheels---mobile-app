@@ -13,6 +13,18 @@ export default StyleSheet.create({
         shadowRadius: 3,
     },
 
+
+    menu: {
+        shadowColor: Colors.black,
+        
+        shadowOffset: {
+            width: 2,
+            height: -2,
+        },
+        shadowOpacity: 0.8,
+        shadowRadius: 3,
+    },
+
     whiteCard: {
         shadowColor: Colors.black,
         

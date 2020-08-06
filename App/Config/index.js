@@ -1,7 +1,7 @@
 import {create} from 'apisauce';
 
 // const SERVER_URL = 'http://localhost:5000';
-const SERVER_URL = "https://qeemat-server.herokuapp.com";
+const SERVER_URL = "https://wheels-server.herokuapp.com";
 
 const API_URL = SERVER_URL + '/api'
 const ApiClient = create({

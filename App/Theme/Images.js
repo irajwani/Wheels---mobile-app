@@ -5,6 +5,7 @@ import AntIcon from 'react-native-vector-icons/AntDesign'
 import SimpleIcon from 'react-native-vector-icons/SimpleLineIcons'
 import FeatherIcon from 'react-native-vector-icons/Feather'
 import Iconisto from 'react-native-vector-icons/Fontisto'
+import EvilIcon from 'react-native-vector-icons/EvilIcons'
 import Octicon from 'react-native-vector-icons/Octicons'
 import Colors from './Colors';
 
@@ -15,8 +16,9 @@ import Metrics from './Metrics';
 const path = '../Assets/Images'
 const AnimatableIcon = Animatable.createAnimatableComponent(Icon);
 const AnimatableIconisto = Animatable.createAnimatableComponent(Iconisto);
+const AnimatableSimpleIcon = Animatable.createAnimatableComponent(SimpleIcon);
 
-const smallIcon = 16, mediumIcon = 24;
+const smallIcon = 16, mediumIcon = 24, largeIcon = 32;
 // const 
 
 export default {
@@ -32,6 +34,13 @@ export default {
   
 
   google: require(`${path}/Google.png`),
+
+  bikeSketchOne: require(`${path}/bike-sketch-3.jpg`),
+  bikeSketchTwo: require(`${path}/bike-sketch-2.png`),
+  bikeSketchThree: require(`${path}/bike-sketch-4.png`),
+
+  emptyCart: require(`${path}/empty-cart.png`),
+  emptyWishList: require(`${path}/empty-wishlist.png`),
   
 
   //Tabs
@@ -81,6 +90,35 @@ export default {
   ),
 
   //Other Icons
+
+  SideBar: ({onPress}) => (
+    <SimpleIcon 
+      name={'menu'}
+      color={Colors.black}
+      size={24}
+      onPress={onPress}
+    />
+  ),
+
+  Tune: () => (
+    <Icon 
+      name={'tune-vertical'}
+      size={30}
+      color={Colors.black}
+      
+    />
+    
+  ),
+
+  Trash: ({onPress}) => (
+    <Ionicon 
+      name={'trash-outline'}
+      size={mediumIcon}
+      color={Colors.black}
+      onPress={onPress}
+    />
+    
+  ),
   
   Settings: ({onPress}) => (
     <FeatherIcon 
@@ -110,20 +148,20 @@ export default {
   ),
 
   BackArrow: ({onPress}) => (
-    <Iconisto 
-      name='arrow-left-l'
-      size={35}
-      color={'black'}
+    <SimpleIcon 
+      name='arrow-left'
+      size={largeIcon}
+      color={Colors.black}
       onPress={onPress}
     />
     
   ),
 
   AnimatedBackArrow: ({color, onPress}) => (
-    <AnimatableIconisto
-      name='arrow-left-l'
-      size={32}
-      style={{color: color}}
+    <AnimatableSimpleIcon
+      name='arrow-left'
+      size={largeIcon}
+      style={{color}}
       onPress={onPress}
       />
   ),
@@ -167,7 +205,7 @@ export default {
 
 
 
-  Close: () => <Icon name={'close'} size={30} color={'#fff'}/>,
+  Close: ({onPress}) => <Icon name={'close'} size={30} color={Colors.black} onPress={onPress}/>,
 
   ChevronRight: () => (
     <Icon 
@@ -230,11 +268,20 @@ export default {
     />
   ),
 
-  Pin: ({filled, onPress}) => (
-    <Icon 
-      name={filled ? 'star' : 'star-outline'}
-      color={Colors.primary}
-      size={24}
+  Heart: ({filled, onPress}) => (
+    <Ionicon 
+      name={filled ? 'heart' : 'heart-outline'}
+      color={Colors.black}
+      size={largeIcon}
+      onPress={onPress}
+    />
+  ),
+
+  Cart: ({onPress}) => (
+    <EvilIcon 
+      name={'cart'}
+      color={Colors.black}
+      size={largeIcon}
       onPress={onPress}
     />
   ),

@@ -3,13 +3,15 @@ import { Text, View, ScrollView, Image, SafeAreaView, TouchableOpacity, ImageBac
 
 import Container from '../../Components/Container'
 import Loading from '../../Components/ActivityIndicator/Loading';
-import TutorialList from '../../Components/List/TutorialList';
+
 import SelectPictures from '../../Components/SelectPictures';
 import AuthButton from '../../Components/Button/AuthButton';
 
+import storage from '@react-native-firebase/storage';
 import auth from '@react-native-firebase/auth';
+// import {LoginManager, AccessToken, GraphRequest, GraphRequestManager} from 'react-native-fbsdk';
 
-import authService from '../../Services/AuthService';
+// import authService from '../../Services/AuthService';
 import NavigationService from '../../Services/NavigationService';
 
 import AuthActions from '../../Stores/Auth/Actions'
@@ -21,31 +23,17 @@ import AuthInput from '../../Components/Input/AuthInput';
 import { connect } from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';;
 
-let {Check, Facebook, Google, Account} = Images;
+let {Check, BackArrow} = Images;
 let { EulaTop, EulaBottom, TsAndCs, PrivacyPolicy, EulaLink } = Strings;
 
 import Toast from '../../Components/Toast';
 
 import Utils from '../../Utils'
+import { DocModal } from '../../Components/Modal';
 let toastDuration = 4000;
 
-let avatarUri = "https://firebasestorage.googleapis.com/v0/b/awitan-3865c.appspot.com/o/Placeholders%2FsmallProfile.jpg?alt=media&token=6235cc25-3dc9-4adf-b731-81d30e7496a1"
+let avatarUri = "https://firebasestorage.googleapis.com/v0/b/wheels-a3ad6.appspot.com/o/Placeholders%2FsmallProfile.jpg?alt=media&token=6235cc25-3dc9-4adf-b731-81d30e7496a1"
  // '[DEFAULT]'
-
- let Tutorial = [
-     {
-         image: Images.nothingHere, 
-         text: {header: "File Claims", text: "Search from a number of different socials going on around your city. Whatever your preference, Awitan has got you covered."}
-    },
-     {
-         image: Images.nothingHere, 
-         text: {header: "View Feedback", text: "Host events and sessions to meet like minded Awitaners to broaden your circle. "}
-    },
-     {
-         image: Images.nothingHere, 
-         text: {header: "Track Expenses", text: "Some pretty bad description text."}
-    },
- ]
 
 
 export class Welcome extends Component {
@@ -57,8 +45,8 @@ export class Welcome extends Component {
             authenticating: false,
             newUser: true,
 
-            username: "habid",
-            email: "test_1@gmail.com",
+            username: "irajwani",
+            email: "imad@gmail.com",
             pass: "password",
             pass2: "password",
             pictureUrl: "",
@@ -131,7 +119,201 @@ export class Welcome extends Component {
     }
 
     toggleForm = () => this.setState({showLoginForm: !this.state.showLoginForm})
-   
+
+    promiseToUploadPhoto = (uid, uri) => {
+        return new Promise(async (resolve, reject) => {
+            let mime = "image/jpg";
+            if(uri.includes('googleusercontent') || uri.includes('platform') || uri.includes('firebasestorage')) {
+                // console.log(`We already have a url for this image: ${uri}, so need for interaction with cloud storage, just store URL in cloud db`);
+                
+                // const imageRef = firebase.storage().ref().child(`Users/${uid}/profile`);
+                resolve(uri);
+            }
+
+            else if(uri == "nothing here") {
+                resolve(avatarUri)
+            }
+
+            else {
+                console.log('user has chosen picture manually through photo lib or camera, store it on cloud and generate a URL for it.')
+                // let resizedImage = await ImageResizer.createResizedImage(uri,resizedWidth, resizedHeight,'JPEG',suppressionLevel);
+                // const uploadUri = Platform.OS === 'ios' ? resizedImage.uri.replace('file://', '') : resizedImage.uri
+                const uploadUri = Metrics.platform == "ios" ? uri.replace('file://', '') : uri
+                // let uploadBlob = null
+                // const imageRef = 
+                storage().ref().child(`Users/${uid}/profile`)
+                .putFile(uploadUri, {contentType: mime})
+                .then(uploadTask => {
+                    
+                    resolve(uploadTask.downloadURL);
+                })
+                .catch((error) => {
+                    reject(error)
+                })
+                
+                
+                
+                
+            }
+    
+    })
+    }
+
+    updateFirebase = async (uid, uri) => {
+        let {email, username} = this.state;
+        let {createUser} = this.props;
+        let url = await this.promiseToUploadPhoto(uid, uri);
+        let token = await AsyncStorage.getItem('fcmToken');
+        let newUser = {
+            uid,
+            email,
+            photoUrl: url,
+            username, 
+            token
+        };
+        
+        createUser(newUser);
+        this.setState({isLoading: false, modalVisible: false});
+    }
+
+    //Invoked when you 'Accept' EULA as a Google User trying to sign up
+    // createProfileForGoogleOrFacebookUser = async (user, pictureuri, socialPlatform) => {
+
+    //     console.log('Initiate FB or Google Sign Up')
+    //     let {email, pass} = this.state;
+    //     if(socialPlatform == "google") {
+    //         const {idToken, accessToken} = user;
+    //         const credential = await auth.GoogleAuthProvider.credential(idToken, accessToken);
+    //         const socialUser = await auth().signInWithCredential(credential);
+            
+    //         const linkWithEmailCredential = await auth.EmailAuthProvider.credential(email, pass);
+    //         console.log(credential);
+    //         auth().currentUser.linkAndRetrieveDataWithCredential(linkWithEmailCredential).then( (usercred) => {
+    //             this.updateFirebase(socialUser.uid, pictureuri);
+    //             // console.log(usercred);
+    //             // console.log("Account linking success", usercred.user);
+    //         }, function(error) {
+    //             console.log("Account linking error", error);
+    //         });   
+    //     }
+    //     else {
+    //         const {accessToken} = user;
+    //         const credential = await auth.FacebookAuthProvider.credential(accessToken);
+    //         const socialUser = await auth().signInWithCredential(credential);
+            
+    //         const linkWithEmailCredential = await auth.EmailAuthProvider.credential(email, pass);
+    //         console.log(credential);
+    //         auth().currentUser.linkAndRetrieveDataWithCredential(linkWithEmailCredential).then( (usercred) => {
+    //             // console.log(usercred);
+    //             this.updateFirebase(socialUser.uid, pictureuri);
+    //             // console.log("Account linking success", usercred.user);
+    //         }, function(error) {
+    //             console.log("Account linking error", error);
+    //         });
+    //     }
+    
+    // }
+
+    createProfile = (uri) => {
+        //Person could arrive here through vanilla sign up, or after using social authentication such that they don't require further account creation
+        // console.log("Initaite profile creation");
+        let {email, pass, username} = this.state;
+        this.setState({uploadingPicture: true, showToast: true, toast: `Creating user named: ${username}. Please wait...`}, () => {
+            setTimeout(() => {
+                this.setState({showToast: false})
+            }, toastDuration);
+        })
+        
+        let {createUser} = this.props;
+        auth().createUserWithEmailAndPassword(email, pass)
+        .then(async () => {
+            // console.log('created new firebase certified user');
+            let uid = firebase.auth().currentUser.uid;
+            let url = await this.promiseToUploadPhoto(uid, uri);
+            return {uid, url}
+        })
+        .then(async ({uid, url}) => {
+            let token = await AsyncStorage.getItem('fcmToken');
+            let newUser = {
+                uid,
+                email,
+                photoUrl: url,
+                username, 
+                token
+                // token: "dJUd9hBupPI:APA91bHq7vv-mlMWvsplrlBFq8RI6mstf0ub8Ws6H-EYffd5M2zkP2Stg78Lk3WdzxkjmVfGUwoNm0DJmHivmgG84fqD7es3Fj8wuUisSQHLCe6yclsuITUDzRfnjuU1_j5HPdTdJ7yY",
+            }
+            createUser(newUser);
+            this.setState({uploadingPicture: false, isVisible: false});
+        })
+        .catch( error => {
+            console.log(error)
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode == 'auth/weak-password') {
+              alert('The password is too weak.');
+            }
+        })
+    }
+
+    // signInWithFacebook = () => {
+    //     //TODO: Connect to app's auth chain
+    //     this.setState({isLoading: true});
+
+    //     //Neat Trick: Define two functions (one for success, one for error), with a thenable based on the object returned from the Promise.
+    //     LoginManager.logOut();
+    //     LoginManager.logInWithPermissions(['email']).then(
+    //         (result) => {
+              
+    //           if (result.isCancelled) {
+    //             this.setState({isLoading: false});
+    //           } 
+    //           else {
+                
+    //             AccessToken.getCurrentAccessToken().then( (token) => {
+    //                 // console.log(data)
+    //                 const infoRequest = new GraphRequest(
+    //                     '/me?fields=name,picture,email',
+    //                     null,
+    //                     async (error, result) => {
+    //                         if(error) {
+    //                             alert('Error fetching data: ' + error.toString());
+    //                         }
+    //                         else {
+    //                             // console.log("GraphRequest was successful", result.picture.data.url);
+    //                             let {data} = await authService.isUserRegistered(result.email);
+    //                             if(data.isRegistered) {
+    //                                 this.successfulLoginCallback()
+    //                                 // this.setState({isLoading: false}, () => {this.props.navigation.navigate('AppStack')});
+    //                             }
+    //                             else {
+    //                                 let socialInformation = {
+    //                                     accessToken: token.accessToken,
+    //                                     user: result
+    //                                 }
+    //                                 console.log('here');
+    //                                 console.log(result);
+    //                                 this.setState({isLoading: false, socialInformation, facebookUser: true, showLoginForm: false}, () => {
+    //                                     this.props.navigation.setParam({pictureuris: [socialInformation.user.picture.data.url]})
+    //                                 })
+    //                             }
+    //                         }
+    //                     }
+    //                 );
+    //                 // Start the graph request.
+    //                 new GraphRequestManager().addRequest(infoRequest).start();
+                    
+
+    //             } )
+                
+                
+    //           }
+    //         },
+    //         (error) => {
+    //           alert('Login failed because: ' + error);
+    //         }
+    //       );
+    // }
 
     signIn = () => {
         this.setState({ error: '', authenticating: true });
@@ -177,6 +359,54 @@ export class Welcome extends Component {
         });
     }
 
+    // componentDidMount() {
+    //     platform === "ios" ?
+    //         GoogleSignin.configure({
+    //             iosClientId: '791527199565-kfkgft1g8p2tamioshmqj8pa38r3sesh.apps.googleusercontent.com',
+    //         })
+    //         :
+    //         GoogleSignin.configure();
+    // }
+
+    // signInWithGoogle = () => {
+    //     !this.state.loading ? this.setState({loading: true}) : null;
+    //     // console.log('trying to sign with google')
+    //     GoogleSignin.signIn()
+    //     .then((data) => {
+    //         //TODO: Since "google sign in with account" pop up does not show after person selects an account, 
+    //         //need a way to unlink google account and revive original chain fully so user may use another google account to sign up
+    //         //maybe look at other apps
+    //         console.log(data);
+            
+    //         let {idToken, accessToken, user} = data;
+    //         let socialInformation = {
+    //             idToken, accessToken, user
+    //         }
+    //         return socialInformation;
+            
+    //     })
+    //     .then(async (socialInformation) => {
+    //         // console.log(socialInformation.user.email)
+    //         let {data} = await isUserRegistered(socialInformation.user.email);
+    //         if(data.isRegistered) {
+    //             this.setState({loading: false}, () => {this.props.navigation.navigate('AppStack')});
+    //         }
+    //         else {
+    //             alert('here')
+    //             this.setState({loading: false}, () => {this.attemptSignUp(socialInformation, true, false)})
+    //         }
+            
+            
+    //         // console.log("STATUS:" + JSON.stringify(isRegistered));
+    //         // this.successfulLoginCallback(currentUser, googleUserBoolean = true, facebookUserBoolean = false);
+    //         // console.log('successfully signed in:', currentUser);
+    //         // console.log(JSON.stringify(currentUser.toJSON()))
+    //     })
+    //     .catch( (err) => {
+    //         platform === 'ios' ? console.log('user canceled google signin') : alert("Whoops! Here's what happened: " + err); 
+    //         this.setState({loading: false});
+    //     })
+    // }
 
     
     successfulLoginCallback = () => {
@@ -190,6 +420,25 @@ export class Welcome extends Component {
     toggleNewUser = () => {
         this.setState({newUser: !this.state.newUser})
     }
+
+    renderBioInput = () => {
+        var pictureuris = this.props.navigation.getParam('pictureuris', "nothing here");
+        return (
+        <View>
+        
+            
+        <AuthInput 
+            placeholder={'Username'}
+            value={this.state.username}
+            onChangeText={username => this.setState({username})}
+            keyboardType={'default'}
+        />
+        
+        <View style={{position: 'absolute', right: 5, marginTop: 4}}>
+            <SelectPictures navToComponent={'CreateProfile'} pictureuris={pictureuris} />    
+        </View>
+        </View>
+    )}
 
     renderRememberHelper = () => (
         
@@ -218,37 +467,41 @@ export class Welcome extends Component {
     toggleModal = () => this.setState({isVisible: !this.state.isVisible})
 
     renderModals = () => {
-        
+        var pictureuris = this.props.navigation.getParam('pictureuris', "nothing here");
         return (
         <>
-        <Modal
-        animationType="slide"
-        transparent={false}
-        visible={this.state.isVisible}
-        onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-        }}
-        >
-        <SafeAreaView style={styles.modal}>
-            
-            <Text style={styles.modalHeader}>End-User License Agreement for Awitan</Text>
-            <ScrollView contentContainerStyle={styles.licenseContainer}>
+        <DocModal 
+            visible={this.state.isVisible}
+            toggleModal={() => this.setState({isVisible: !this.state.isVisible})}
+            title={"End User License Agreement"}
+            doc={() => (
+                <>
                 <Text style={styles.document}>{EulaTop}</Text>
                 <Text style={{color: Colors.number}} onPress={() => Linking.openURL(EulaLink)}>{EulaLink}</Text>
                 <Text style={styles.document}>{EulaBottom}</Text>
-            </ScrollView>
-            <View style={styles.documentOpenerContainer}>
-                <Text style={styles.documentOpener} onPress={() => {this.setState({modalVisible: false, termsModalVisible: true})}}>
+                </>
+                )
+            }
+            buttonRow={() => (
+                <View style={{alignItems: 'center', justifyContent: 'space-evenly', padding: Metrics.baseMargin/2}}>
+                    <AuthButton
+                        text={"SIGN UP"}
+                        onPress={() => this.createProfile(pictureuris)}
+                    />
+                    <Text style={{...Fonts.style.small, color: Colors.grey}}>By pressing sign up, you agree to the End-User License agreement above.</Text>
+                </View>
+            )}
+            secondButtonRow={() => (
+                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
+                    <Text style={styles.documentOpener} onPress={() => {this.setState({modalVisible: false, termsModalVisible: true})}}>
                     Terms & Conditions
-                </Text>
-                <Text style={styles.documentOpener} onPress={() => {this.setState({modalVisible: false, privacyModalVisible: true})}}>
-                    See Privacy Policy
-                </Text>
-            </View>
-            
-
-        </SafeAreaView>
-        </Modal>
+                    </Text>
+                    <Text style={styles.documentOpener} onPress={() => {this.setState({modalVisible: false, privacyModalVisible: true})}}>
+                    Privacy Policy
+                    </Text>
+                </View>
+            )}
+        />
         
         {this.renderTermsModal()}
         {this.renderPrivacyModal()}
@@ -257,46 +510,32 @@ export class Welcome extends Component {
 
     renderTermsModal = () => (
         //   {/* Modal to show Terms and Conditions */}
-          <Modal
-          animationType="fade"
-          transparent={false}
-          visible={this.state.termsModalVisible}
-          onRequestClose={() => {
-              Alert.alert('Modal has been closed.');
-          }}
-          >
-              <SafeAreaView style={styles.modal}>
-                  <Text style={styles.modalHeader}>Terms & Conditions of Use</Text>
-                  <ScrollView contentContainerStyle={styles.licenseContainer}>
-                      <Text>{TsAndCs}</Text>
-                  </ScrollView>
-                  <Text onPress={() => { this.setState({modalVisible: true, termsModalVisible: false}) }} style={styles.gotIt}>
-                      Got It!
-                  </Text>
-              </SafeAreaView>
-          </Modal>
+          <DocModal 
+            visible={this.state.termsModalVisible}
+            toggleModal={() => { this.setState({modalVisible: true, termsModalVisible: false}) }}
+            title={"Terms & Conditions of Use"}
+            doc={() => <Text>{TsAndCs}</Text>}
+            secondButtonRow={() => (
+                <View style={{...Helpers.center}}>
+                    <Text onPress={() => {this.setState({termsModalVisible: false, privacyModalVisible: true})}}>Privacy Policy</Text>
+                </View>
+            )}
+          />
       )
     
     renderPrivacyModal = () => (
         // {/* Modal to show Privacy Policy */}
-        <Modal
-        animationType="fade"
-        transparent={false}
-        visible={this.state.privacyModalVisible}
-        onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-        }}
-        >
-            <SafeAreaView style={styles.modal}>
-                <Text style={styles.modalHeader}>Privacy Policy of {Strings.companyName}</Text>
-                <ScrollView contentContainerStyle={styles.licenseContainer}>
-                    <Text>{PrivacyPolicy}</Text>
-                </ScrollView>
-                <Text onPress={() => { this.setState({modalVisible: true, privacyModalVisible: false}) }} style={styles.gotIt}>
-                    Got It!
-                </Text>
-            </SafeAreaView>
-        </Modal>
+        <DocModal 
+            visible={this.state.privacyModalVisible}
+            toggleModal={() => { this.setState({modalVisible: true, privacyModalVisible: false}) }}
+            title={"Privacy Policy"}
+            doc={() => <Text>{PrivacyPolicy}</Text>}
+            secondButtonRow={() => (
+                <View style={{...Helpers.center}}>
+                    <Text onPress={() => {this.setState({termsModalVisible: true, privacyModalVisible: false})}}>Terms & Conditions</Text>
+                </View>
+            )}
+          />
     )
 
     handleInput = (field, value) => {
@@ -316,14 +555,17 @@ export class Welcome extends Component {
         this.setState(state);
 
     }
+    
 
-    renderWelcome = () => {
+    render() {
+        
+        
         let {authenticating, showLoginForm, username, email, pass, pass2, errors, uploadingPicture, showToast} = this.state;
         let {isLoading} = this.props;
         let isProfileValid = username && email && (pass == pass2);
 
         // console.log(errors);
-        if(isLoading) {
+        if(isLoading || uploadingPicture) {
             return (
                 <Container center>
                     <Loading />
@@ -332,79 +574,102 @@ export class Welcome extends Component {
             )
         }
         return (
-        <Container style={styles.container}>
+        <Container style={{backgroundColor: Colors.primary}}>
+
             <View style={styles.headerContainer}>
-                
-                
-                <Image source={Images.logo} style={styles.logo}/>
-                
-                
+                <BackArrow onPress={() => this.props.navigation.navigate('AppStack')}/>
+                <View style={{flexDirection: 'row'}}>
+                {["Sign In", "Sign Up"].map((item, index) => {
+                    let underline = false;
+                    if(showLoginForm && index == 0) {
+                        underline = true
+                    }
+                    else if(!showLoginForm && index == 1) {
+                        underline = true
+                    }
+                    return (
+                        <Text 
+                        style={[styles.toggleText, {textDecorationLine: underline ? 'underline' :  'none'}]}
+                        onPress={this.toggleForm}
+                        >
+                            {item}
+                        </Text>
+                    )
+                })}
+                </View>
             </View>
 
-            
+
             <View style={styles.formContainer}>
+
+
+                <View style={styles.form}>
+                    <View>
+                        {showLoginForm ? 
+                            null
+                            : 
+                            this.renderBioInput()
+                        } 
+                    </View>
+                    <AuthInput 
+                        label={'Email'}
+                        placeholder={'john@example.com'}
+                        value={this.state.email}
+                        onChangeText={email => this.handleInput('email', email)}
+                        error={errors.email}
+                        // onChangeText={email => this.setState({email})}
+                        keyboardType={'email-address'}
+                    />
+
+                    <AuthInput
+                        label={'Password'}
+                        placeholder={'••••••••••'}
+                        value={this.state.pass}
+                        onChangeText={pass => this.setState({pass})}
+                        secureTextEntry
+                    />
+
+                    {!showLoginForm && 
+                        <AuthInput
+                        placeholder={'Confirm Password'}
+                        value={this.state.pass2}
+                        onChangeText={pass2 => this.setState({pass2})}
+                        secureTextEntry
+                        />  
+                    }
+
+                    {showLoginForm && this.renderRememberHelper()}
+                </View>
+
                 
-                <AuthInput 
-                    placeholder={'Email'}
-                    value={this.state.email}
-                    onChangeText={email => this.handleInput('email', email)}
-                    error={errors.email}
-                    // onChangeText={email => this.setState({email})}
-                    keyboardType={'email-address'}
-                />
-
-                <AuthInput
-                    placeholder={'Password'}
-                    value={this.state.pass}
-                    onChangeText={pass => this.setState({pass})}
-                    secureTextEntry
-                />
-
-                
-
-                {this.renderRememberHelper()}
-
                 {authenticating ? 
                     <View style={{...Helpers.center}}>
                         <Loading />
                     </View>
-                :
-                    <AuthButton
-                        text={"SIGN IN"}
-                        onPress={this.signIn}  
-                    />
+                    :
+                    
+                    showLoginForm ?
+                        <AuthButton
+                            text={"SIGN IN"}
+                            onPress={this.signIn}  
+                        />
+                    :
+                        <AuthButton
+                            disabled={!isProfileValid}
+                            text={"SIGN UP"}
+                            onPress={this.toggleModal}  
+                        />
                 }
-
+                
 
             </View>
-
-            <View style={styles.footerContainer}>
-                <Text onPress={this.toggleModal} style={[styles.footer, {color: Colors.secondary}]}>
-                Terms & Conditions 
-                </Text>
-            </View>
-            
 
             {this.renderModals()}
             {showToast && <Toast text={this.state.toast}/>}
+
+            
         </Container>
     )
-}
-    renderTutorialOrWelcome = () => {
-        
-        return (
-        this.state.newUser ?
-            <TutorialList data={Tutorial} handleSkip={this.toggleNewUser} />
-            : 
-            this.renderWelcome()
-    )}
-
-    render() {
-        
-        
-        return (
-            this.renderTutorialOrWelcome()
-        )
     }
 }
 
@@ -415,7 +680,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    // createUser: (newUser) => dispatch(AuthActions.createUserRequest(newUser)),
+    createUser: (newUser) => dispatch(AuthActions.createUserRequest(newUser)),
     // logIn: () => dispatch(AuthActions.logIn()),
 })
 

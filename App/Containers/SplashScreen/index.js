@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import firebase from '@react-native-firebase/app';
 import auth from '@react-native-firebase/auth';
 import messaging from '@react-native-firebase/messaging';
+
 // import StartupActions from 'App/Stores/Startup/Actions'
 import AuthActions from '../../Stores/Auth/Actions';
 import {connect} from 'react-redux';
@@ -15,17 +16,15 @@ import {connect} from 'react-redux';
 import styles from './styles';
 import {Metrics, Images} from '../../Theme';
 
-let companyName = 'Awitan';
 let versionNumber = '1.0.7';
 const splashScreenDuration = 200;
 // FIRST CONTAINER REACT COMPONENT THAT MOUNTS
 function SplashScreen(props) {
   useEffect(() => {
-    // this.props.navigation.navigate("AuthStack");
-    // Metrics.platform == 'android' && createChannel();
+    
+    
     checkPermission();
-    // createNotificationListeners();
-    // firebase.auth().signOut();
+    
 
     setTimeout(() => {
       const subscriber = auth().onAuthStateChanged(showAppOrAuth);
@@ -33,20 +32,12 @@ function SplashScreen(props) {
     }, splashScreenDuration);
   }, []);
 
-  // function createChannel() {
-  //   const channel = new firebase.notifications.Android.Channel(
-  //     'insider',
-  //     'insider channel',
-  //     firebase.notifications.Android.Importance.Max,
-  //   );
-  //   firebase.notifications().android.createChannel(channel);
-  // }
 
   async function getToken() {
     let fcmToken = await AsyncStorage.getItem('fcmToken');
     // console.log(fcmToken);
     if (!fcmToken) {
-      fcmToken = await firebase.messaging().getToken();
+      fcmToken = await messaging().getToken();
       if (fcmToken) {
         await AsyncStorage.setItem('fcmToken', fcmToken);
       }
@@ -71,13 +62,7 @@ function SplashScreen(props) {
     }
   }
 
-  // async function createNotificationListeners() {
-  //   firebase.notifications().onNotification((notification) => {
-  //     //spruce up notification styles
-  //     notification.android.setChannelId('insider').setSound('default');
-  //     firebase.notifications().displayNotification(notification);
-  //   });
-  // }
+
 
   function showAppOrAuth(user) {
     if (user) {
@@ -90,13 +75,13 @@ function SplashScreen(props) {
       var seconds_dif = dif / 1000;
       seconds_dif = Math.abs(seconds_dif);
       if (seconds_dif < 10) {
-        props.getProfile(user.uid);
+        // props.getProfile(user.uid);
       } else {
-        props.getProfile(user.uid);
+        // props.getProfile(user.uid);
         props.navigation.navigate('AppStack');
       }
     } else {
-      props.navigation.navigate('AuthStack');
+      props.navigation.navigate('AppStack');
       // "USER DISCONNECTED"
     }
   }
@@ -117,7 +102,7 @@ const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   storeUid: (uid) => dispatch(AuthActions.storeUid(uid)),
-  getProfile: (uid) => dispatch(AuthActions.getProfileRequest(uid)),
+  // getProfile: (uid) => dispatch(AuthActions.getProfileRequest(uid)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen);

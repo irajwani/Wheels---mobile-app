@@ -43,14 +43,13 @@ class TutorialList extends Component {
           style={styles.cardContainer}
           >
 
-            <View style={styles.imageContainer}>
+            
               <Image source={item.image} style={styles.image}/>
-              <Text style={styles.label}>{item.text.header}</Text>
-            </View>
 
-            <View style={styles.textContainer}>
-              <Text style={styles.text}>{item.text.text}</Text>
-            </View>
+              <Text style={styles.label}>{item.text}</Text>
+            
+
+            
 
           </TouchableOpacity>
 
@@ -91,40 +90,29 @@ class TutorialList extends Component {
   render = () => {
     const { data } = this.props;
     let {currentIndex} = this._carousel
-    let isDone = currentIndex == 2 ? true : false;
-    let showSkip = currentIndex == 2 ? false : true;
   
     return (
 
-      <Container>
-      <ImageBackground source={Images.glass} style={styles.container}>
-        <View style = {styles.headerContainer}>
-          {showSkip && 
-          <TouchableOpacity style={styles.skipButton} onPress={this.props.handleSkip}>
-            <Text style={styles.skipText}>Skip</Text>
-          </TouchableOpacity>
-          }
-        </View>
-        <View style={{flex: 0.8, ...Helpers.center}}>
+      
+      
+        
+        <View style={{flex: 0.6, ...Helpers.center}}>
           <Carousel
             ref={ (c) => { this._carousel = c; } }
             data={data}
             renderItem={this._renderItem.bind(this)}
             onSnapToItem={this.handleSnapToItem.bind(this)}
-            sliderWidth={screenWidth*0.85}
-            itemWidth={screenWidth*0.85}
+            sliderWidth={screenWidth*0.9}
+            itemWidth={screenWidth*0.9}
             layout={'default'}
             firstItem={0}
           />
         </View>
           
-        <TouchableOpacity style={styles.footerButton} onPress={this.props.handleSkip}>
-          <Text style={styles.skipText}>{isDone ? "GET STARTED" : "NEXT"}</Text>
-        </TouchableOpacity>
+        
 
         
-      </ImageBackground>
-      </Container>
+      
     )
   
   }
@@ -169,39 +157,33 @@ const styles = StyleSheet.create({
       },
 
   carouselContainer: {
-    flex: 0.8,
-    flexGrow: 1,
-    justifyContent: 'space-between',
-    marginTop: 40,
+    // flex: 0.8,
+    // flexGrow: 1,
+    // justifyContent: 'space-between',
+    // marginTop: 40,
     // height: 0.6*Metrics.screenHeight
     // backgroundColor: 'red'
   },
 
     cardContainer: {
       backgroundColor: Colors.white,
-      flex: 1, //flex of 0.0 leftover to get carousel and pagination to play nice
+      ...Helpers.center,
+      // flex: 1, //flex of 0.0 leftover to get carousel and pagination to play nice
       // height: 0.5*screenHeight,
-      padding: 10,
+      // padding: Metrics.baseMargin,
       
       // height: 300,
-      ...borderStyles.thinBorder
+      // ...borderStyles.thinBorder
     },
 
-      imageContainer: {
-        flex: 0.7,
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-      },
-
         image: {
-          width: 120,
-          height: 120,
+          width: 200,
+          height: 200,
           borderRadius: 60,
         },
 
         label: {
-          ...Fonts.style.big,
-          fontWeight: "600",
+          ...Fonts.style.normal,
           textAlign: 'center',
         },
       

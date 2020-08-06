@@ -13,39 +13,39 @@ const size = {
   
   const style = {
     h1: {
-      fontFamily: 'Helvetica-Light',
+      fontFamily: 'Avenir Next',
       fontSize: size.h1,
     },
     h2: {
-      fontFamily: 'Helvetica-Light',
+      fontFamily: 'Avenir Next',
       fontSize: size.h2,
     },
     h3: {
-      fontFamily: 'Helvetica-Light',
+      fontFamily: 'Avenir Next',
       fontSize: size.h3,
     },
     h4: {
-      fontFamily: 'Helvetica-Light',
+      fontFamily: 'Avenir Next',
       fontSize: size.h4,
     },
     big: {
-      fontFamily: 'Helvetica-Light',
+      fontFamily: 'Avenir Next',
       fontSize: size.big,
     },
     normal: {
-      fontFamily: 'Helvetica-Light',
+      fontFamily: 'Avenir Next',
       fontSize: size.regular,
     },
     medium: {
-      fontFamily: 'Helvetica-Light',
+      fontFamily: 'Avenir Next',
       fontSize: size.medium
     },
     small: {
-      fontFamily: 'Helvetica-Light',
+      fontFamily: 'Avenir Next',
       fontSize: size.small
     },
     tiny: {
-      fontFamily: 'Helvetica-Light',
+      fontFamily: 'Avenir Next',
       fontSize: size.tiny
     },
   }

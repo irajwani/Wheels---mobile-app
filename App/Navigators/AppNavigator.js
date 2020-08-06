@@ -1,18 +1,18 @@
-import { createAppContainer, createSwitchNavigator } from 'react-navigation'
-
-import AuthStack from './StackNavigators/AuthStack'
+import { createAppContainer } from 'react-navigation'
 
 import SplashScreen from '../Containers/SplashScreen'
 
-import TabNavigator from './TabNavigator'
+import DrawerNavigator from './DrawerNavigator'
+import AuthStack from './StackNavigators/AuthStack'
 
 import { StackStyles } from '../Theme/NavigationStyles'
+import { createStackNavigator } from 'react-navigation-stack'
 
-const AuthOrAppSwitch = createSwitchNavigator(
+const RootStack = createStackNavigator(
   {
-      AuthStack,
       SplashScreen,
-      AppStack: TabNavigator,
+      AppStack: DrawerNavigator,
+      AuthStack
   },
   {
     initialRouteName: 'SplashScreen',
@@ -20,4 +20,4 @@ const AuthOrAppSwitch = createSwitchNavigator(
   }
 )
 
-export default createAppContainer(AuthOrAppSwitch)
+export default createAppContainer(RootStack)

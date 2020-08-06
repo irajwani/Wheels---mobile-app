@@ -12,11 +12,12 @@ const AuthButton = ({text, onPress, disabled, extraStyles, textStyles}) => (
 const styles = StyleSheet.create({
     button: {
         ...Helpers.center,
-        backgroundColor: Colors.primary, 
+        backgroundColor: "transparent", 
         width: Metrics.screenWidth/1.5,
-        padding: 10, 
-        borderRadius: Metrics.screenWidth/3,
-        ...shadowStyles.whiteCard,
+        padding: Metrics.baseMargin, 
+        borderWidth: 1,
+        borderColor: Colors.black,
+        // ...shadowStyles.whiteCard,
         alignSelf: 'center',
         
     },
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     text: {
         ...Fonts.style.normal,
         fontWeight: "500",
-        color: "#fff"
+        color: Colors.black
     }
 })
 

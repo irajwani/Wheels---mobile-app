@@ -1,10 +1,11 @@
 import {takeLatest, all} from 'redux-saga/effects';
 
 import {AuthTypes} from '../Stores/Auth/Actions';
-import {ClaimTypes} from '../Stores/Claim/Actions';
+import {MarketTypes} from '../Stores/Market/Actions';
 
 import {getProfile} from './AuthSaga';
-import {createClaim, getClaims} from './ClaimSaga';
+
+import { getProducts, handleLike } from './MarketSaga';
 
 export default function* root() {
   yield all([
@@ -15,7 +16,8 @@ export default function* root() {
 
     takeLatest(AuthTypes.GET_PROFILE_REQUEST, getProfile),
 
-    takeLatest(ClaimTypes.GET_CLAIMS_REQUEST, getClaims),
-    takeLatest(ClaimTypes.CREATE_CLAIM_REQUEST, createClaim),
+    takeLatest(MarketTypes.GET_PRODUCTS_REQUEST, getProducts),
+    takeLatest(MarketTypes.HANDLE_LIKE_REQUEST, handleLike),
+    
   ]);
 }

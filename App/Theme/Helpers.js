@@ -166,8 +166,8 @@ export default StyleSheet.create({
   },
 
   thinBottomBorder: {
-    borderColor: Colors.grey,
-    borderBottomWidth: 0.4
+    borderColor: Colors.black,
+    borderBottomWidth: 0.8
   },
 
   //ICONS

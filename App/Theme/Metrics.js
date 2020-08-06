@@ -22,7 +22,9 @@ const Metrics = {
   navBarHeight: Platform.OS === 'ios' ? 64 : 54,
 
   checkBoxSize: 20,
-  
+  smallContainerRadius: 5,
+  mediumContainerRadius: 10,
+  containerRadius: 35,
   buttonRadius: 4,
   icons: {
     tiny: 15,
