@@ -6,8 +6,9 @@ const {Types, Creators} = createActions({
   getProductsSuccess: ['message'],
   getProductsFailure: ['errorMessage'],
 
+  emptyCart: [],
+
   handleCartRequest: ['product', 'inCart'],
-  handleCartSuccess: ['message'],
 
   handleLikeRequest: ['payload'],
   handleLikeSuccess: ['message'],

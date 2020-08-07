@@ -23,7 +23,7 @@ const inputRange = [0, 160, 280];
 import styles from './styles';
 import {Colors, Images, Metrics} from '../../Theme';
 
-let {AnimatedBackArrow, Heart} = Images;
+let {AnimatedBackArrow, AnimatedHeart} = Images;
 
 function Product(props) {
   let [scrollY, setScrollY] = useState(new Animated.Value(0));
@@ -98,7 +98,7 @@ function Product(props) {
     : false;
 
   let inCart = props.cart
-    ? props.cart.includes(product)
+    ? Object.keys(props.cart).includes(product)
       ? true
       : false
     : false;
@@ -112,9 +112,10 @@ function Product(props) {
           color={arrowColor}
         />
 
-        <Heart
+        <AnimatedHeart
           filled={inWishList}
           onPress={() => props.handleLike({id: product.id, inWishList})}
+          color={arrowColor}
         />
       </Animated.View>
 

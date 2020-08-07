@@ -123,7 +123,11 @@ function Shop(props) {
     <View style={styles.container}>
       <HeaderBar
         toggleDrawer={() => props.navigation.toggleDrawer()}
-        cartCount={props.cart ? props.cart.length : 0}
+        cartCount={
+          Object.keys(props.cart).length > 0
+            ? Object.keys(props.cart).length
+            : 0
+        }
         navToCart={() => props.navigation.navigate('Cart')}
       />
       {renderSearch()}

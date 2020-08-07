@@ -4,9 +4,10 @@ import { Metrics, Helpers, Colors, Fonts } from '../../Theme';
 export default StyleSheet.create({
 
     progressBarContainer: {
-        flex: 0.2,
+        flex: 0.1,
         flexDirection: 'row',
         margin: Metrics.baseMargin,
+        ...Helpers.center,
     },
 
         circle: {
@@ -18,38 +19,63 @@ export default StyleSheet.create({
 
         stick: {
             height: 3*StyleSheet.hairlineWidth,
-            width: (Metrics.screenWidth - 2*Metrics.baseMargin)/2 - 30,
+            width: (Metrics.screenWidth - 2*Metrics.baseMargin)/2 - 60,
         },
 
     bodyContainer: {
-        flex: 0.5
+        flex: 0.3,
+        margin: Metrics.baseMargin,
+        
+
     },
 
-    disclaimerContainer: {
-        flex: 0.1,
-    },
+    
 
     footerContainer: {
-        flex: 0.1,
-        flexDirection: 'row'
+        flex: 0.5,
+        
+        margin: Metrics.baseMargin
     },
 
-        priceContainer: {
-            flex: 0.6,
-            ...Helpers.center,
-            flexDirection: 'row',
+
+
+        disclaimerContainer: {
+            flex: 0.3,
+            flexDirection: 'row'
         },
 
+        detailsContainer: {
+            flex: 0.7,
+            flexDirection: 'row'
+        },
+
+        badgeContainer: {
+            flex: 0.3,
+            ...Helpers.center,
+        },
+
+        priceContainer: {
+            flex: 0.7,
+            marginHorizontal: Metrics.baseMargin,
+        },
+
+            total: {
+                ...Fonts.style.small,
+                color: Colors.lightgrey
+            },
+
             price: {
-                ...Fonts.style.normal,
+                ...Fonts.style.big,
                 color: Colors.primary
             },
 
         button: {
-            flex: 0.4,
-            borderBottomRightRadius: Metrics.containerRadius,
+            flexDirection: 'row',
+            padding: Metrics.baseMargin,
+            borderRadius: Metrics.smallContainerRadius,
             backgroundColor: Colors.primary,
             ...Helpers.center,
+            alignSelf: 'center',
         },
 
             buttonText: {

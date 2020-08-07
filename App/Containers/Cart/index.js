@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 
 import {connect} from 'react-redux';
@@ -6,13 +6,16 @@ import MarketActions from '../../Stores/Market/Actions';
 import {HeaderBar} from '../../Components/HeaderBar';
 import Container from '../../Components/Container';
 import styles from './styles';
-import {Colors} from '../../Theme';
+import {Colors, Images} from '../../Theme';
 import Loading from '../../Components/ActivityIndicator/Loading';
 import CartList from '../../Components/List/CartList';
 import {acc} from 'react-native-reanimated';
 import Empty from '../../Components/Empty';
+import CheckBox from '../../Components/Button/CheckBox';
 
 let Steps = ['Cart', 'Address', 'Receipt'];
+
+let {ChevronRight, DeliveryBadge, Divider} = Images;
 
 const Circle = ({backgroundColor, step}) => (
   <View style={[styles.circle, {backgroundColor}]}>
@@ -20,12 +23,35 @@ const Circle = ({backgroundColor, step}) => (
   </View>
 );
 
-function Stick({backgroundColor}) {
-  <View style={[styles.stick, {backgroundColor}]} />;
-}
+const Stick = ({backgroundColor}) => (
+  <View style={[styles.stick, {backgroundColor}]} />
+);
 
 function Cart(props) {
   let [step, setStep] = useState(0);
+  let [freeDelivery, toggleDelivery] = useState(true);
+  console.log('HERE', props.cart);
+  // useEffect(() => {
+  //   if(props.cart == true) {
+  //     props.cart = {};
+  //   }
+  // }, [])
+
+  function resetCart() {
+    setStep(0);
+    this.props.emptyCart();
+  }
+
+  function handleNext() {
+    if (step == 0) {
+      setStep(step + 1);
+    } else if (step == 1) {
+      setStep(step + 1);
+      confirmOrder();
+    } else {
+      resetCart();
+    }
+  }
 
   function renderProgressBar() {
     return (
@@ -83,37 +109,60 @@ function Cart(props) {
         />
       );
     } else if (step == 1) {
-      return <View />;
-    } else {
-      return <View />;
-    }
-  }
+      return (
+        <View style={styles.bodyContainer}>
 
-  function goNext() {
-    if (step < 2) {
-      setStep(step + 1);
+        </View>
+      )
     } else {
-      confirmOrder();
+      return (
+        <View style={styles.bodyContainer}>
+          
+        </View>
+      )
     }
   }
 
   function renderFooter() {
-    let subtotal = Object.values(props.cart)
-      .map((product) => product.price)
-      .reduce((accumulator, value) => accumulator + value);
+    let subtotal = 0;
+    if (Object.keys(props.cart).length > 0) {
+      subtotal = Object.values(props.cart)
+        .map((product) => Number(product.price))
+        .reduce((accumulator, value) => accumulator + value);
+    }
+
     return (
       <View style={styles.footerContainer}>
+        <View style={styles.disclaimerContainer}>
+          <CheckBox
+            checked={freeDelivery}
+            onPress={() => toggleDelivery(!freeDelivery)}
+            text={'I would like my order delivered within Karachi?'}
+          />
+        </View>
+
+        <View style={styles.detailsContainer}>
+          <View style={styles.badgeContainer}>
+            <DeliveryBadge freeDelivery={freeDelivery} />
+          </View>
+
+          <View style={styles.priceContainer}>
+            <Text style={styles.total}>Total:</Text>
+            <Text style={styles.price}>PKR {subtotal}</Text>
+          </View>
+        </View>
+
+        <Divider />
+
         <TouchableOpacity
           style={styles.button}
-          onPress={goNext}
+          onPress={handleNext}
           disabled={false}>
+          <ChevronRight />
           <Text style={styles.buttonText}>
-            {step == 2 ? 'Place Order' : 'Proceed'}
+            {step == 0 ? 'Proceed' : step == 1 ? 'Place Order' : 'Done'}
           </Text>
         </TouchableOpacity>
-        <View style={styles.priceContainer}>
-          <Text style={styles.price}>PKR {subtotal}</Text>
-        </View>
       </View>
     );
   }
@@ -130,7 +179,7 @@ function Cart(props) {
     );
   }
 
-  if (!props.cart) {
+  if (Object.keys(props.cart).length == 0) {
     return (
       <Container>
         <Empty
@@ -167,6 +216,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   handleCart: (product, inCart) =>
     dispatch(MarketActions.handleCartRequest(product, inCart)),
+
+  emptyCart: () => dispatch(MarketActions.emptyCart()),
   // createOrder: (payload) => dispatch(MarketActions.createOrderRequest()),
 });
 

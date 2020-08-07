@@ -21,23 +21,26 @@ export const getProductsFailure = (state, {errorMessage}) => ({
   isLoading: false,
 });
 
+export const emptyCart = (state) => ({
+  ...state,
+  cart: [],
+});
+
 export const handleCartRequest = (state, {product, inCart}) => {
   if (inCart) {
     state.cart = delete state.cart[product.id];
+    if (Object.keys(state.cart).length == 0) {
+      state.cart = {};
+    }
+  } else if (state.card == undefined) {
+    state.cart = {
+      [product.id]: product,
+    };
   } else {
-    state.cart[product.id] = product;
+    Object.assign(state.cart, {[product.id]: product});
   }
   return {
     ...state,
-    isLoading: true,
-  };
-};
-
-export const handleCartSuccess = (state, {message}) => {
-  return {
-    ...state,
-    message,
-    isLoading: false,
   };
 };
 
@@ -69,8 +72,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [MarketTypes.GET_PRODUCTS_SUCCESS]: getProductsSuccess,
   [MarketTypes.GET_PRODUCTS_FAILURE]: getProductsFailure,
 
+  [MarketTypes.EMPTY_CART]: emptyCart,
+
   [MarketTypes.HANDLE_CART_REQUEST]: handleCartRequest,
-  [MarketTypes.HANDLE_CART_SUCCESS]: handleCartSuccess,
 
   [MarketTypes.HANDLE_LIKE_REQUEST]: handleLikeRequest,
   [MarketTypes.HANDLE_LIKE_SUCCESS]: handleLikeSuccess,

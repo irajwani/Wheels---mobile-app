@@ -1,37 +1,43 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import Ionicon from 'react-native-vector-icons/Ionicons'
-import AntIcon from 'react-native-vector-icons/AntDesign'
-import SimpleIcon from 'react-native-vector-icons/SimpleLineIcons'
-import FeatherIcon from 'react-native-vector-icons/Feather'
-import Iconisto from 'react-native-vector-icons/Fontisto'
-import EvilIcon from 'react-native-vector-icons/EvilIcons'
-import Octicon from 'react-native-vector-icons/Octicons'
+
+import {View, Text, StyleSheet} from 'react-native';
+
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicon from 'react-native-vector-icons/Ionicons';
+import AntIcon from 'react-native-vector-icons/AntDesign';
+import SimpleIcon from 'react-native-vector-icons/SimpleLineIcons';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+import Iconisto from 'react-native-vector-icons/Fontisto';
+import EvilIcon from 'react-native-vector-icons/EvilIcons';
+import Octicon from 'react-native-vector-icons/Octicons';
 import Colors from './Colors';
 
 import * as Animatable from 'react-native-animatable';
 import Fonts from './Fonts';
 import Metrics from './Metrics';
+import Helpers from './Helpers';
 
-const path = '../Assets/Images'
+const path = '../Assets/Images';
 const AnimatableIcon = Animatable.createAnimatableComponent(Icon);
 const AnimatableIconisto = Animatable.createAnimatableComponent(Iconisto);
 const AnimatableSimpleIcon = Animatable.createAnimatableComponent(SimpleIcon);
+const AnimatableIonicon = Animatable.createAnimatableComponent(Ionicon);
 
-const smallIcon = 16, mediumIcon = 24, largeIcon = 32;
-// const 
+const smallIcon = 16,
+  mediumIcon = 24,
+  largeIcon = 32;
+// const
 
 export default {
   logo: require(`${path}/logo.png`),
   splashScreen: require(`${path}/Splashscreen.png`),
-  
+
   menuBars: require(`${path}/menu-bars.png`),
   // backArrow: require(`${path}/white-arrow-back.png`),
   smallProfile: require(`${path}/smallProfile.jpg`),
   nothingHere: require(`${path}/nothing_here.png`),
 
   glass: require(`${path}/glass.png`),
-  
 
   google: require(`${path}/Google.png`),
 
@@ -39,40 +45,32 @@ export default {
   bikeSketchTwo: require(`${path}/bike-sketch-2.png`),
   bikeSketchThree: require(`${path}/bike-sketch-4.png`),
 
-  emptyCart: require(`${path}/empty-cart.png`),
+  emptyCart: require(`${path}/empty-cart-2.jpg`),
   emptyWishList: require(`${path}/empty-wishlist.png`),
-  
 
   //Tabs
   List: ({size, focused}) => (
-    <Ionicon 
-      name={"list-circle"}
-      size={size}
-      color={Colors.primary}
-      
-    />
+    <Ionicon name={'list-circle'} size={size} color={Colors.primary} />
   ),
 
   Book: ({size, focused, color = Colors.primary}) => (
-    <SimpleIcon 
+    <SimpleIcon
       name={focused ? 'book-open' : 'notebook'}
       size={size}
       color={color}
-      
     />
   ),
 
   Create: ({size, focused}) => (
-    <Icon 
+    <Icon
       name={focused ? 'plus-circle' : 'plus-circle-outline'}
       size={size}
       color={Colors.primary}
-      
     />
   ),
 
-  Messages: ({size = smallIcon, focused, onPress=()=>{}}) => (
-    <AntIcon 
+  Messages: ({size = smallIcon, focused, onPress = () => {}}) => (
+    <AntIcon
       name={focused ? 'message1' : 'message1'}
       size={size}
       color={Colors.primary}
@@ -81,18 +79,17 @@ export default {
   ),
 
   Profile: ({size, focused}) => (
-    <Icon 
+    <Icon
       name={focused ? 'account-circle' : 'account'}
       size={size}
       color={Colors.primary}
-      
     />
   ),
 
   //Other Icons
 
   SideBar: ({onPress}) => (
-    <SimpleIcon 
+    <SimpleIcon
       name={'menu'}
       color={Colors.black}
       size={24}
@@ -100,28 +97,19 @@ export default {
     />
   ),
 
-  Tune: () => (
-    <Icon 
-      name={'tune-vertical'}
-      size={30}
-      color={Colors.black}
-      
-    />
-    
-  ),
+  Tune: () => <Icon name={'tune-vertical'} size={30} color={Colors.black} />,
 
   Trash: ({onPress}) => (
-    <Ionicon 
+    <Ionicon
       name={'trash-outline'}
       size={mediumIcon}
       color={Colors.black}
       onPress={onPress}
     />
-    
   ),
-  
+
   Settings: ({onPress}) => (
-    <FeatherIcon 
+    <FeatherIcon
       name={'settings'}
       color={Colors.black}
       size={24}
@@ -130,120 +118,74 @@ export default {
   ),
 
   Account: ({plus = false}) => (
-    <Icon 
+    <Icon
       name={`account${plus ? '-plus' : ''}`}
       size={30}
       color={Colors.secondary}
     />
-    
   ),
 
-  Reward: () => (
-    <Icon 
-      name={'gift'}
-      size={18}
-      color={Colors.black}
-      
-    />
-  ),
+  Reward: () => <Icon name={'gift'} size={18} color={Colors.black} />,
 
   BackArrow: ({onPress}) => (
-    <SimpleIcon 
-      name='arrow-left'
+    <SimpleIcon
+      name="arrow-left"
       size={largeIcon}
       color={Colors.black}
       onPress={onPress}
     />
-    
   ),
 
   AnimatedBackArrow: ({color, onPress}) => (
     <AnimatableSimpleIcon
-      name='arrow-left'
+      name="arrow-left"
       size={largeIcon}
       style={{color}}
       onPress={onPress}
-      />
+    />
   ),
 
   Eye: ({off = false}) => (
-    <Icon 
+    <Icon
       name={!off ? 'eye' : 'eye-off'}
       size={20}
       color={!off ? Colors.primary : Colors.secondary}
-      
-    />
-    
-  ),
-
-  PasswordsMatch: () => (
-    <Icon 
-      name='lock'
-      size={30}
-      color={Colors.secondary}
-      
     />
   ),
 
-  Plus: ({color = Colors.white, onPress=() => {}}) => (
-    <Icon 
-      name='plus'
-      size={24}
-      color={color}
-      onPress={onPress}
-    />
+  PasswordsMatch: () => <Icon name="lock" size={30} color={Colors.secondary} />,
+
+  Plus: ({color = Colors.white, onPress = () => {}}) => (
+    <Icon name="plus" size={24} color={color} onPress={onPress} />
   ),
 
   AddImage: ({color = Colors.black, onPress}) => (
-    <Icon 
-      name='plus'
-      size={24}
-      color={color}
-      onPress={onPress}
-    />
+    <Icon name="plus" size={24} color={color} onPress={onPress} />
   ),
 
-
-
-  Close: ({onPress}) => <Icon name={'close'} size={30} color={Colors.black} onPress={onPress}/>,
+  Close: ({onPress}) => (
+    <Icon name={'close'} size={30} color={Colors.black} onPress={onPress} />
+  ),
 
   ChevronRight: () => (
-    <Icon 
-      name="chevron-right"
-      size={Fonts.size.big}
-      color={Colors.black}
-    />
+    <Icon name="chevron-right" size={largeIcon} color={Colors.white} />
   ),
 
   Check: ({big = false, color = Colors.black}) => (
-    <Icon
-    name="check"
-    size={big ? 32 : 22}
-    color={color} 
-    />
+    <Icon name="check" size={big ? 32 : 22} color={color} />
   ),
 
   Facebook: ({onPress}) => (
-    <Icon 
-      name='facebook'
-      size={30}
-      color={Colors.primary}
-      onPress={onPress}
-    />
+    <Icon name="facebook" size={30} color={Colors.primary} onPress={onPress} />
   ),
 
   Google: ({onPress}) => (
-    <Icon 
-      name='google'
-      size={30}
-      color={Colors.primary}
-      onPress={onPress}
-    />
+    <Icon name="google" size={30} color={Colors.primary} onPress={onPress} />
   ),
 
   AnimatedShare: ({onPress, color}) => (
-    <AnimatableIcon 
-      name='share-variant'
+    <AnimatableIcon
+      name="share-variant"
       size={32}
       style={{color: color}}
       onPress={onPress}
@@ -251,12 +193,7 @@ export default {
   ),
 
   Star: ({size, focused, color = Colors.primary}) => (
-    <Icon 
-      name={focused ? 'star' : 'star-outline'}
-      size={size}
-      color={color}
-      
-    />
+    <Icon name={focused ? 'star' : 'star-outline'} size={size} color={color} />
   ),
 
   Edit: ({onPress}) => (
@@ -269,7 +206,7 @@ export default {
   ),
 
   Heart: ({filled, onPress}) => (
-    <Ionicon 
+    <Ionicon
       name={filled ? 'heart' : 'heart-outline'}
       color={Colors.black}
       size={largeIcon}
@@ -277,8 +214,17 @@ export default {
     />
   ),
 
+  AnimatedHeart: ({filled, color, onPress}) => (
+    <AnimatableIonicon
+      name={filled ? 'heart' : 'heart-outline'}
+      color={color}
+      size={largeIcon}
+      onPress={onPress}
+    />
+  ),
+
   Cart: ({onPress}) => (
-    <EvilIcon 
+    <EvilIcon
       name={'cart'}
       color={Colors.black}
       size={largeIcon}
@@ -287,30 +233,49 @@ export default {
   ),
 
   People: () => (
-    <Ionicon 
-      name={'ios-people'}
-      color={Colors.secondary}
-      size={30}
-    />
+    <Ionicon name={'ios-people'} color={Colors.secondary} size={30} />
   ),
 
-  Plane: () => (
-    <FeatherIcon
-      name={'send'}
-      color={Colors.primary}
-      size={24}
-    />
-  ),
+  Plane: () => <FeatherIcon name={'send'} color={Colors.primary} size={24} />,
 
   Restart: ({onPress}) => (
-    <Icon 
-      name={'restart'}
-      onPress={onPress}
-      color={Colors.black}
-      size={24}
-    />
+    <Icon name={'restart'} onPress={onPress} color={Colors.black} size={24} />
   ),
 
+  DeliveryBadge: ({freeDelivery}) => (
+    <View
+      style={{
+        width: 50,
+        height: 40,
+        backgroundColor: Colors.lightgrey,
+        borderRadius: Metrics.smallContainerRadius,
+        ...Helpers.center,
+      }}>
+      {!freeDelivery && (
+        <View
+          style={{
+            position: 'absolute',
+            zIndex: 1000,
+            alignSelf: 'center',
+            
+          }}>
+          <FeatherIcon name={'slash'} color={Colors.black} size={mediumIcon} />
+        </View>
+      )}
+      <Icon name={'truck-fast'} color={Colors.black} size={mediumIcon} />
 
+      <Text style={{...Fonts.style.tiny}}>Free</Text>
+    </View>
+  ),
 
-}
+  Divider: () => (
+    <View
+      style={{
+        height: StyleSheet.hairlineWidth,
+        width: Metrics.screenWidth - 2 * Metrics.baseMargin,
+        backgroundColor: Colors.grey,
+        marginVertical: Metrics.baseMargin
+      }}
+    />
+  ),
+};

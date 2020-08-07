@@ -30,7 +30,13 @@ const ProductList = ({
         product={item.item}
         index={index}
         onPress={() => onPress(item.item)}
-        inCart={cart ? (cart.includes(item.item) ? true : false) : false}
+        inCart={
+          cart
+            ? Object.keys(cart).includes(item.item.id)
+              ? true
+              : false
+            : false
+        }
         inWishList={
           wishlist ? (wishlist.includes(item.item.id) ? true : false) : false
         }

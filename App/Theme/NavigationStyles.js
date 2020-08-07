@@ -4,7 +4,7 @@ export const StackStyles = {
   headerMode: 'none',
   mode: 'modal',
   navigationOptions: {
-    gesturesEnabled: true,
+    gesturesEnabled: false,
   },
   transitionConfig: () => ({
     transitionSpec: {

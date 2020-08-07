@@ -18,7 +18,7 @@ const HeaderBar = ({
       {flex: 0.1, justifyContent: showCart ? 'space-between' : 'flex-start'},
     ]}>
     <SideBar onPress={toggleDrawer} />
-
+ 
     {showCart && (
       <View>
         <Cart onPress={navToCart} />
@@ -70,12 +70,13 @@ const styles = StyleSheet.create({
   cartCountContainer: {
     ...Helpers.center,
     position: 'absolute',
-    top: Metrics.baseMargin,
-    right: Metrics.baseMargin,
+    zIndex: 999,
+    bottom: Metrics.baseMargin,
+    left: 1.5*Metrics.baseMargin,
     backgroundColor: Colors.primary,
-    width: 30,
-    height: 30,
-    borderRadius: 15,
+    width: 20,
+    height: 20,
+    borderRadius: 10,
   },
 
   cartCount: {

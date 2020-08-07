@@ -5,31 +5,28 @@ import { Colors, Images, Fonts, Metrics } from '../../Theme'
 let {Check} = Images;
 
 const CheckBox = ({onPress, checked, text}) => (
-    <View style={styles.container}>
-        <TouchableOpacity style={[styles.checkBox, checked ? {borderColor: Colors.primary} : null]} onPress={onPress}/>
+    <>
+        <TouchableOpacity style={[styles.checkBox, checked ? {borderColor: Colors.primary} : null]} onPress={onPress}>
         {checked ?
-                <View style={{position: 'absolute', zIndex: 1000, alignSelf: 'center'}}>
-                    <Check big color={Colors.primary}/>
+                <View style={{position: 'absolute', alignSelf: 'center', }}>
+                    <Check color={Colors.primary}/>
                 </View>
                 :
                 null
         }
+        </TouchableOpacity>
+        
         <Text style={styles.text}>{text}</Text>
-    </View>
+    </>
 )
 
 const styles = StyleSheet.create({
 
-    container: {
-        flexDirection: 'row',
-        marginBottom: Metrics.baseMargin,
-        alignItems: 'center'
-    },
     checkBox: {
 
-        width: 24,
-        height: 24,
-        borderRadius: 5,
+        width: 25,
+        height: 25,
+        borderRadius: 10,
         borderColor: Colors.secondary,
         borderWidth: 0.5,
         backgroundColor: Colors.white,
@@ -37,10 +34,9 @@ const styles = StyleSheet.create({
     },
 
         text: {
-            ...Fonts.style.normal,
-            color: Colors.primary,
+            ...Fonts.style.small,
             marginLeft: 10,
-            textTransform: 'capitalize'
+            alignSelf: 'center'
         }
 
 })

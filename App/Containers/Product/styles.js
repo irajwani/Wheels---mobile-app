@@ -8,7 +8,7 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        paddingHorizontal: Metrics.baseMargin,
+        padding: Metrics.baseMargin,
         position: "absolute",zIndex: 1,width: "100%",
     },
 
