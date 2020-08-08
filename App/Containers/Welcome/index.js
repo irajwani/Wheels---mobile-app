@@ -410,7 +410,7 @@ export class Welcome extends Component {
 
     
     successfulLoginCallback = () => {
-        this.setState({authenticating: false, isLoading: false}, () => {NavigationService.navigate('AppStack')});
+        this.setState({authenticating: false, isLoading: false}, () => {NavigationService.navigate('SplashScreen')});
     }
     // Definition: Invoked when onSignInPress() AND signInWithGoogle()  are pressed: 
     // that is when user presses Sign In Button, or when they choose to sign up or sign in through Google 

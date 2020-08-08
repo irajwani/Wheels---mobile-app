@@ -12,13 +12,34 @@ export default StyleSheet.create({
   },
 
     searchContainer: {
+      zIndex: 1,
       margin: Metrics.baseMargin,
-      borderRadius: Metrics.containerRadius,
+      borderRadius: Metrics.smallContainerRadius,
       // ...shadowStyles.whiteCard,
         // ...borderStyles.thinBorder,
         backgroundColor: Colors.grey,
         flexDirection: 'row',
+        overflow: 'visible',
     },
+
+    menu: {
+      position: 'absolute',
+      top: 55,
+      right: 0,
+      zIndex: 1,
+      overflow: 'visible',
+      backgroundColor: Colors.lightgrey,
+      borderRadius: Metrics.smallContainerRadius,
+      ...shadowStyles.menu,
+      // overflow: 'visible',
+
+    },
+
+      menuItem: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          margin: Metrics.baseMargin/2,
+      },
 
   
   //AUTH MODAL

@@ -2,7 +2,7 @@ import { Animated, Easing } from 'react-native'
 
 export const StackStyles = {
   headerMode: 'none',
-  mode: 'modal',
+  mode: 'card',
   navigationOptions: {
     gesturesEnabled: false,
   },

@@ -97,7 +97,7 @@ export default {
     />
   ),
 
-  Tune: () => <Icon name={'tune-vertical'} size={30} color={Colors.black} />,
+  Tune: () => <Icon name={'sort'} size={mediumIcon} color={Colors.black} />,
 
   Trash: ({onPress}) => (
     <Ionicon
@@ -127,10 +127,10 @@ export default {
 
   Reward: () => <Icon name={'gift'} size={18} color={Colors.black} />,
 
-  BackArrow: ({onPress}) => (
+  BackArrow: ({onPress = () => {}}) => (
     <SimpleIcon
       name="arrow-left"
-      size={largeIcon}
+      size={smallIcon}
       color={Colors.black}
       onPress={onPress}
     />
@@ -192,10 +192,6 @@ export default {
     />
   ),
 
-  Star: ({size, focused, color = Colors.primary}) => (
-    <Icon name={focused ? 'star' : 'star-outline'} size={size} color={color} />
-  ),
-
   Edit: ({onPress}) => (
     <FeatherIcon
       name={'edit-3'}
@@ -245,7 +241,7 @@ export default {
   DeliveryBadge: ({freeDelivery}) => (
     <View
       style={{
-        width: 50,
+        width: 60,
         height: 40,
         backgroundColor: Colors.lightgrey,
         borderRadius: Metrics.smallContainerRadius,
@@ -259,12 +255,12 @@ export default {
             alignSelf: 'center',
             
           }}>
-          <FeatherIcon name={'slash'} color={Colors.black} size={mediumIcon} />
+          <FeatherIcon name={'slash'} color={Colors.error} size={largeIcon} />
         </View>
       )}
       <Icon name={'truck-fast'} color={Colors.black} size={mediumIcon} />
 
-      <Text style={{...Fonts.style.tiny}}>Free</Text>
+      <Text style={{...Fonts.style.tiny}}>Free Delivery</Text>
     </View>
   ),
 

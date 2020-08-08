@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import { Metrics, Helpers, Colors, Fonts } from '../../Theme';
+import borderStyles from '../../StyleSheets/borderStyles';
 
 export default StyleSheet.create({
 
@@ -19,21 +20,40 @@ export default StyleSheet.create({
 
         stick: {
             height: 3*StyleSheet.hairlineWidth,
-            width: (Metrics.screenWidth - 2*Metrics.baseMargin)/2 - 60,
+            width: (Metrics.screenWidth - 2*Metrics.baseMargin)/2 - 45,
         },
 
     bodyContainer: {
-        flex: 0.3,
+        // flex: 0.3,
         margin: Metrics.baseMargin,
         
 
     },
 
+        //STEP #2
+
+        formContainer: {
+            flex: 0.4,
+            flexGrow: 0.8,
+        },
+
+        formContentContainer: {
+            // alignItems: 'center',
+            justifyContent: 'space-evenly',
+        },
+
+            formHeaderText: {
+                ...Fonts.style.normal,
+                fontWeight: "bold",
+                // marginVertical: Metrics.baseMargin/2
+            },
+
+
+
     
 
     footerContainer: {
-        flex: 0.5,
-        
+        flex: 0.4,
         margin: Metrics.baseMargin
     },
 
@@ -41,7 +61,8 @@ export default StyleSheet.create({
 
         disclaimerContainer: {
             flex: 0.3,
-            flexDirection: 'row'
+            flexDirection: 'row',
+            alignItems: 'center',
         },
 
         detailsContainer: {
@@ -51,17 +72,19 @@ export default StyleSheet.create({
 
         badgeContainer: {
             flex: 0.3,
-            ...Helpers.center,
+            justifyContent: 'center'
         },
 
         priceContainer: {
             flex: 0.7,
             marginHorizontal: Metrics.baseMargin,
+            justifyContent: 'center',
         },
 
             total: {
                 ...Fonts.style.small,
-                color: Colors.lightgrey
+                color: Colors.grey,
+                fontWeight: '600'
             },
 
             price: {
@@ -69,19 +92,22 @@ export default StyleSheet.create({
                 color: Colors.primary
             },
 
-        button: {
+        buttonsContainer: {
             flexDirection: 'row',
-            padding: Metrics.baseMargin,
-            borderRadius: Metrics.smallContainerRadius,
-            backgroundColor: Colors.primary,
-            ...Helpers.center,
-            alignSelf: 'center',
+            borderRadius: Metrics.containerRadius,
+            backgroundColor: "transparent"
         },
 
-            buttonText: {
-                ...Fonts.style.normal,
-                color: Colors.white
-            }
+            button: {
+                flexDirection: 'row',
+                ...Helpers.center,
+                ...borderStyles.thinBorder,
+            },
+
+                buttonText: {
+                    ...Fonts.style.normal,
+                    color: Colors.white
+                },
 
 
 })

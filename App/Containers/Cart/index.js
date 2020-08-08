@@ -1,21 +1,23 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import React, {useState, useEffect, useRef} from 'react';
+import {View, ScrollView, Text, TouchableOpacity} from 'react-native';
 
 import {connect} from 'react-redux';
 import MarketActions from '../../Stores/Market/Actions';
 import {HeaderBar} from '../../Components/HeaderBar';
 import Container from '../../Components/Container';
 import styles from './styles';
-import {Colors, Images} from '../../Theme';
+import {Colors, Images, Metrics, Fonts} from '../../Theme';
 import Loading from '../../Components/ActivityIndicator/Loading';
 import CartList from '../../Components/List/CartList';
 import {acc} from 'react-native-reanimated';
 import Empty from '../../Components/Empty';
 import CheckBox from '../../Components/Button/CheckBox';
+import FieldInput from '../../Components/Input/FieldInput';
+import borderStyles from '../../StyleSheets/borderStyles';
 
 let Steps = ['Cart', 'Address', 'Receipt'];
 
-let {ChevronRight, DeliveryBadge, Divider} = Images;
+let {ChevronRight, DeliveryBadge, Divider, BackArrow} = Images;
 
 const Circle = ({backgroundColor, step}) => (
   <View style={[styles.circle, {backgroundColor}]}>
@@ -29,17 +31,33 @@ const Stick = ({backgroundColor}) => (
 
 function Cart(props) {
   let [step, setStep] = useState(0);
+
+  const form = useRef();
+
+  let [name, setName] = useState('');
+  let [address, setAddress] = useState('');
+  let [city, setCity] = useState('');
+  let [phone, setPhone] = useState('');
+
+  let [errors, setError] = useState({address: '', city: '', phone: ''});
   let [freeDelivery, toggleDelivery] = useState(true);
   console.log('HERE', props.cart);
-  // useEffect(() => {
-  //   if(props.cart == true) {
-  //     props.cart = {};
-  //   }
-  // }, [])
+  useEffect(() => {
+    if(step == 1) {
+      form.current.scrollToEnd({animated: true});
+    }
+    // if(props.cart == true) {
+    //   props.cart = {};
+    // }
+  }, [step])
 
   function resetCart() {
     setStep(0);
     this.props.emptyCart();
+  }
+
+  function handleBack() {
+    setStep(0);
   }
 
   function handleNext() {
@@ -47,10 +65,25 @@ function Cart(props) {
       setStep(step + 1);
     } else if (step == 1) {
       setStep(step + 1);
-      confirmOrder();
+      placeOrder();
     } else {
       resetCart();
     }
+  }
+
+  function placeOrder() {
+    let payload = {
+      products: Object.values(props.cart),
+      buyer: {
+        uid: props.uid,
+        name,
+        address,
+        city,
+        phone,
+      },
+    };
+
+    props.placeOrder(payload);
   }
 
   function renderProgressBar() {
@@ -110,16 +143,45 @@ function Cart(props) {
       );
     } else if (step == 1) {
       return (
-        <View style={styles.bodyContainer}>
+        <ScrollView ref={form} style={[styles.bodyContainer, styles.formContainer]} contentContainerStyle={styles.formContentContainer} persistentScrollbar>
+          <Text style={styles.formHeaderText}>Mailing Address</Text>
 
-        </View>
-      )
+          <FieldInput
+            label={'Full Name'}
+            value={name}
+            onChangeText={text => setName(text)}
+            placeholder={'e.g. Abeer Rizvi'}
+          />
+
+          <FieldInput
+            label={'Address'}
+            value={address}
+            onChangeText={text => setAddress(text)}
+            placeholder={'e.g. B-204 Diamond Apartments, Clifton Block 5'}
+            multiline
+          />
+
+          <FieldInput
+            label={'City'}
+            value={city}
+            onChangeText={text => setCity(text)}
+            placeholder={'e.g. Karachi'}
+          />
+
+          <FieldInput
+            label={'Phone'}
+            value={phone}
+            onChangeText={text => setPhone(text)}
+            placeholder={'e.g. 03002034034'}
+          />
+        </ScrollView>
+      );
     } else {
       return (
         <View style={styles.bodyContainer}>
-          
+
         </View>
-      )
+      );
     }
   }
 
@@ -148,27 +210,36 @@ function Cart(props) {
 
           <View style={styles.priceContainer}>
             <Text style={styles.total}>Total:</Text>
-            <Text style={styles.price}>PKR {subtotal}</Text>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={styles.price}>PKR {subtotal}</Text>
+              {!freeDelivery && <Text style={{...Fonts.style.tiny, alignSelf: 'center'}}> + Courier Charges</Text>}
+            </View>
+            
           </View>
         </View>
 
-        <Divider />
-
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleNext}
-          disabled={false}>
-          <ChevronRight />
-          <Text style={styles.buttonText}>
-            {step == 0 ? 'Proceed' : step == 1 ? 'Place Order' : 'Done'}
-          </Text>
-        </TouchableOpacity>
+        <View style={styles.buttonsContainer}>
+          {step == 1 && (
+            <TouchableOpacity
+              style={[styles.button, {flex: 0.3, backgroundColor: Colors.white, borderTopLeftRadius: Metrics.smallContainerRadius, borderBottomLeftRadius: Metrics.smallContainerRadius,}]}
+              onPress={handleBack}
+              disabled={false}>
+              <BackArrow />
+            </TouchableOpacity>  
+          )}
+          <TouchableOpacity
+            style={[styles.button, {flex: step == 1 ? 0.7 : 1, backgroundColor: Colors.primary}, step == 1 ? {borderTopRightRadius: Metrics.smallContainerRadius, borderBottomRightRadius: Metrics.smallContainerRadius,} : {borderRadius: Metrics.smallContainerRadius}]}
+            onPress={handleNext}
+            disabled={false}>
+            <ChevronRight />
+            <Text style={styles.buttonText}>
+              {step == 0 ? 'Proceed' : step == 1 ? 'Place Order' : 'Done'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+        
       </View>
     );
-  }
-
-  function confirmOrder() {
-    console.log('yo');
   }
 
   if (props.isLoading) {

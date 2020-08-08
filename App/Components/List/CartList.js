@@ -70,10 +70,13 @@ export default CartList;
 
 const styles = StyleSheet.create({
   cartContainer: {
-    
+    flexGrow: 0.4,
+    // flex: 0.4,
+    // backgroundColor: 'red',
+    // overflow: 'hidden'
   },
   cartContentContainer: {
-    
+    // flexGrow: 1
     
   },
 

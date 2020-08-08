@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-import {View, Image as RNImage, Text} from 'react-native';
+import {View, Image as RNImage, Text, TouchableOpacity} from 'react-native';
 
 import Image from 'react-native-image-progress';
 import ProgressBar from 'react-native-progress/Bar';
@@ -79,10 +79,27 @@ function Shop(props) {
         <SortButton
           options={sortOptions}
           isDrawerVisible={isDrawerVisible}
-          toggleOptionDrawer={toggleOptionDrawer}
-          selectedItem={sortBy}
-          onMenuItemPress={(option) => setSortBy(option)}
+          toggleOptionDrawer={() => toggleOptionDrawer(!isDrawerVisible)}
         />
+        {isDrawerVisible && (
+          <View style={styles.menu}>
+            {sortOptions.map((option) => {
+              return (
+                <TouchableOpacity
+                  onPress={() => setSortBy(option)}
+                  style={styles.menuItem}>
+                  <Text
+                    style={{
+                      ...Fonts.style.small,
+                      color: sortBy == option ? Colors.primary : Colors.black,
+                    }}>
+                    {option}
+                  </Text>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        )}
       </View>
     );
   }

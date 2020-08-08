@@ -19,10 +19,10 @@ export default StyleSheet.create({
         
         shadowOffset: {
             width: 2,
-            height: -2,
+            height: 2,
         },
-        shadowOpacity: 0.8,
-        shadowRadius: 3,
+        shadowOpacity: 0.5,
+        shadowRadius: 2,
     },
 
     whiteCard: {

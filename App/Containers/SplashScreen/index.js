@@ -64,10 +64,21 @@ function SplashScreen(props) {
 
 
 
-  function showAppOrAuth(user) {
+  async function showAppOrAuth(user) {
+    //If the user is online, store the UID, but either way just nav to AppStack
     if (user) {
       props.storeUid(user.uid);
-
+      // let keys = await AsyncStorage.getAllKeys();
+      // if(!keys.includes('profile')) {
+      //   AsyncStorage.setItem('profile', {
+      //     name: user.displayName,
+      //     address: '',
+      //     city: '',
+      //     phone: '',
+      //   });
+      // }
+      
+      
       // console.log("USER IS: " + user);
       var cT = new Date(user.metadata.creationTime);
       var pT = new Date();
@@ -75,6 +86,7 @@ function SplashScreen(props) {
       var seconds_dif = dif / 1000;
       seconds_dif = Math.abs(seconds_dif);
       if (seconds_dif < 10) {
+        props.navigation.navigate('AppStack');
         // props.getProfile(user.uid);
       } else {
         // props.getProfile(user.uid);

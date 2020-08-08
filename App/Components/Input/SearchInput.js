@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
 
     inputStyle: {
         backgroundColor: Colors.lightgrey,
-        borderTopLeftRadius: Metrics.mediumContainerRadius,
-        borderBottomLeftRadius: Metrics.mediumContainerRadius,
+        borderTopLeftRadius: Metrics.smallContainerRadius,
+        borderBottomLeftRadius: Metrics.smallContainerRadius,
         flex: 0.8,
         height: 50,marginBottom: 0, padding: 10, ...Fonts.style.normal,
     }
