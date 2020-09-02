@@ -1,84 +1,111 @@
-import React, { Component } from 'react';
-import { Text, Modal as RNModal, StyleSheet } from 'react-native';
+import React, {Component} from 'react';
+import {
+  View,
+  Image as RNImage,
+  Text,
+  Modal as RNModal,
+  StyleSheet,
+} from 'react-native';
 
-import Modal, { ModalContent, SlideAnimation, ModalTitle, ModalFooter, ModalButton } from 'react-native-modals';
-import { Colors, Metrics, Helpers, Fonts } from '../../Theme';
+import Modal, {
+  ModalContent,
+  SlideAnimation,
+  ModalTitle,
+  ModalFooter,
+  ModalButton,
+} from 'react-native-modals';
+import {Colors, Metrics, Helpers, Images, Fonts, Strings} from '../../Theme';
 import shadowStyles from '../../StyleSheets/shadowStyles';
 
 import DocModal from './DocModal';
+import AuthButton from '../Button/AuthButton';
+import TutorialList from '../List/TutorialList';
 
-const AuthModal = ({ visible, children}) => (
-    <RNModal
-        animationType="slide"
-        transparent={false}
-        visible={visible}
-      >
-        {children} 
-    </RNModal>
-)
+let {Close, BackArrow} = Images;
 
-const CustomModal = ({ title, visible, toggleModal, actionText, onPress, children}) => (
-    <Modal
-        rounded={true}
-        modalStyle={styles.modal}
-        modalTitle={<Text style={styles.modalTitle}>{title}</Text>}
-        visible={visible}
-        onTouchOutside={toggleModal}
-        modalAnimation={new SlideAnimation({
-        slideFrom: 'top',
-        })}
-        swipeDirection={['up', 'down', 'left', 'right']}
-        swipeThreshold={100} 
-        onSwipeOut={toggleModal}
-        footer={
-        <ModalFooter bordered={true} style={styles.modalFooter}>
-        <ModalButton
-            text="Cancel"
-            style={{backgroundColor: Colors.white}}
-            textStyle={[styles.modalFooterText, {color: Colors.secondary}]}
-            onPress={toggleModal}
-        />
-        <ModalButton
-            text={actionText}
-            style={{backgroundColor: Colors.white}}
-            textStyle={styles.modalFooterText}
-            onPress={onPress}
-        />
-        </ModalFooter>
-        }
-    >
-        <ModalContent>
-            {children}
-        </ModalContent>
-    </Modal>
-)
+let Tutorial = [
+  {
+    image: Images.bikeSketchOne,
+    text:
+      'Search from a number of different socials going on around your city. Whatever your preference, Awitan has got you covered.',
+  },
+  {
+    image: Images.bikeSketchTwo,
+    text:
+      'Host events and sessions to meet like minded Awitaners to broaden your circle. ',
+  },
+  {
+    image: Images.bikeSketchThree,
+    text: 'Some pretty bad description text.',
+  },
+];
 
-export {CustomModal, AuthModal, DocModal};
+const AuthModal = ({visible, isStatic = false, toggleModal, navToAuth, navToShop = true}) => (
+  <RNModal animationType="slide" transparent={false} visible={visible}>
+    <View style={styles.closeContainer}>
+      {isStatic ? <BackArrow onPress={navToShop}/> : <Close onPress={toggleModal} />}
+    </View>
+
+    <View style={styles.modalHeader}>
+      <RNImage source={Images.logo} style={styles.logo} />
+      <Text style={styles.modalHeaderText}>{Strings.companyName}</Text>
+    </View>
+
+    <TutorialList data={Tutorial} />
+
+    <View style={styles.modalFooter}>
+      <AuthButton text={'Sign Up'} onPress={navToAuth} />
+      <Text style={{...Fonts.style.normal}} onPress={navToAuth}>
+        Already have an account? Sign In
+      </Text>
+    </View>
+  </RNModal>
+);
+
+const CustomModal = ({visible, children}) => (
+  <RNModal animationType="slide" transparent={false} visible={visible}>
+    {children}
+  </RNModal>
+);
+
+export {AuthModal, DocModal, CustomModal};
 
 const styles = StyleSheet.create({
+  closeContainer: {
+    position: 'absolute',
+    zIndex: 100,
+    top: 2 * Metrics.baseMargin,
+    left: Metrics.baseMargin,
+  },
 
-    authModal: {
-        width: Metrics.screenWidth,
-    },
-    
-    modal: {
-        width: Metrics.screenWidth - Metrics.baseMargin*2,
-        backgroundColor: Colors.white,
-        ...Helpers.thinColorBorder,
-        ...shadowStyles.whiteCard,
-        margin: Metrics.baseMargin
-    },
+  modalHeader: {
+    flex: 0.15,
+    ...Helpers.center,
+  },
 
-        modalTitle: {
-            ...Fonts.style.big,
-            paddingVertical: Metrics.baseMargin,
-            textAlign: 'center',
-            color: Colors.primary
-        },
+  logo: {
+    width: 40,
+    height: 40,
+  },
 
-        modalFooter: {
-            backgroundColor: Colors.secondary,
-        },
+  modalHeaderText: {...Fonts.style.normal},
 
-            modalFooterText: {...Fonts.style.medium, color: Colors.primary},
-})
+  modalContent: {
+    flex: 0.6,
+  },
+
+  modalImage: {
+    width: Metrics.screenWidth - 2 * Metrics.baseMargin,
+    height: Metrics.screenHeight / 2,
+  },
+
+  modalText: {
+    ...Fonts.style.normal,
+  },
+
+  modalFooter: {
+    flex: 0.25,
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
+});

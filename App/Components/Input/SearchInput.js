@@ -32,9 +32,10 @@ export default SearchInput;
 const styles = StyleSheet.create({
 
     inputStyle: {
-        backgroundColor: Colors.lightgrey,
+        backgroundColor: Colors.darkwhite,
         borderTopLeftRadius: Metrics.smallContainerRadius,
         borderBottomLeftRadius: Metrics.smallContainerRadius,
+        // borderWidth: 0.4,
         flex: 0.8,
         height: 50,marginBottom: 0, padding: 10, ...Fonts.style.normal,
     }

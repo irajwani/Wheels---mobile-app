@@ -25,13 +25,14 @@ const AnimatableIonicon = Animatable.createAnimatableComponent(Ionicon);
 
 const smallIcon = 16,
   mediumIcon = 24,
-  largeIcon = 32;
+  largeIcon = 36;
 // const
 
 export default {
   logo: require(`${path}/logo.png`),
-  splashScreen: require(`${path}/Splashscreen.png`),
+  splashScreen: require(`${path}/logo.jpeg`),
 
+  wheel: require(`${path}/wheel-size.png`),
   menuBars: require(`${path}/menu-bars.png`),
   // backArrow: require(`${path}/white-arrow-back.png`),
   smallProfile: require(`${path}/smallProfile.jpg`),
@@ -48,9 +49,19 @@ export default {
   emptyCart: require(`${path}/empty-cart-2.jpg`),
   emptyWishList: require(`${path}/empty-wishlist.png`),
 
+  delivery: require(`${path}/delivery.jpg`),
+
   //Tabs
-  List: ({size, focused}) => (
-    <Ionicon name={'list-circle'} size={size} color={Colors.primary} />
+  Shop: ({color}) => (
+    <Iconisto name={'shopping-store'} size={mediumIcon} color={color} />
+  ),
+
+  Profile: ({color}) => (
+    <Icon
+      name={'account-circle'}
+      size={largeIcon}
+      color={color}
+    />
   ),
 
   Book: ({size, focused, color = Colors.primary}) => (
@@ -58,31 +69,6 @@ export default {
       name={focused ? 'book-open' : 'notebook'}
       size={size}
       color={color}
-    />
-  ),
-
-  Create: ({size, focused}) => (
-    <Icon
-      name={focused ? 'plus-circle' : 'plus-circle-outline'}
-      size={size}
-      color={Colors.primary}
-    />
-  ),
-
-  Messages: ({size = smallIcon, focused, onPress = () => {}}) => (
-    <AntIcon
-      name={focused ? 'message1' : 'message1'}
-      size={size}
-      color={Colors.primary}
-      onPress={onPress}
-    />
-  ),
-
-  Profile: ({size, focused}) => (
-    <Icon
-      name={focused ? 'account-circle' : 'account'}
-      size={size}
-      color={Colors.primary}
     />
   ),
 
@@ -123,22 +109,30 @@ export default {
       size={30}
       color={Colors.secondary}
     />
+  ),  
+
+  Info: ({onPress}) => (
+    <AntIcon
+      name={'infocirlceo'}
+      color={Colors.white}
+      size={mediumIcon}
+      onPress={onPress}
+    />
   ),
 
-  Reward: () => <Icon name={'gift'} size={18} color={Colors.black} />,
 
   BackArrow: ({onPress = () => {}}) => (
-    <SimpleIcon
-      name="arrow-left"
-      size={smallIcon}
+    <AnimatableIonicon
+      name="return-up-back"
+      size={mediumIcon}
       color={Colors.black}
       onPress={onPress}
     />
   ),
 
   AnimatedBackArrow: ({color, onPress}) => (
-    <AnimatableSimpleIcon
-      name="arrow-left"
+    <AnimatableIonicon
+      name="return-up-back"
       size={largeIcon}
       style={{color}}
       onPress={onPress}
@@ -204,7 +198,7 @@ export default {
   Heart: ({filled, onPress}) => (
     <Ionicon
       name={filled ? 'heart' : 'heart-outline'}
-      color={Colors.black}
+      color={Colors.red}
       size={largeIcon}
       onPress={onPress}
     />
@@ -219,10 +213,20 @@ export default {
     />
   ),
 
-  Cart: ({onPress}) => (
+  Cart: ({onPress = () => {}, color = Colors.black}) => (
     <EvilIcon
       name={'cart'}
-      color={Colors.black}
+      color={color}
+      size={largeIcon}
+      onPress={onPress}
+    />
+  ),
+
+
+  CartButton: ({onPress = () => {}, color = Colors.black, inCart}) => (
+    <Iconisto
+      name={`shopping-basket-${inCart ? 'remove' : 'add'}`}
+      color={inCart ? Colors.red : Colors.lightgrey}
       size={largeIcon}
       onPress={onPress}
     />

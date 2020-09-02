@@ -8,20 +8,38 @@ export default StyleSheet.create({
         flex: 0.1,
         flexDirection: 'row',
         margin: Metrics.baseMargin,
-        ...Helpers.center,
+        
     },
 
-        circle: {
-            width: 30,
-            height: 30,
-            borderRadius: 15,
-            ...Helpers.center
+        progressBarTop: {
+            flexDirection: 'row',
+            flex: 0.8,
+            ...Helpers.center,
         },
 
-        stick: {
-            height: 3*StyleSheet.hairlineWidth,
-            width: (Metrics.screenWidth - 2*Metrics.baseMargin)/2 - 45,
+            circle: {
+                width: 25,
+                height: 25,
+                borderRadius: 12.5,
+                ...Helpers.center
+            },
+
+                stepNumber: {
+                    ...Fonts.style.small, color: Colors.white
+                },
+
+            stick: {
+                height: 4*StyleSheet.hairlineWidth,
+                width: (Metrics.screenWidth - 2*Metrics.baseMargin)/2 - 40,
+            },
+
+        progressBarBottom: {
+            flexDirection: 'row',
+            flex: 0.2,
+            alignItems: 'center',
         },
+
+            progressText: {...Fonts.style.tiny},
 
     bodyContainer: {
         // flex: 0.3,
@@ -48,12 +66,30 @@ export default StyleSheet.create({
                 // marginVertical: Metrics.baseMargin/2
             },
 
+        //STEP #3
+
+        messageContainer: {
+            flex: 0.6,
+            ...Helpers.center,
+        },
+
+            messageImage: {
+                marginVertical: Metrics.baseMargin,
+                width: 200,
+                height: 200,
+            },
+
+            message: {
+                ...Fonts.style.normal, textAlign: "left",
+                marginVertical: Metrics.baseMargin
+            },
+
 
 
     
 
     footerContainer: {
-        flex: 0.4,
+        
         margin: Metrics.baseMargin
     },
 
@@ -71,12 +107,12 @@ export default StyleSheet.create({
         },
 
         badgeContainer: {
-            flex: 0.3,
+            flex: 0.2,
             justifyContent: 'center'
         },
 
         priceContainer: {
-            flex: 0.7,
+            flex: 0.8,
             marginHorizontal: Metrics.baseMargin,
             justifyContent: 'center',
         },

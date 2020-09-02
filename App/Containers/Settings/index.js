@@ -47,7 +47,7 @@ class Settings extends Component {
     renderDocumentModal = () => (
         <Modal
             rounded={false}
-            modalStyle={{...shadowStyles.blackShadow, margin: Metrics.baseMargin, height: Metrics.screenHeight - 3*Metrics.baseMargin, elevation: 2,}}
+            modalStyle={{...shadowStyles.blackShadow, elevation: 1, margin: Metrics.baseMargin, height: Metrics.screenHeight - 3*Metrics.baseMargin, elevation: 2,}}
             modalTitle={<ModalTitle hasTitleBar={false} title={this.state.document.title} titleTextStyle={{...Fonts.style.medium, color: Colors.primary, fontWeight: "400"}}/>}
             visible={this.state.isDocumentVisible}
             onTouchOutside={this.toggleDocumentModal}
@@ -81,7 +81,7 @@ class Settings extends Component {
         
         <Modal
             rounded={false}
-            modalStyle={{...shadowStyles.blackShadow, }}
+            modalStyle={{...shadowStyles.blackShadow, elevation: 1}}
             modalTitle={<ModalTitle hasTitleBar={false} title="Log Out" titleTextStyle={{...Fonts.style.medium, color: Colors.primary, fontWeight: "400"}}/>}
             visible={this.state.isExitVisible}
             onTouchOutside={this.toggleExitModal}

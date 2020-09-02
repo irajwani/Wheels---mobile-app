@@ -2,19 +2,18 @@ import { INITIAL_STATE } from './InitialState'
 import { createReducer } from 'reduxsauce'
 import { AuthTypes } from './Actions'
 
-export const createUserRequest = (state, {newUser}) => ({
+export const createUserRequest = (state) => ({
   ...state,
-  newUser,
 })
 
 export const createUserSuccess = (state) => {
   return {
     ...state,
-    registerStatus: true
+    registerStatus: true,
   }
 }
 
-export const createUserFailure = (state, { errorMessage }) => ({
+export const createUserFailure = (state, {errorMessage}) => ({
   ...state,
   errorMessage,
 })

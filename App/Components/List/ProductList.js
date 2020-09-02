@@ -13,11 +13,12 @@ import {Helpers, Fonts, Metrics} from '../../Theme';
 
 const ProductList = ({
   data,
-  wishlist,
+  isUser = false,
   cart,
   onPress,
   handleLike,
   handleCart,
+  toggleModal,
   style = null,
 }) => (
   <Animated.FlatList
@@ -30,6 +31,7 @@ const ProductList = ({
         product={item.item}
         index={index}
         onPress={() => onPress(item.item)}
+        isUser={isUser}
         inCart={
           cart
             ? Object.keys(cart).includes(item.item.id)
@@ -38,10 +40,11 @@ const ProductList = ({
             : false
         }
         inWishList={
-          wishlist ? (wishlist.includes(item.item.id) ? true : false) : false
+          isUser ? (item.item.likes.includes(isUser) ? true : false) : false
         }
         handleLike={handleLike}
         handleCart={handleCart}
+        toggleModal={toggleModal}
       />
     )}
     keyExtractor={(item, index) => index}

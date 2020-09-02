@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
             },
 
         modalScroll: {
-            flex: 0.45
+            flex: 0.35
         },
 
         modalScrollContent: {
@@ -80,6 +80,6 @@ const styles = StyleSheet.create({
 
 
         modalFooter: {
-            flex: 0.4,
+            flex: 0.5,
         }
 })

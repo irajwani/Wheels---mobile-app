@@ -24,22 +24,6 @@ import SortButton from '../../Components/Button/SortButton';
 let {Close} = Images;
 
 let sortOptions = ['Recency', 'Price (ascending)', 'Price (descending)'];
-let Tutorial = [
-  {
-    image: Images.bikeSketchOne,
-    text:
-      'Search from a number of different socials going on around your city. Whatever your preference, Awitan has got you covered.',
-  },
-  {
-    image: Images.bikeSketchTwo,
-    text:
-      'Host events and sessions to meet like minded Awitaners to broaden your circle. ',
-  },
-  {
-    image: Images.bikeSketchThree,
-    text: 'Some pretty bad description text.',
-  },
-];
 
 function Shop(props) {
   let [isAuthModalVisible, toggleAuthModal] = useState(false);
@@ -66,7 +50,19 @@ function Shop(props) {
 
   useEffect(() => {
     props.getProducts();
-  }, []);
+  }, [props.addStatus]);
+
+  function applySort(products, sortBy) {
+    if(sortBy == 'Recency') {
+      return products.sort((a,b) => a.createdAt._seconds - b.createdAt._seconds)
+    }
+    else if(sortBy == 'Price (ascending)') {
+      return products.sort((a,b) => Number(a.price) - Number(b.price))
+    }
+    else {
+      return products.sort((a,b) => Number(b.price) - Number(a.price))
+    }
+  }
 
   function renderSearch() {
     return (
@@ -87,7 +83,7 @@ function Shop(props) {
               return (
                 <TouchableOpacity
                   onPress={() => setSortBy(option)}
-                  style={styles.menuItem}>
+                  style={[styles.menuItem, {backgroundColor: sortBy == option ? Colors.white : "transparent"}]}>
                   <Text
                     style={{
                       ...Fonts.style.small,
@@ -106,36 +102,19 @@ function Shop(props) {
 
   function renderAuthModal() {
     return (
-      <AuthModal visible={isAuthModalVisible}>
-        <View style={styles.closeContainer}>
-          <Close onPress={() => toggleAuthModal(false)} />
-        </View>
-
-        <View style={styles.modalHeader}>
-          <RNImage source={Images.logo} style={styles.logo} />
-          <Text style={styles.modalHeaderText}>{Strings.companyName}</Text>
-        </View>
-
-        <TutorialList data={Tutorial} />
-
-        <View style={styles.modalFooter}>
-          <AuthButton text={'Sign Up'} onPress={navToAuth} />
-          <Text style={{...Fonts.style.normal}} onPress={navToAuth}>
-            Already have an account? Sign In
-          </Text>
-        </View>
-      </AuthModal>
+      <AuthModal visible={isAuthModalVisible} toggleModal={() => toggleAuthModal(false)} navToAuth={navToAuth}/>
+        
     );
   }
 
   if (props.isLoading) {
     return (
-      <View style={[styles.container, {...Helpers.center}]}>
+      <View style={[styles.container, {...Helpers.center, backgroundColor: Colors.darkwhite}]}>
         <Loading />
       </View>
     );
   }
-
+  console.log(props.products);
   return (
     <View style={styles.container}>
       <HeaderBar
@@ -149,14 +128,15 @@ function Shop(props) {
       />
       {renderSearch()}
       <ProductList
-        data={props.products.filter((product) =>
-          product.name.toLowerCase().includes(searchInput),
+        data={applySort(props.products).filter((product) =>
+          product.brand.toLowerCase().includes(searchInput) || product.type.toLowerCase().includes(searchInput)
         )}
-        wishlist={props.wishlist}
+        isUser={props.uid}
         cart={props.cart}
         onPress={navToProduct}
         handleCart={props.handleCart}
         handleLike={props.handleLike}
+        toggleModal={() => toggleAuthModal(!isAuthModalVisible)}
       />
 
       {renderAuthModal()}
@@ -168,8 +148,8 @@ const mapStateToProps = (state) => ({
   uid: state.auth.uid,
 
   isLoading: state.market.isLoading,
+  addStatus: state.market.addStatus,
   products: state.market.products,
-  wishlist: state.auth.profile.wishlist,
   cart: state.market.cart,
 
   // name: state.auth.profile.profile.displayName,
@@ -177,6 +157,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getProducts: () => dispatch(MarketActions.getProductsRequest()),
+  storeProduct: (product) => dispatch(MarketActions.storeProductRequest(product)),
   handleLike: (payload) => dispatch(MarketActions.handleLikeRequest(payload)),
   handleCart: (product, inCart) =>
     dispatch(MarketActions.handleCartRequest(product, inCart)),

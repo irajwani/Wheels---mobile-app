@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: Colors.white,
         ...shadowStyles.thinWhiteCard,
+        elevation: 1,
         width: Metrics.screenWidth - 2*Metrics.baseMargin,
         borderWidth: 1, 
         borderColor: Colors.secondary,

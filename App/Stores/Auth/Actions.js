@@ -13,18 +13,6 @@ const {Types, Creators} = createActions({
   updateUserSuccess: ['message'],
   updateUserFailure: ['errorMessage'],
 
-  addPhotographRequest: ['body'],
-  addPhotographSuccess: ['message'],
-  addPhotographFailure: ['errorMessage'],
-
-  getGalleryRequest: ['body'],
-  getGallerySuccess: ['message'],
-  getGalleryFailure: ['errorMessage'],
-
-  addToJournalRequest: ['body'],
-  addToJournalSuccess: ['message'],
-  addToJournalFailure: ['errorMessage'],
-
   storeUid: ['uid'],
 });
 

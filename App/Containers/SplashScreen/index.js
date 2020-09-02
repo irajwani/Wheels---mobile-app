@@ -93,7 +93,7 @@ function SplashScreen(props) {
         props.navigation.navigate('AppStack');
       }
     } else {
-      props.navigation.navigate('AppStack');
+      props.navigation.navigate('AuthStack');
       // "USER DISCONNECTED"
     }
   }

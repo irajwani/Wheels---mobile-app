@@ -10,17 +10,19 @@ import {Images, Fonts, Helpers, Colors, Metrics} from '../../Theme';
 import Utils from '../../Utils';
 import Badges from '../Badges';
 
-let {Cart, Heart} = Images;
+let {CartButton, Heart} = Images;
 let {PrivateBadge} = Badges;
 
 export default ({
   product,
   index,
+  isUser,
   onPress,
   inWishList,
   handleLike,
   inCart,
   handleCart,
+  toggleModal,
 }) => {
   return (
     <TouchableOpacity
@@ -29,7 +31,7 @@ export default ({
       underlayColor={'transparent'}>
       <View style={styles.imageContainer}>
         <Image
-          source={{uri: 'http://loremflickr.com/640/480/dog'}}
+          source={{uri: product.photoURL}}
           style={styles.image}
           indicator={ProgressBar}
           indicatorProps={{
@@ -45,16 +47,22 @@ export default ({
 
       <View style={styles.bodyContainer}>
         <View style={styles.topRow}>
-          <Text style={styles.name}>{product.name}</Text>
+          <Text style={styles.brand}>{product.brand}</Text>
+          <Text style={styles.name}>{product.type}</Text>
         </View>
 
         <View style={styles.bottomRow}>
           <Heart
             filled={inWishList}
-            onPress={() => handleLike({id: product.id, inWishList})}
+            onPress={
+              isUser ? () => handleLike({id: product.id, uid: isUser, add: !inWishList}) : toggleModal
+            }
           />
-          <Text style={styles.price}>PKR {product.price}</Text>
-          <Cart onPress={() => handleCart(product, inCart)} />
+          <Text style={styles.price}>PKR {new Intl.NumberFormat('en-IN').format(product.price)}</Text>
+          <CartButton
+            inCart={inCart}
+            onPress={isUser ? () => handleCart(product, inCart) : toggleModal}
+          />
         </View>
       </View>
     </TouchableOpacity>
@@ -62,14 +70,20 @@ export default ({
 };
 
 let cardWidth = Metrics.screenWidth - 2 * Metrics.baseMargin,
-  cardHeight = 300;
+  cardHeight = 380;
 
 const styles = StyleSheet.create({
   card: {
     width: cardWidth,
     borderRadius: Metrics.mediumContainerRadius,
-    backgroundColor: Colors.lightgrey,
+    backgroundColor: Colors.white,
     height: cardHeight,
+    marginBottom: Metrics.baseMargin,
+    ...shadowStyles.whiteCard,
+    elevation: 1,
+    borderColor: Colors.grey,
+    borderWidth: 0.5,
+    // overflow: 'hidden',
   },
 
   imageContainer: {
@@ -94,8 +108,11 @@ const styles = StyleSheet.create({
 
   topRow: {
     flex: 0.5,
-    flexDirection: 'row',
     ...Helpers.center,
+  },
+
+  brand: {
+    ...Fonts.style.big,
   },
 
   name: {
@@ -112,7 +129,7 @@ const styles = StyleSheet.create({
 
   price: {
     ...Fonts.style.big,
-    fontWeight: 'bold',
+    fontWeight: '500',
     // marginTop: Metrics.baseMargin/2
   },
 
@@ -137,7 +154,7 @@ const styles = StyleSheet.create({
     width: 90,
     ...Helpers.center,
     ...shadowStyles.whiteCard,
-
+    elevation: 1,
     borderRadius: 20,
     padding: 5,
   },

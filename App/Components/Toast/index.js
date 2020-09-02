@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.white,
         borderRadius: 15,
         ...shadowStyles.lowerThemeShadow,
+        elevation: 1,
         ...Helpers.center,
         padding: Metrics.baseMargin,
         

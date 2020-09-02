@@ -5,11 +5,11 @@ import authService from '../Services/AuthService'
 import NavigationService from '../Services/NavigationService'
 
 export function* createUser(payload) {
-  // console.log('Sending new user data to server');
+  console.log('Sending new user data to server');
   let {newUser} = payload;
-  // console.log(newUser);
-  const response = yield call(authService.createUser, newUser)
-  // console.log(response);
+  console.log(newUser);
+  const response = yield call(authService.createProfile, newUser)
+  console.log(response);
   if (response.status === 200) {
     
     let {data} = response.data;

@@ -26,14 +26,14 @@ export default StyleSheet.create({
     },
 
     whiteCard: {
-        shadowColor: Colors.black,
+        shadowColor: Colors.grey,
         
         shadowOffset: {
             width: 0,
-            height: 0,
+            height: 2,
         },
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
+        shadowOpacity: 0.7,
+        shadowRadius: 1,
     },
 
     thinWhiteCard: {

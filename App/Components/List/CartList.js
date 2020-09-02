@@ -27,7 +27,7 @@ const CartList = ({
     data={data}
     showsVerticalScrollIndicator={true}
     renderItem={(item, index) => {
-      let {photoURL, name, price} = item.item;
+      let {photoURL, brand, price} = item.item;
       return (
       <View style={styles.productContainer}>
         <View style={styles.imageContainer}>
@@ -36,6 +36,7 @@ const CartList = ({
             style={styles.image}
             indicator={ProgressBar}
             indicatorProps={{
+              width: styles.image.width,
               borderWidth: 1,
               borderColor: Colors.primary,
               borderRadius: Metrics.baseMargin,
@@ -47,7 +48,7 @@ const CartList = ({
         </View>
 
         <View style={styles.textContainer}>
-          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.name}>{brand}</Text>
           <Text style={styles.price}>PKR {price}</Text>
         </View>
 

@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     flex: 0.2,
     borderBottomRightRadius: Metrics.smallContainerRadius,
     borderTopRightRadius: Metrics.smallContainerRadius,
-    backgroundColor: Colors.silver,
+    backgroundColor: Colors.primary,
     ...Helpers.center,
   },
 });

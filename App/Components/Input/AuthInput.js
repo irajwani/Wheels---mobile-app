@@ -12,7 +12,7 @@ const AuthInput = ({label, placeholder, onChangeText, value, error = false, secu
 
     return (
     
-        <>
+        <View style={styles.container}>
             
             <Text style={styles.label}>{label}</Text>
             <View>
@@ -26,7 +26,7 @@ const AuthInput = ({label, placeholder, onChangeText, value, error = false, secu
                                 zIndex: 100, 
                                 // alignSelf: 'center',
                                 
-                                top: 25, 
+                                top: 5, 
                                 right: 20
                             }
                         }>
@@ -35,9 +35,9 @@ const AuthInput = ({label, placeholder, onChangeText, value, error = false, secu
                 }
                 <TextInput
                 secureTextEntry={secureTextEntry ? isVisible ? false : true : false}
-                style={[styles.inputStyle, style ? style : null, value && error ? {borderColor: Colors.error} : null]}
+                style={[styles.inputStyle, style ? style : null, value && error ? {textDecorationLine: 'underline', textDecorationColor: Colors.error} : null]}
                 placeholder={placeholder}
-                placeholderTextColor={Colors.secondary}
+                placeholderTextColor={Colors.silver}
                 onChangeText={onChangeText}
                 value={value}
                 multiline={false}
@@ -51,16 +51,22 @@ const AuthInput = ({label, placeholder, onChangeText, value, error = false, secu
             </View>
 
             
-            {/* {error !== "" && <Text style={{...Fonts.style.small, color: Colors.error, marginLeft: Metrics.baseMargin}}>{error}</Text>} */}
+            {error !== "" && <Text style={{...Fonts.style.small, color: Colors.error}}>{error}</Text>}
                 
-        </>
+        </View>
 )
 }
 export default AuthInput
 
 const styles = StyleSheet.create({
+
+    container: {
+        width: Metrics.screenWidth - 2*Metrics.baseMargin,
+        marginBottom: Metrics.baseMargin,
+    },
     inputStyle: {
-        height: 70,marginBottom: 0, 
+        // height: 70, 
+        
         ...Fonts.style.big, 
         fontWeight: "400",
     },

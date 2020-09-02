@@ -22,8 +22,8 @@ export default StyleSheet.create({
     },
 
       companyLogo: {
-        width: 250,
-        height: 250,
+        width: 240,
+        height: 128,
       },
 
     versionContainer: {

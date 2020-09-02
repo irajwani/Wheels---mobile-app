@@ -144,6 +144,7 @@ class CustomCarousel extends Component {
         onSnapToItem={this.handleSnapToItem.bind(this)}
         sliderWidth={500}
         itemWidth={500}
+        
         layout={'default'}
         firstItem={0}
       /> 

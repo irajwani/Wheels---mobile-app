@@ -15,7 +15,8 @@ export default StyleSheet.create({
       zIndex: 1,
       margin: Metrics.baseMargin,
       borderRadius: Metrics.smallContainerRadius,
-      // ...shadowStyles.whiteCard,
+      ...shadowStyles.whiteCard,
+      elevation: 1,
         // ...borderStyles.thinBorder,
         backgroundColor: Colors.grey,
         flexDirection: 'row',
@@ -31,6 +32,7 @@ export default StyleSheet.create({
       backgroundColor: Colors.lightgrey,
       borderRadius: Metrics.smallContainerRadius,
       ...shadowStyles.menu,
+      elevation: 1
       // overflow: 'visible',
 
     },
@@ -39,6 +41,8 @@ export default StyleSheet.create({
           flexDirection: 'row',
           alignItems: 'center',
           margin: Metrics.baseMargin/2,
+          borderRadius: Metrics.smallContainerRadius,
+          padding: Metrics.baseMargin/2
       },
 
   

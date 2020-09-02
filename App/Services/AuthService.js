@@ -11,8 +11,8 @@ function isUserRegistered(email) {
     .then(fulfilled)
 }
 
-function createUser(newUser) {
-    return ApiClient.post(`/createUser`, newUser).then(fulfilled)
+function createProfile(newUser) {
+    return ApiClient.post(`/createProfile`, newUser).then(fulfilled)
 }
 
 function getProfile(payload) {
@@ -37,7 +37,7 @@ function addToJournal(payload) {
 
 export default {
     isUserRegistered,
-    createUser,
+    createProfile,
     getProfile,
     updateUser,
     addPhotograph,

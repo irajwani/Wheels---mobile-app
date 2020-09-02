@@ -14,14 +14,12 @@ export const INITIAL_STATE = {
     profile: {
         email: "",
         uid: "",
-        username: "",
         profile: {
             //To Separate Private-ish from public
             displayName: "",
-            photoUrl: "",
+            photoURL: "",
             
         },
-        wishlist: [],
         session: {
             status: "online",
             lastSeen: false,            

@@ -269,7 +269,7 @@ class SelectPictures extends Component {
 
   renderProfilePicture = (pictureuris) => {
     return (
-      <TouchableOpacity onPress={this.onSelect} style={{...Helpers.thinBorder, borderRadius: 20,}}>
+      <TouchableOpacity onPress={this.onSelect} style={{...Helpers.thinBorder, borderRadius: 25,}}>
         <Image 
           source={pictureuris === 'nothing here' ? Images.smallProfile : {uri: pictureuris}}
           style={styles.profilePicture}
@@ -410,9 +410,9 @@ const styles = StyleSheet.create( {
   },
 
   profilePicture: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
     // backgroundColor: 'red',
   },
 

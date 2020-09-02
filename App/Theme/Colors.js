@@ -25,7 +25,7 @@ const background = {
     text: '#333333',
 
 
-    primary: '#bc9f77',
+    primary: '#0091EA',
     secondary: "#050806",
     tertiary: "#52FAF2", 
     bloodorange: "#e64207",
@@ -35,6 +35,7 @@ const background = {
 
     success: '#28a745',
     lightgreen: '#337546',
+    red: '#dc3545',
     error: '#dc3545',
     gold: '#EBCE91',
     white: '#fff',
@@ -44,6 +45,7 @@ const background = {
     silver: '#C0C0C0',
     lightgrey: "#e4e4e4",
     grey: '#333333',
+    darkwhite: '#f5f7fa',
     containerBackground: '#F2F2F2',
   }
   

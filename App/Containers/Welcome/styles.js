@@ -17,11 +17,17 @@ export default StyleSheet.create({
             marginHorizontal: Metrics.baseMargin
         },
 
-            toggleText: {
-                ...Fonts.style.normal,
-                fontWeight: "600",
-                marginHorizontal: Metrics.baseMargin/2
+            toggleButton: {
+                paddingHorizontal: Metrics.baseMargin/2,
+                borderWidth: 0.8,
+                borderColor: Colors.white,
+                backgroundColor: "transparent"
             },
+
+                toggleText: {
+                    ...Fonts.style.big,
+                    fontWeight: "400",
+                },
 
             
             // logo: {
@@ -55,6 +61,17 @@ export default StyleSheet.create({
                 flex: 0.8,
                 marginHorizontal: Metrics.baseMargin,
                 paddingTop: 2*Metrics.baseMargin
+            },
+
+                bioInputContainer: {
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    // justifyContent: 'space-between'
+                },
+
+            formFooter: {
+                flex: 0.2,
+                ...Helpers.center,
             },
 
             
