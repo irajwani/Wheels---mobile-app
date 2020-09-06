@@ -115,7 +115,8 @@ export default StyleSheet.create({
 
             buttonText: {
                 ...Fonts.style.normal,
-                color: Colors.white
+                color: Colors.white,
+                fontWeight: "bold"
             }
 
     

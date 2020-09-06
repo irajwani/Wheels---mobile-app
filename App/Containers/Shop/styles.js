@@ -29,7 +29,7 @@ export default StyleSheet.create({
       right: 0,
       zIndex: 1,
       overflow: 'visible',
-      backgroundColor: Colors.lightgrey,
+      backgroundColor: Colors.darkwhite,
       borderRadius: Metrics.smallContainerRadius,
       ...shadowStyles.menu,
       elevation: 1

@@ -44,6 +44,7 @@ function Product(props) {
     dimensions,
     color,
     price,
+    sold,
     // likes,
   } = product;
   console.log('HERE');
@@ -241,14 +242,14 @@ function Product(props) {
           <Text style={styles.price}>PKR {price}</Text>
         </View>
         <TouchableOpacity
-          disabled={inCart}
+          disabled={sold ? true : inCart}
           style={[
             styles.button,
             {backgroundColor: !inCart ? Colors.primary : Colors.lightgrey},
           ]}
           onPress={() => props.handleCart(product, inCart)}>
           <Text style={styles.buttonText}>
-            {!inCart ? 'Add To Cart' : 'In Cart'}
+            {sold ? 'Sold' : !inCart ? 'Add To Cart' : 'In Cart'}
           </Text>
         </TouchableOpacity>
       </View>

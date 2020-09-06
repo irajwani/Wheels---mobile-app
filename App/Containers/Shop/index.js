@@ -118,6 +118,7 @@ function Shop(props) {
   return (
     <View style={styles.container}>
       <HeaderBar
+        page={"SHOP"}
         toggleDrawer={() => props.navigation.toggleDrawer()}
         cartCount={
           Object.keys(props.cart).length > 0

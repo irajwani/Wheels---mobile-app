@@ -61,7 +61,7 @@ export const handleCartRequest = (state, {product, inCart}) => {
     if (Object.keys(state.cart).length == 0) {
       state.cart = {};
     }
-  } else if (state.card == undefined) {
+  } else if (state.cart == undefined) {
     state.cart = {
       [product.id]: product,
     };

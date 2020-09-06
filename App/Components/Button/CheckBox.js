@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
 
         width: 25,
         height: 25,
-        borderRadius: 10,
+        borderRadius: Metrics.smallContainerRadius,
         borderColor: Colors.secondary,
-        borderWidth: 0.5,
+        borderWidth: 1,
         backgroundColor: Colors.white,
         overflow: 'visible'
     },

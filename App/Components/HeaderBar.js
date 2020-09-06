@@ -7,18 +7,20 @@ import {Images, Colors, Fonts, Metrics, Helpers} from '../Theme';
 let {BackArrow, SideBar, Cart} = Images;
 
 const HeaderBar = ({
+  page,
   toggleDrawer,
   showCart = true,
   cartCount = 0,
   navToCart = true,
+  tint = false,
 }) => (
   <View
     style={[
       styles.headerContainer,
-      {flex: 0.1, justifyContent: showCart ? 'space-between' : 'flex-start'},
+      {flex: 0.1, justifyContent: 'space-between', backgroundColor: tint ? Colors.primary : Colors.white},
     ]}>
-    <SideBar onPress={toggleDrawer} />
- 
+    <SideBar onPress={toggleDrawer} color={tint ? Colors.white : Colors.black} />
+    <Text style={{...Fonts.style.big, letterSpacing: 1.5, color: tint ? Colors.white : Colors.black}}>{page}</Text>
     {showCart && (
       <View>
         <Cart onPress={navToCart} />
@@ -65,6 +67,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     paddingHorizontal: Metrics.baseMargin,
+    paddingVertical: Metrics.baseMargin/2
   },
 
   cartCountContainer: {

@@ -47,6 +47,17 @@ export default StyleSheet.create({
         shadowRadius: 5,
     },
 
+    accountCard: {
+        shadowColor: Colors.grey,
+        
+        shadowOffset: {
+            width: 0,
+            height: 0,
+        },
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
+    },
+
     whiteShadow: {
         shadowColor: Colors.white,
         

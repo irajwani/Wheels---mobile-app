@@ -58,11 +58,15 @@ export default ({
               isUser ? () => handleLike({id: product.id, uid: isUser, add: !inWishList}) : toggleModal
             }
           />
-          <Text style={styles.price}>PKR {new Intl.NumberFormat('en-IN').format(product.price)}</Text>
+          <Text style={styles.price}>PKR {product.price}</Text>
+          {product.sold ? 
+          <Text style={styles.sold}>Sold</Text>
+          :
           <CartButton
             inCart={inCart}
             onPress={isUser ? () => handleCart(product, inCart) : toggleModal}
           />
+          }
         </View>
       </View>
     </TouchableOpacity>
@@ -76,7 +80,7 @@ const styles = StyleSheet.create({
   card: {
     width: cardWidth,
     borderRadius: Metrics.mediumContainerRadius,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.darkwhite,
     height: cardHeight,
     marginBottom: Metrics.baseMargin,
     ...shadowStyles.whiteCard,
@@ -132,6 +136,17 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     // marginTop: Metrics.baseMargin/2
   },
+
+    sold: {
+      ...Fonts.style.normal, color: Colors.error, fontWeight: "bold",
+    transform: [{ rotate: "-37deg" }],
+    // backgroundColor: Colors.error,
+    padding: Metrics.baseMargin/2,
+    borderRadius: Metrics.smallContainerRadius,
+    borderStyle: 'dashed',
+    borderColor: Colors.white,
+    
+    },
 
   iconContainer: {
     flex: 0.2,

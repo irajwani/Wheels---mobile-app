@@ -2,10 +2,8 @@ import {takeLatest, all} from 'redux-saga/effects';
 
 import {AuthTypes} from '../Stores/Auth/Actions';
 import {MarketTypes} from '../Stores/Market/Actions';
-import {ContactTypes} from '../Stores/Contact/Actions';
 
 import {getProfile, createUser} from './AuthSaga';
-import {sendMessage} from './ContactSaga';
 import {
   getProducts,
   handleLike,
@@ -14,7 +12,6 @@ import {
   storeProduct,
   updateOrder,
 } from './MarketSaga';
-
 
 export default function* root() {
   yield all([
@@ -32,7 +29,5 @@ export default function* root() {
     takeLatest(MarketTypes.CREATE_ORDER_REQUEST, createOrder),
     takeLatest(MarketTypes.GET_ORDERS_REQUEST, getOrders),
     takeLatest(MarketTypes.UPDATE_ORDER_REQUEST, updateOrder),
-
-    takeLatest(ContactTypes.SEND_MESSAGE_REQUEST, sendMessage),
   ]);
 }

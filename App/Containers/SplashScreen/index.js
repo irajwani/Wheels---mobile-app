@@ -16,7 +16,7 @@ import {connect} from 'react-redux';
 import styles from './styles';
 import {Metrics, Images} from '../../Theme';
 
-let versionNumber = '1.0.7';
+let versionNumber = '1.0.0';
 const splashScreenDuration = 200;
 // FIRST CONTAINER REACT COMPONENT THAT MOUNTS
 function SplashScreen(props) {
@@ -93,6 +93,7 @@ function SplashScreen(props) {
         props.navigation.navigate('AppStack');
       }
     } else {
+      props.logOut();
       props.navigation.navigate('AuthStack');
       // "USER DISCONNECTED"
     }
@@ -114,6 +115,7 @@ const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   storeUid: (uid) => dispatch(AuthActions.storeUid(uid)),
+  logOut: () => dispatch(AuthActions.logOut()),
   // getProfile: (uid) => dispatch(AuthActions.getProfileRequest(uid)),
 });
 

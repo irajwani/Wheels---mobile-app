@@ -66,6 +66,12 @@ export default StyleSheet.create({
                 // marginVertical: Metrics.baseMargin/2
             },
 
+                shippingRow: {
+                    flexDirection: 'row',
+                    paddingVertical: Metrics.baseMargin,
+                    alignItems: 'center',
+                },
+
         //STEP #3
 
         messageContainer: {

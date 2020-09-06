@@ -25,9 +25,10 @@ const background = {
     text: '#333333',
 
 
-    primary: '#0091EA',
+    // primary: '#0091EA',
+    primary: '#1865d9',
     secondary: "#050806",
-    tertiary: "#52FAF2", 
+    tertiary: "#0091EA", 
     bloodorange: "#e64207",
     badgeyellow: "#fad57d",
     facebook: "#3b5998",
@@ -38,6 +39,7 @@ const background = {
     red: '#dc3545',
     error: '#dc3545',
     gold: '#EBCE91',
+    purple: '#89118c',
     white: '#fff',
     offwhite: '#f7f3e9',
     

@@ -6,7 +6,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     // ...Helpers.center,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.pri,
 
   },
 
@@ -22,8 +22,9 @@ export default StyleSheet.create({
     },
 
       companyLogo: {
-        width: 240,
-        height: 128,
+        width: 265,
+        height: 100,
+        right: 10,
       },
 
     versionContainer: {
@@ -33,7 +34,8 @@ export default StyleSheet.create({
 
       version: {
         ...Fonts.style.normal,
-        color: Colors.secondary,
+        fontWeight: "bold",
+        color: Colors.grey,
       }
 
 

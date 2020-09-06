@@ -6,7 +6,7 @@ import MarketActions from '../../Stores/Market/Actions';
 import {HeaderBar} from '../../Components/HeaderBar';
 import Container from '../../Components/Container';
 import styles from './styles';
-import {Colors, Images, Metrics, Fonts} from '../../Theme';
+import {Colors, Images, Metrics, Fonts, Strings} from '../../Theme';
 import Loading from '../../Components/ActivityIndicator/Loading';
 import CartList from '../../Components/List/CartList';
 // import {acc} from 'react-native-reanimated';
@@ -15,11 +15,13 @@ import CheckBox from '../../Components/Button/CheckBox';
 import FieldInput from '../../Components/Input/FieldInput';
 import borderStyles from '../../StyleSheets/borderStyles';
 import Toast from '../../Components/Toast';
+import ConfettiCannon from 'react-native-confetti-cannon';
 import Utils from '../../Utils';
+import Account from '../../Components/Card/Account';
 
 let Steps = ['Cart', 'Address', 'Receipt'];
 
-let {ChevronRight, DeliveryBadge, Divider, BackArrow} = Images;
+let {ChevronRight, DeliveryBadge, Success, Divider, BackArrow} = Images;
 
 let toastDuration = 2500, toastText = "Placing order...";
 
@@ -37,6 +39,11 @@ function Cart(props) {
   let [step, setStep] = useState(0);
 
   const form = useRef();
+  // let confettiCannon = useRef();
+
+  let paymentMethods = [{text: "Electronic funds transfer", selected: true}];
+  let localShippingMethod = [{text: "Ground (Free)", selected: true}];
+  let [nationalShippingMethods, setShippingMethods] = useState([{text: "Air - PKR 3000", selected: true}, {text: "Ground - PKR 1500", selected: false}]);
 
   let [name, setName] = useState('Imad Rajwani');
   let [address, setAddress] = useState('B-102, Creek Vistas, DHA Phase 8');
@@ -53,12 +60,17 @@ function Cart(props) {
 
   useEffect(() => {
     if (step == 1) {
-      form.current.scrollToEnd({animated: true});
-    }
+      form.current.scrollTo({x: 0.0, y: 80, animated: true});
+    } 
+    // else if (step == 2) {
+    //   if (confettiCannon) {
+    //     confettiCannon.startConfetti();
+    //   }
+    // }
     // if(props.cart == true) {
     //   props.cart = {};
     // }
-  }, [step])
+  }, [step]);
 
   function resetCart() {
     setStep(0);
@@ -93,6 +105,7 @@ function Cart(props) {
           setAddress(value);
           break;
         case "city":
+          error = Utils.isNameValid(value);
           setCity(value);
           break;
         default:
@@ -113,7 +126,7 @@ function Cart(props) {
     }, toastDuration);
     let payload = {
       products: Object.values(props.cart).map(product => ({id: product.id, photoURL: product.photoURL, type: product.type, brand: product.type, price: product.price})),
-      total: Object.values(props.cart).map((product) => Number(product.price)).reduce((accumulator, value) => accumulator + value),
+      total: Utils.calculateTotal(props.cart),
       buyer: {
         uid: props.uid,
         name,
@@ -122,6 +135,12 @@ function Cart(props) {
         phone,
       },
       freeDelivery,
+      deliveryMethod: freeDelivery
+        ? 'ground'
+        : nationalShippingMethods.find((method) => method.selected == true) ==
+          'Air - PKR 3000'
+        ? 'air'
+        : 'ground',
     };
 
     props.createOrder(payload);
@@ -189,7 +208,14 @@ function Cart(props) {
       );
     } else if (step == 1) {
       return (
-        <ScrollView ref={form} style={[styles.bodyContainer, styles.formContainer]} contentContainerStyle={styles.formContentContainer} persistentScrollbar>
+        <ScrollView ref={form} style={[styles.bodyContainer, styles.formContainer]} contentContainerStyle={styles.formContentContainer} >
+          <Text style={styles.formHeaderText}>Shipping Method</Text>
+          {freeDelivery ? renderMethods(localShippingMethod, true) : renderMethods(nationalShippingMethods)}
+          <Text style={styles.formHeaderText}>Payment Method</Text>
+          {renderMethods(paymentMethods, true)}
+          <Account />
+          <Text style={{...Fonts.style.small, fontWeight: "500", marginVertical: Metrics.baseMargin}}>*Once you have placed this order, transfer funds to {Strings.companyName}'s bank account. Upon verification of funds transfer, we shall deliver your item to the provided mailing address.</Text>
+
           <Text style={styles.formHeaderText}>Mailing Address</Text>
 
           <FieldInput
@@ -213,7 +239,7 @@ function Cart(props) {
             label={'City'}
             value={city}
             onChangeText={text => handleInput('city', text)}
-            error={false}
+            error={errors.city}
             placeholder={'e.g. Karachi'}
           />
 
@@ -229,19 +255,44 @@ function Cart(props) {
     } else {
       return (
         <View style={[styles.bodyContainer, styles.messageContainer]}>
-          <Image source={Images.delivery} style={styles.messageImage}/>
+          <ConfettiCannon count={200} fallSpeed={5000} fadeOut origin={{x: 0, y: 0}} colors={[Colors.primary, Colors.black]} />
+          <Success />
           <Text style={styles.message}>Success! Your order will be delivered within {freeDelivery ? "3-5" : "7-12"} days.</Text>
         </View>
       );
     }
   }
 
+  function renderMethods(methods, isStatic = false) {
+    return methods.map((method) => (
+      <View style={styles.shippingRow}>
+        <CheckBox
+          checked={method.selected}
+          onPress={
+            isStatic
+              ? () => {}
+              : () =>
+                  setShippingMethods([
+                    {
+                      text: 'Air - PKR 3000',
+                      selected: method.text == 'Air - PKR 3000' ? true : false,
+                    },
+                    {
+                      text: 'Ground - PKR 1500',
+                      selected: method.text == 'Air - PKR 3000' ? false : true,
+                    },
+                  ])
+          }
+          text={method.text}
+        />
+      </View>
+    ))
+  }
+
   function renderFooter() {
     let subtotal = 0;
     if (Object.keys(props.cart).length > 0) {
-      subtotal = Object.values(props.cart)
-        .map((product) => Number(product.price))
-        .reduce((accumulator, value) => accumulator + value);
+      subtotal = Utils.calculateTotal(props.cart);
     }
 
     return (
@@ -266,7 +317,7 @@ function Cart(props) {
               <Text style={styles.total}>Total:</Text>
               <View style={{flexDirection: 'row'}}>
                 <Text style={styles.price}>PKR {subtotal}</Text>
-                {!freeDelivery && <Text style={{...Fonts.style.tiny, alignSelf: 'center'}}> + PKR 1500 (Courier Fee)</Text>}
+                {!freeDelivery && <Text style={{...Fonts.style.small, alignSelf: 'center'}}>+ {nationalShippingMethods.find(method => method.selected == true) == {text: "", selected: true} ? "1500" : "3000"} Courier Fee</Text>}
               </View>
               
             </View>
@@ -287,7 +338,7 @@ function Cart(props) {
           <TouchableOpacity
             style={[styles.button, {flex: step == 1 ? 0.7 : 1, backgroundColor: Colors.primary}, step == 1 ? {borderTopRightRadius: Metrics.smallContainerRadius, borderBottomRightRadius: Metrics.smallContainerRadius,} : {borderRadius: Metrics.smallContainerRadius}]}
             onPress={handleNext}
-            disabled={false}>
+            disabled={step == 1 ? Object.values(errors).find((error) => error) ? true : false : false}>
             <ChevronRight />
             <Text style={styles.buttonText}>
               {step == 0 ? 'Proceed' : step == 1 ? 'Place Order' : 'Done'}
@@ -324,6 +375,7 @@ function Cart(props) {
   return (
     <Container>
       <HeaderBar
+        page={"CART"}
         toggleDrawer={() => props.navigation.toggleDrawer()}
         showCart={false}
       />

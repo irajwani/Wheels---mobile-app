@@ -32,7 +32,7 @@ const CartList = ({
       <View style={styles.productContainer}>
         <View style={styles.imageContainer}>
           <Image
-            source={{uri: 'http://loremflickr.com/640/480/dog'}}
+            source={{uri: photoURL}}
             style={styles.image}
             indicator={ProgressBar}
             indicatorProps={{
@@ -82,7 +82,8 @@ const styles = StyleSheet.create({
   },
 
     productContainer: {
-      flexDirection: 'row'
+      flexDirection: 'row',
+      marginBottom: Metrics.baseMargin,
     },
 
       imageContainer: {

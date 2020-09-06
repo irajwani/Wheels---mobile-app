@@ -24,7 +24,7 @@ const {Types, Creators} = createActions({
   getOrdersSuccess: ['message'],
   getOrdersFailure: ['errorMessage'],
 
-  updateOrderRequest: ['payload'],
+  updateOrderRequest: ['id'],
   updateOrderSuccess: ['message'],
   updateOrderFailure: ['errorMessage'],
 });

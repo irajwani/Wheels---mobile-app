@@ -14,6 +14,8 @@ const {Types, Creators} = createActions({
   updateUserFailure: ['errorMessage'],
 
   storeUid: ['uid'],
+
+  logOut: [],
 });
 
 export const AuthTypes = Types;

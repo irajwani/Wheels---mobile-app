@@ -6,6 +6,7 @@ import Loading from '../../Components/ActivityIndicator/Loading';
 
 import SelectPictures from '../../Components/SelectPictures';
 import AuthButton from '../../Components/Button/AuthButton';
+import SimpleButton from '../../Components/Button/SimpleButton';
 
 import storage from '@react-native-firebase/storage';
 import auth from '@react-native-firebase/auth';
@@ -30,6 +31,7 @@ import Toast from '../../Components/Toast';
 
 import Utils from '../../Utils'
 import { DocModal, CustomModal } from '../../Components/Modal';
+import shadowStyles from '../../StyleSheets/shadowStyles';
 let toastDuration = 4000;
 
 let avatarUri = "https://firebasestorage.googleapis.com/v0/b/wheels-a3ad6.appspot.com/o/Placeholders%2FsmallProfile.jpg?alt=media&token=6235cc25-3dc9-4adf-b731-81d30e7496a1"
@@ -594,7 +596,7 @@ export class Welcome extends Component {
 
     toggleModal = () => this.setState({isVisible: !this.state.isVisible})
 
-    renderModals = () => {
+    renderModals = (isProfileValid) => {
         var pictureuris = this.props.navigation.getParam('pictureuris', "nothing here");
         return (
         <>
@@ -611,7 +613,8 @@ export class Welcome extends Component {
             }
             buttonRow={() => (
                 <View style={{alignItems: 'center', justifyContent: 'space-evenly', padding: Metrics.baseMargin/2}}>
-                    <AuthButton
+                    <SimpleButton
+                        disabled={!isProfileValid}
                         text={"SIGN UP"}
                         onPress={() => this.createProfile(pictureuris)}
                     />
@@ -719,7 +722,8 @@ export class Welcome extends Component {
         <Container style={{backgroundColor: Colors.primary}}>
 
             <View style={styles.headerContainer}>
-                <BackArrow onPress={() => this.props.navigation.navigate('AppStack')}/>
+                <BackArrow onPress={() => this.props.navigation.navigate('AppStack')} color={Colors.white}/>
+                
                 <View style={{flexDirection: 'row'}}>
                 {["Sign In", "Sign Up"].map((item, index) => {
                     let isSelected = false;
@@ -734,7 +738,7 @@ export class Welcome extends Component {
                             onPress={this.toggleForm}
                             style={[
                                 styles.toggleButton, 
-                                isSelected && {backgroundColor: Colors.white}, 
+                                isSelected && {backgroundColor: Colors.white, ...shadowStyles.thinWhiteCard}, 
                                 index == 0 ? 
                                     {borderTopLeftRadius: Metrics.smallContainerRadius, borderBottomLeftRadius: Metrics.smallContainerRadius} 
                                     : 
@@ -749,8 +753,11 @@ export class Welcome extends Component {
                         </TouchableOpacity>
                     )
                 })}
-                <Info onPress={this.toggleModal}/>
                 </View>
+
+                <Info onPress={this.toggleModal}/>
+                
+                
             </View>
 
 
@@ -823,7 +830,7 @@ export class Welcome extends Component {
             </View>
 
             {this.renderPasswordResetModal()}
-            {this.renderModals()}
+            {this.renderModals(isProfileValid)}
             {showToast && <Toast text={this.state.toast}/>}
             
             

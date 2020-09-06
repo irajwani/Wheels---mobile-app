@@ -4,21 +4,21 @@ import {View, Image as RNImage, Text, TouchableOpacity} from 'react-native';
 
 import auth from '@react-native-firebase/auth';
 
-import { withNavigationFocus } from 'react-navigation';
+import {withNavigationFocus} from 'react-navigation';
 // import {useFocusEffect} from '@react-navigation/native';
-import Container, { ScrollContainer } from '../../Components/Container';
+import Container, {ScrollContainer} from '../../Components/Container';
 import Loading from '../../Components/ActivityIndicator/Loading';
-import { AuthModal } from '../../Components/Modal';
-import { HeaderBar } from '../../Components/HeaderBar';
+import {AuthModal} from '../../Components/Modal';
+import {HeaderBar} from '../../Components/HeaderBar';
 import OrdersList from '../../Components/List/OrdersList';
 import ProgressiveImage from '../../Components/ProgressiveImage';
 import Image from 'react-native-image-progress';
 import ProgressBar from 'react-native-progress/Bar';
 
 import {connect} from 'react-redux';
+import AuthActions from '../../Stores/Auth/Actions';
 import MarketActions from '../../Stores/Market/Actions';
-import { Images, Colors } from '../../Theme';
-
+import {Images, Colors} from '../../Theme';
 
 import styles from './styles';
 import WishList from '../../Components/List/WishList';
@@ -26,22 +26,19 @@ import WishList from '../../Components/List/WishList';
 function Profile(props) {
   let [isAuthModalVisible, toggleAuthModal] = useState(true);
 
-
   useEffect(() => {
-
-    if(props.uid) {
+    if (props.uid) {
       toggleAuthModal(false);
       props.getOrders(props.uid);
     }
-    
-  }, [])
+  }, []);
 
   useEffect(() => {
-      console.log('focused');
-      if (!props.uid) {
-        toggleAuthModal(true);
-      }  
-  }, [props.isFocused])
+    console.log('focused');
+    if (!props.uid) {
+      toggleAuthModal(true);
+    }
+  }, [props.isFocused]);
 
   useEffect(() => {
     props.getOrders(props.uid);
@@ -71,28 +68,42 @@ function Profile(props) {
     props.navigation.navigate('Shop');
   }
 
-  function renderProfile() {
+  function logOut() {
+    auth()
+      .signOut()
+      .then(() => {
+        props.logOut();
+        props.navigation.navigate('SplashScreen');
+      });
+  }
 
+  function renderProfile() {
     return (
       <View style={styles.profileContainer}>
-        <ProgressiveImage thumbnailSource={Images.smallProfile} source={{uri: props.photoURL}} style={styles.profilePicture}/>
+        <ProgressiveImage
+          thumbnailSource={Images.smallProfile}
+          source={{uri: props.photoURL}}
+          style={styles.profilePicture}
+        />
         <Text style={styles.profileName}>{props.name}</Text>
-        <TouchableOpacity style={styles.logOutButton} onPress={() => auth().signOut()}>
+        <TouchableOpacity style={styles.logOutButton} onPress={logOut}>
           <Text style={styles.logOut}>Log Out</Text>
         </TouchableOpacity>
-        
       </View>
-    )
+    );
   }
 
   function renderWishList() {
-
     return (
       <View style={styles.wishListContainer}>
         <Text style={styles.title}>Favorites</Text>
-        <WishList data={props.products.filter(product => product.likes.includes(props.uid))}/>
+        <WishList
+          data={props.products.filter((product) =>
+            product.likes.includes(props.uid),
+          )}
+        />
       </View>
-    )
+    );
   }
 
   function renderOrders() {
@@ -101,15 +112,21 @@ function Profile(props) {
         <Text style={styles.title}>Orders</Text>
         <OrdersList data={props.orders} updateOrder={props.updateOrder} />
       </View>
-    )
+    );
   }
 
   if (!props.uid) {
     return (
       <Container>
-        <AuthModal isStatic={true} visible={isAuthModalVisible} toggleModal={() => toggleAuthModal(!isAuthModalVisible)} navToAuth={navToAuth} navToShop={navToShop}/>
+        <AuthModal
+          isStatic={true}
+          visible={isAuthModalVisible}
+          toggleModal={() => toggleAuthModal(!isAuthModalVisible)}
+          navToAuth={navToAuth}
+          navToShop={navToShop}
+        />
       </Container>
-    )
+    );
   }
 
   if (props.isLoading) {
@@ -117,20 +134,27 @@ function Profile(props) {
       <Container center style={{backgroundColor: Colors.darkwhite}}>
         <Loading />
       </Container>
-    )
+    );
   }
-  
+
   return (
     <ScrollContainer>
       <HeaderBar
+        page={'PROFILE'}
         toggleDrawer={() => props.navigation.toggleDrawer()}
       />
-      
+
       {renderProfile()}
       {renderWishList()}
       {renderOrders()}
 
-      <AuthModal isStatic={true} visible={isAuthModalVisible} toggleModal={() => toggleAuthModal(!isAuthModalVisible)} navToAuth={navToAuth} navToShop={navToShop}/>
+      <AuthModal
+        isStatic={true}
+        visible={isAuthModalVisible}
+        toggleModal={() => toggleAuthModal(!isAuthModalVisible)}
+        navToAuth={navToAuth}
+        navToShop={navToShop}
+      />
     </ScrollContainer>
   );
 }
@@ -152,6 +176,11 @@ const mapDispatchToProps = (dispatch) => ({
   getOrders: (uid) => dispatch(MarketActions.getOrdersRequest(uid)),
 
   updateOrder: (id) => dispatch(MarketActions.updateOrderRequest(id)),
+
+  logOut: () => dispatch(AuthActions.logOut()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigationFocus(Profile));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withNavigationFocus(Profile));

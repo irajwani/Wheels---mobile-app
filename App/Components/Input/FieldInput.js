@@ -11,6 +11,7 @@ const FieldInput = ({
   label,
   value,
   placeholder,
+  error = false,
   onChangeText,
   color = Colors.black,
   maxLength = false,
@@ -22,9 +23,9 @@ const FieldInput = ({
       <Text style={styles.label}>{label}</Text>
     </View>
     <TextInput
-      style={[styles.input, { height: !multiline ? 50 : 100}]}
+      style={[styles.input, {height: !multiline ? 50 : 100}]}
       placeholder={placeholder}
-      placeholderTextColor={Colors.white}
+      placeholderTextColor={Colors.silver}
       onChangeText={onChangeText}
       value={value}
       multiline={multiline}
@@ -34,6 +35,17 @@ const FieldInput = ({
       underlineColorAndroid={'transparent'}
       keyboardType={keyboardType ? keyboardType : 'default'}
     />
+
+    {error !== '' && (
+      <Text
+        style={{
+          ...Fonts.style.small,
+          color: Colors.error,
+          marginTop: Metrics.baseMargin / 2,
+        }}>
+        {error}
+      </Text>
+    )}
   </View>
 );
 
@@ -60,7 +72,7 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    backgroundColor: Colors.lightgrey,
+    backgroundColor: Colors.darkwhite,
     borderRadius: Metrics.smallContainerRadius,
     // width: Metrics.screenWidth - Metrics.baseMargin * 2,
     // ßmarginBottom: 0,

@@ -162,8 +162,8 @@ If you have any questions about this Privacy Policy, please contact us by email:
 
 const ContactUs = 'Please send us an email at: nadeem.evotech@hotmail.com, and we shall get back to you as soon as possible.';
 const Email = "nadeem.evotech@hotmail.com";
-const Phone = "03fuckyou";
-const Address = "SOmewhere"
+const Phone = "0305-5927902";
+const Address = "Shop #1, Plot #26-2, Street #10.\nBadar Commerical, Phase V, DHA."
 // Characters
 const emptyObject = "%7B%7D";
 

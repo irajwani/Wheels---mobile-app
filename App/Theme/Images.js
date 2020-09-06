@@ -46,6 +46,7 @@ export default {
   bikeSketchTwo: require(`${path}/bike-sketch-2.png`),
   bikeSketchThree: require(`${path}/bike-sketch-4.png`),
 
+  map: require(`${path}/map.png`),
   emptyCart: require(`${path}/empty-cart-2.jpg`),
   emptyWishList: require(`${path}/empty-wishlist.png`),
 
@@ -64,24 +65,28 @@ export default {
     />
   ),
 
-  Book: ({size, focused, color = Colors.primary}) => (
-    <SimpleIcon
-      name={focused ? 'book-open' : 'notebook'}
-      size={size}
-      color={color}
-    />
+  People: ({color}) => (
+    <Ionicon name={'ios-people'} color={color} size={largeIcon} />
   ),
 
   //Other Icons
 
-  SideBar: ({onPress}) => (
+  SideBar: ({onPress, color}) => (
     <SimpleIcon
       name={'menu'}
-      color={Colors.black}
+      color={color}
       size={24}
       onPress={onPress}
     />
   ),
+
+  Email: () => <Iconisto name={'email'} size={smallIcon} color={Colors.white} />,
+  
+  Phone: () => <SimpleIcon name={'screen-smartphone'} size={smallIcon} color={Colors.white} />,
+
+  Address: () => <Ionicon name={'location-outline'} size={smallIcon} color={Colors.white} />,
+
+  Success: () => <Ionicon name={'checkmark-circle-outline'} size={2*largeIcon} color={Colors.primary} />,
 
   Tune: () => <Icon name={'sort'} size={mediumIcon} color={Colors.black} />,
 
@@ -121,11 +126,11 @@ export default {
   ),
 
 
-  BackArrow: ({onPress = () => {}}) => (
+  BackArrow: ({onPress = () => {}, color = Colors.black}) => (
     <AnimatableIonicon
       name="return-up-back"
       size={mediumIcon}
-      color={Colors.black}
+      color={color}
       onPress={onPress}
     />
   ),
@@ -224,22 +229,22 @@ export default {
 
 
   CartButton: ({onPress = () => {}, color = Colors.black, inCart}) => (
-    <Iconisto
-      name={`shopping-basket-${inCart ? 'remove' : 'add'}`}
-      color={inCart ? Colors.red : Colors.lightgrey}
+    <Icon
+      name={`cart-${inCart ? 'remove' : 'plus'}`}
+      color={inCart ? Colors.red : Colors.primary}
       size={largeIcon}
       onPress={onPress}
     />
-  ),
-
-  People: () => (
-    <Ionicon name={'ios-people'} color={Colors.secondary} size={30} />
   ),
 
   Plane: () => <FeatherIcon name={'send'} color={Colors.primary} size={24} />,
 
   Restart: ({onPress}) => (
     <Icon name={'restart'} onPress={onPress} color={Colors.black} size={24} />
+  ),
+
+  Chip: () => (
+    <Ionicon name={'hardware-chip-outline'} color={Colors.darkwhite} size={mediumIcon} />
   ),
 
   DeliveryBadge: ({freeDelivery}) => (

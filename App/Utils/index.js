@@ -11,6 +11,14 @@ const easyTime = (time, inSeconds = false) => {
   })} ${t.getDate()}, ${t.toTimeString().split(' ')[0].slice(0, 5)}`;
 };
 
+const calculateTotal = (cart) => {
+  let total = Object.values(cart)
+    .map((product) => Number(product.price.replace(',', '')))
+    .reduce((accumulator, value) => accumulator + value);
+  total = new Intl.NumberFormat('en-IN').format(total);
+  return total;
+};
+
 const randomId = () => {
   return '_' + Math.random().toString(36).substr(2, 8);
 };
@@ -68,6 +76,7 @@ const isPasswordValid = (pass) => {
 
 export default {
   easyTime,
+  calculateTotal,
   randomId,
   dateDiffInDays,
 

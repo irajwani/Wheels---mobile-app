@@ -39,7 +39,7 @@ export default StyleSheet.create({
 
         formContainer: {
             flex: 0.9,
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.darkwhite,
             borderTopLeftRadius: Metrics.containerRadius,
             borderTopRightRadius: Metrics.containerRadius,
         },

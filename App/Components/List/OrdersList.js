@@ -33,7 +33,7 @@ const OrdersList = ({
       let statusText;
       switch(status) {
         case "store":
-          statusText = "In Store";
+          statusText = "In Store (Your order is being prepared for delivery)";
           break;
         case "transit":
           statusText = "In Transit";
@@ -62,6 +62,7 @@ const OrdersList = ({
                             style={styles.image}
                             indicator={ProgressBar}
                             indicatorProps={{
+                            width: styles.image.width,
                             borderWidth: 1,
                             borderColor: Colors.primary,
                             borderRadius: Metrics.baseMargin,
@@ -123,7 +124,12 @@ const styles = StyleSheet.create({
   },
 
   orderContainer: {
-    backgroundColor: Colors.white
+    backgroundColor: Colors.white,
+    padding: Metrics.baseMargin,
+    borderWidth: 1,
+    borderColor: Colors.lightgrey,
+    borderRadius: Metrics.mediumContainerRadius,
+    marginBottom: Metrics.baseMargin,
   },
 
   dateContainer: {
@@ -137,7 +143,8 @@ const styles = StyleSheet.create({
   },
 
     productContainer: {
-      flexDirection: 'row'
+      flexDirection: 'row',
+      marginBottom: Metrics.baseMargin,
     },
 
       imageContainer: {

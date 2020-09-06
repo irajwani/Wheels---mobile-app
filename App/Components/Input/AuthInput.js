@@ -26,7 +26,7 @@ const AuthInput = ({label, placeholder, onChangeText, value, error = false, secu
                                 zIndex: 100, 
                                 // alignSelf: 'center',
                                 
-                                top: 5, 
+                                top: 12.5, 
                                 right: 20
                             }
                         }>
@@ -51,7 +51,7 @@ const AuthInput = ({label, placeholder, onChangeText, value, error = false, secu
             </View>
 
             
-            {error !== "" && <Text style={{...Fonts.style.small, color: Colors.error}}>{error}</Text>}
+            {error !== "" && <Text style={{...Fonts.style.small, color: Colors.error, marginTop: Metrics.baseMargin/2}}>{error}</Text>}
                 
         </View>
 )
@@ -66,8 +66,11 @@ const styles = StyleSheet.create({
     },
     inputStyle: {
         // height: 70, 
-        
+        borderRadius: Metrics.smallContainerRadius,
+        borderBottomWidth: 1.5,
+        borderColor: Colors.lightgrey,
         ...Fonts.style.big, 
+        paddingVertical: Metrics.baseMargin,
         fontWeight: "400",
     },
 
