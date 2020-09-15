@@ -58,10 +58,10 @@ function Product(props) {
   let inWishList = likes.includes(props.uid);
 
   let inCart = props.cart
-    ? Object.keys(props.cart).includes(product.id)
-      ? true
-      : false
-    : false;
+  ? Object.keys(props.cart).includes(product.id)
+    ? true
+    : false
+  : false;
 
   function navToAuth() {
     toggleAuthModal(false);
@@ -195,6 +195,7 @@ function Product(props) {
                 unfilledColor: Colors.white,
                 alignSelf: 'center',
               }}
+              resizeMode="contain"
             />
           </Lightbox>
         </View>
@@ -242,14 +243,14 @@ function Product(props) {
           <Text style={styles.price}>PKR {price}</Text>
         </View>
         <TouchableOpacity
-          disabled={sold ? true : inCart}
+          disabled={sold ? true : false}
           style={[
             styles.button,
-            {backgroundColor: !inCart ? Colors.primary : Colors.lightgrey},
+            {backgroundColor: sold ? Colors.lightgrey : !inCart ? Colors.primary : Colors.bloodorange},
           ]}
           onPress={() => props.handleCart(product, inCart)}>
           <Text style={styles.buttonText}>
-            {sold ? 'Sold' : !inCart ? 'Add To Cart' : 'In Cart'}
+            {sold ? 'Sold' : !inCart ? 'Add To Cart' : 'Remove from cart'}
           </Text>
         </TouchableOpacity>
       </View>

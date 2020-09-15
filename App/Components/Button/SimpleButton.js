@@ -4,7 +4,7 @@ import { Colors, Metrics, Fonts, Helpers } from '../../Theme'
 import shadowStyles from '../../StyleSheets/shadowStyles'
 
 const SimpleButton = ({text, onPress, disabled = false, extraStyles, textStyles}) => (
-    <TouchableOpacity onPress={onPress} disabled={disabled} style={[styles.button, {backgroundColor: disabled ? Colors.lightgrey : Colors.white}, extraStyles]}>
+    <TouchableOpacity onPress={onPress} disabled={disabled} style={[styles.button, {backgroundColor: disabled ? Colors.grey : Colors.white}, extraStyles]}>
         <Text style={[styles.text, textStyles]}>{text}</Text>
     </TouchableOpacity>
 )

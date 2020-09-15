@@ -39,24 +39,20 @@ function Cart(props) {
   let [step, setStep] = useState(0);
 
   const form = useRef();
-  // let confettiCannon = useRef();
 
   let paymentMethods = [{text: "Electronic funds transfer", selected: true}];
   let localShippingMethod = [{text: "Ground (Free)", selected: true}];
   let [nationalShippingMethods, setShippingMethods] = useState([{text: "Air - PKR 3000", selected: true}, {text: "Ground - PKR 1500", selected: false}]);
 
-  let [name, setName] = useState('Imad Rajwani');
-  let [address, setAddress] = useState('B-102, Creek Vistas, DHA Phase 8');
-  let [city, setCity] = useState('Karachi');
-  let [phone, setPhone] = useState('03212452235');
+  let [name, setName] = useState(props.name ? props.name : '');
+  let [address, setAddress] = useState('');
+  let [city, setCity] = useState('');
+  let [phone, setPhone] = useState('');
 
   let [errors, setError] = useState({name: '', address: '', city: '', phone: ''});
   let [freeDelivery, toggleDelivery] = useState(true);
   
   let [showToast, toggleToast] = useState(false);
-  // useEffect(() => {
-
-  // }, [])
 
   useEffect(() => {
     if (step == 1) {
@@ -121,12 +117,17 @@ function Cart(props) {
 
   function placeOrder() {
     toggleToast(true);
+    let text = false;
+    if (!freeDelivery) {
+      let method = nationalShippingMethods.find((method) => method.selected == true);
+      text = method.text;
+    }
     setTimeout(() => {
       toggleToast(false);
     }, toastDuration);
     let payload = {
       products: Object.values(props.cart).map(product => ({id: product.id, photoURL: product.photoURL, type: product.type, brand: product.type, price: product.price})),
-      total: Utils.calculateTotal(props.cart),
+      total: Utils.calculateTotal(props.cart, freeDelivery ? 0 : text == 'Air - PKR 3000' ? 3000 : 1500),
       buyer: {
         uid: props.uid,
         name,
@@ -137,12 +138,10 @@ function Cart(props) {
       freeDelivery,
       deliveryMethod: freeDelivery
         ? 'ground'
-        : nationalShippingMethods.find((method) => method.selected == true) ==
-          'Air - PKR 3000'
+        : text == 'Air - PKR 3000'
         ? 'air'
         : 'ground',
     };
-
     props.createOrder(payload);
   }
 
@@ -286,7 +285,7 @@ function Cart(props) {
           text={method.text}
         />
       </View>
-    ))
+    ));
   }
 
   function renderFooter() {
@@ -338,7 +337,7 @@ function Cart(props) {
           <TouchableOpacity
             style={[styles.button, {flex: step == 1 ? 0.7 : 1, backgroundColor: Colors.primary}, step == 1 ? {borderTopRightRadius: Metrics.smallContainerRadius, borderBottomRightRadius: Metrics.smallContainerRadius,} : {borderRadius: Metrics.smallContainerRadius}]}
             onPress={handleNext}
-            disabled={step == 1 ? Object.values(errors).find((error) => error) ? true : false : false}>
+            disabled={step == 1 ? Object.values(errors).find((error) => error) || !name || !city || !address || !city ? true : false : false}>
             <ChevronRight />
             <Text style={styles.buttonText}>
               {step == 0 ? 'Proceed' : step == 1 ? 'Place Order' : 'Done'}
@@ -392,7 +391,7 @@ const mapStateToProps = (state) => ({
   isLoading: state.market.isLoading,
   cart: state.market.cart,
 
-  // name: state.auth.profile.profile.displayName,
+  name: state.auth.profile.profile.displayName,
 });
 
 const mapDispatchToProps = (dispatch) => ({

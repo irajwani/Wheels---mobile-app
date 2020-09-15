@@ -26,7 +26,7 @@ export default StyleSheet.create({
     },
 
     whiteCard: {
-        shadowColor: Colors.grey,
+        shadowColor: Colors.lightgrey,
         
         shadowOffset: {
             width: 0,
@@ -70,7 +70,7 @@ export default StyleSheet.create({
     },
 
     blackShadow: {
-        shadowColor: Colors.black,
+        shadowColor: Colors.lightgrey,
         
         shadowOffset: {
             width: 0,

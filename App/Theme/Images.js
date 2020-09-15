@@ -30,7 +30,7 @@ const smallIcon = 16,
 
 export default {
   logo: require(`${path}/logo.png`),
-  splashScreen: require(`${path}/logo.jpeg`),
+  // splashScreen: require(`${path}/logo.jpeg`),
 
   wheel: require(`${path}/wheel-size.png`),
   menuBars: require(`${path}/menu-bars.png`),
@@ -216,6 +216,14 @@ export default {
       size={largeIcon}
       onPress={onPress}
     />
+  ),
+
+  Bike: () => (
+    <Icon name="bike-fast" size={1.3 * largeIcon} color={Colors.primary} />
+  ),
+
+  SlowBike: () => (
+    <Iconisto name="bicycle" size={2.4 * largeIcon} color={Colors.primary} />
   ),
 
   Cart: ({onPress = () => {}, color = Colors.black}) => (

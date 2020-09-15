@@ -1,9 +1,9 @@
-const EulaTop = `This End-User License Agreement ("EULA") is a legal agreement between you and Cycling Wycling. This EULA agreement governs your acquisition and use of our Cycling Wycling software ("Software") directly from Cycling Wycling or indirectly through a Cycling Wycling authorized reseller or distributor (a "Reseller"). \
-Please read this EULA agreement carefully before completing the installation process and using the Cycling Wycling software. It provides a license to use the Cycling Wycling software and contains warranty information and liability disclaimers. \
-By clicking "accept" or installing and/or using the Cycling Wycling software, you are confirming your acceptance of the Software and agreeing to become bound by the terms of this EULA agreement. \n
+const EulaTop = `This End-User License Agreement ("EULA") is a legal agreement between you and Bike Rack. This EULA agreement governs your acquisition and use of our Bike Rack software ("Software") directly from Bike Rack or indirectly through a Bike Rack authorized reseller or distributor (a "Reseller"). \
+Please read this EULA agreement carefully before completing the installation process and using the Bike Rack software. It provides a license to use the Bike Rack software and contains warranty information and liability disclaimers. \
+By clicking "accept" or installing and/or using the Bike Rack software, you are confirming your acceptance of the Software and agreeing to become bound by the terms of this EULA agreement. \n
 If you are entering into this EULA agreement on behalf of a company or other legal entity, you represent that you have the authority to bind such entity and its affiliates to these terms and conditions. If you do not have such authority or if you do not agree with the terms and conditions of this EULA agreement, do not install or use the Software, and you must not accept this EULA agreement.\
 \n
-This EULA agreement shall apply only to the Software supplied by Cycling Wycling herewith regardless of whether other software is referred to or described herein. The terms also apply to any Cycling Wycling updates, supplements, Internet-based services, and support services for the Software, unless other terms accompany those items on delivery. If so, those terms apply. \n
+This EULA agreement shall apply only to the Software supplied by Bike Rack herewith regardless of whether other software is referred to or described herein. The terms also apply to any Bike Rack updates, supplements, Internet-based services, and support services for the Software, unless other terms accompany those items on delivery. If so, those terms apply. \n
 1. The App \n 
 1.1 The App will provide you with the ability to sell articles of clothing. The application provides a convenient way for users to get rid of their pre-owned clothes by allowing users to list their un-worn clothes on the platform, specifying important details such as size and condition of the pieces, and selling them to other users. \n
 1.2 Developer grants you a limited, non-exclusive, non-transferrable, non-sublicensable, revocable license during the Term (defined below) of this Agreement to use the App solely for your internal business purposes. You will not otherwise disimport { Text } from 'react-native';
@@ -30,7 +30,7 @@ You authorized Developer to communicate with you electronically or otherwise usi
 9.2  Developer may modify this Agreement from time-to-time and will provide you with notice when these modifications occur (notification may be through the App, email, a website, changes to the date shown at the top of this Agreement, or other electronic means). Your continued use of the App indicates your acceptance of any modifications to this Agreement. You must stop using and uninstall the App if you do not agree to any modifications that are made to this Agreement. \n
 9.3 Each of us will comply with the laws, rules, and regulations (together, Laws) that apply to our respective performance under this Agreement; including, without limitation, laws related to the collection and use of consumer information obtained via the App. You will follow the requirements of all user documentation provided for the App. You will not use your App to access, store, or transmit materials that are tortious, libelous, offensive, or forbidden( according to the list mentioned in`
 
-// const EulaLink = 'https://Cycling Wycling.com';
+// const EulaLink = 'https://Bike Rack.com';
 
 const EulaBottom = `); contain malicious code, viruses, time bombs, Trojan horses, bots, scrips or other programs; or infringe third parties’ intellectual property rights. \n
 9.4 This is the entire agreement between us, and supersedes any prior agreements related to its subject matter. Any sections or terms of this Agreement that are, or become, invalid or unenforceable will be severed; and the remaining terms will continue in effect. Developer is not waiving any of its rights under this Agreement if it delays their exercise or fails to exercise them. We are independent contractors. This Agreement does not create an agency, partnership, or joint venture of any kind. \n
@@ -40,7 +40,7 @@ const EulaBottom = `); contain malicious code, viruses, time bombs, Trojan horse
 (i) You confirm that images, sounds, text or information that you submit or create (“User Content”) whilst using the Service will meet the Rules of Acceptable Use. \n
 (ii) You grant us a worldwide, non-exclusive, royalty-free, irrevocable and perpetual license to use, copy, reproduce, distribute, adapt, re-format, modify, publish, translate, license, sub-license, assign, transfer and exploit the User Content (including any intellectual property rights therein) anywhere and in any form for the purposes of providing our Service or for any purpose in connection with the operation of our business. \n
 (iii) Our right to use your User Content does not in any way affect your privacy rights and we will only use information that identifies you as set out in our Privacy Policy \n
-(iv) We do not check or moderate any User Content before it is added to the Service by users. We may later check, moderate, reject, refuse or delete any User Content if we think that it breaks any of the Rules of Acceptable Use, or we believe it is against the ethos of Cycling Wycling. \n
+(iv) We do not check or moderate any User Content before it is added to the Service by users. We may later check, moderate, reject, refuse or delete any User Content if we think that it breaks any of the Rules of Acceptable Use, or we believe it is against the ethos of Bike Rack. \n
 (v) User Content removed from the Service may continue to be stored by us, including, without limitation, in order to comply with certain legal obligations. Therefore we encourage you to maintain your own backup of your User Content and you agree that you will not rely on the Service for the purposes of User Content backup or storage. We shall have no liability for any loss of User Content. \n
 
 11. Governing Law \n
@@ -52,31 +52,31 @@ const TsAndCs = `1. Terms \n
 By accessing this mobile application, you are agreeing to be bound by these Terms and Conditions of Use and agree that you are responsible for the agreement with any applicable local laws. \n
 If you disagree with any of these terms, you are prohibited from accessing this application. The materials contained in this application are protected by copyright and trade mark law. \n
 2. Use License \n
-Permission is granted to temporarily download one copy of the materials on Cycling Wycling's application for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not: \n
+Permission is granted to temporarily download one copy of the materials on Bike Rack's application for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not: \n
 • attempt to retail products on a third party platform; \n
 • modify or copy the materials; \n
 • use the materials for any commercial purpose or for any public display; \n
-• attempt to reverse engineer any software contained on Cycling Wycling's application; \n
+• attempt to reverse engineer any software contained on Bike Rack's application; \n
 • remove any copyright or other proprietary notations from the materials; or \n
 • transferring the materials to another person or "mirror" the materials on any other server. \n
-This will let Cycling Wycling to terminate upon violations of any of these restrictions. Upon termination, your viewing right will also be terminated and you should destroy any downloaded materials in your possession whether it is printed or electronic format. \n
+This will let Bike Rack to terminate upon violations of any of these restrictions. Upon termination, your viewing right will also be terminated and you should destroy any downloaded materials in your possession whether it is printed or electronic format. \n
 3. Disclaimer \n
-All the materials on Cycling Wycling’s application are provided "as is". Cycling Wycling makes no warranties, may it be expressed or implied, therefore negates all other warranties. Furthermore, Cycling Wycling does not make any representations concerning the accuracy or reliability of the use of the materials on its application or otherwise relating to such materials or any sites linked to this application. \n
+All the materials on Bike Rack’s application are provided "as is". Bike Rack makes no warranties, may it be expressed or implied, therefore negates all other warranties. Furthermore, Bike Rack does not make any representations concerning the accuracy or reliability of the use of the materials on its application or otherwise relating to such materials or any sites linked to this application. \n
 4. Limitations \n
-Cycling Wycling or its suppliers will not be hold accountable for any damages that will arise with the use or inability to use the materials on Cycling Wycling’s application, even if Cycling Wycling or an authorized representative of this application has been notified, orally or written, of the possibility of such damage. Some jurisdiction does not allow limitations on implied warranties or limitations of liability for incidental damages, these limitations may not apply to you. \n
+Bike Rack or its suppliers will not be hold accountable for any damages that will arise with the use or inability to use the materials on Bike Rack’s application, even if Bike Rack or an authorized representative of this application has been notified, orally or written, of the possibility of such damage. Some jurisdiction does not allow limitations on implied warranties or limitations of liability for incidental damages, these limitations may not apply to you. \n
 5. Revisions and Errata \n
-The materials appearing on Cycling Wycling's application may include technical, typographical, or photographic errors. Cycling Wycling will not promise that any of the materials in this application are accurate, complete, or current. Cycling Wycling may change the materials contained on its application at any time without notice. Cycling Wycling does not make any commitment to update the materials. \n
+The materials appearing on Bike Rack's application may include technical, typographical, or photographic errors. Bike Rack will not promise that any of the materials in this application are accurate, complete, or current. Bike Rack may change the materials contained on its application at any time without notice. Bike Rack does not make any commitment to update the materials. \n
 6. Links \n
-Cycling Wycling has not reviewed all of the sites linked to its application and is not responsible for the contents of any such linked site. The presence of any link does not imply endorsement by Cycling Wycling of the site. The use of any linked application is at the user’s own risk. \n
+Bike Rack has not reviewed all of the sites linked to its application and is not responsible for the contents of any such linked site. The presence of any link does not imply endorsement by Bike Rack of the site. The use of any linked application is at the user’s own risk. \n
 7. Application Terms of Use Modifications \n
-Cycling Wycling may revise these Terms of Use for its application at any time without prior notice. By using this application, you are agreeing to be bound by the current version of these Terms and Conditions of Use. \n
+Bike Rack may revise these Terms of Use for its application at any time without prior notice. By using this application, you are agreeing to be bound by the current version of these Terms and Conditions of Use. \n
 8. Governing Law \n
-Any claim related to Cycling Wycling's application shall be governed by the laws of Pakistan without regards to its conflict of law provisions.
+Any claim related to Bike Rack's application shall be governed by the laws of Pakistan without regards to its conflict of law provisions.
 `;
 
 const PrivacyPolicy = `Effective date: May 31, 2020 \n
-Cycling Wycling ("us", "we", or "our") operates the website and the Cycling Wycling mobile application (the "Service"). \n
-This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. Our Privacy Policy for Cycling Wycling is managed through Free Privacy Policy \n
+Bike Rack ("us", "we", or "our") operates the website and the Bike Rack mobile application (the "Service"). \n
+This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. Our Privacy Policy for Bike Rack is managed through Free Privacy Policy \n
 We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions. \n
 Information Collection And Use\n
 We collect several different types of information for various purposes to provide and improve our Service to you. \n
@@ -103,7 +103,7 @@ Examples of Cookies we use: \n
 • Security Cookies. We use Security Cookies for security purposes. \n
 \n
 Use of Data\n
-Cycling Wycling uses the collected data for various purposes: \n
+Bike Rack uses the collected data for various purposes: \n
 • To provide and maintain the Service \n
 • To notify you about changes to our Service \n
 • To allow you to participate in interactive features of our Service when you choose to do so \n
@@ -117,13 +117,13 @@ Transfer Of Data \n
 Your information, including Personal Data, may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction. \n
 If you are located outside United Kingdom and choose to provide information to us, please note that we transfer the data, including Personal Data, to Pakistan and United Kingdom and process it there. \n
 Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer. \n
-Cycling Wycling will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of your data and other personal information. \n
+Bike Rack will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of your data and other personal information. \n
 \n
 Disclosure Of Data \n
 Legal Requirements \n
-Cycling Wycling may disclose your Personal Data in the good faith belief that such action is necessary to:\n
+Bike Rack may disclose your Personal Data in the good faith belief that such action is necessary to:\n
 • To comply with a legal obligation \n
-• To protect and defend the rights or property of Cycling Wycling \n
+• To protect and defend the rights or property of Bike Rack \n
 • To prevent or investigate possible wrongdoing in connection with the Service \n
 • To protect the personal safety of users of the Service or the public \n
 • To protect against legal liability \n
@@ -176,7 +176,7 @@ emptyField = "User has not input this information"
 
 
 export default {
-    companyName: "Cycling Wycling",
+    companyName: "Bike Rack",
 
     privacy: {
         title: "Privacy Policy",

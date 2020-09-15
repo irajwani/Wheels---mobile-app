@@ -84,7 +84,8 @@ export default StyleSheet.create({
             rememberMeContainer: { 
                 flex: 0.5, 
                 flexDirection: 'row', 
-                justifyContent: 'space-evenly', alignItems: 'center',
+                // justifyContent: 'space-evenly', 
+                alignItems: 'center',
             },
         
             forgotPasswordContainer: {

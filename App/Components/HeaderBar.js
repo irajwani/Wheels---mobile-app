@@ -3,6 +3,7 @@ import {View, StyleSheet, Image, Text} from 'react-native';
 import {logoGreen} from '../colors';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import {Images, Colors, Fonts, Metrics, Helpers} from '../Theme';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 let {BackArrow, SideBar, Cart} = Images;
 
@@ -23,12 +24,14 @@ const HeaderBar = ({
     <Text style={{...Fonts.style.big, letterSpacing: 1.5, color: tint ? Colors.white : Colors.black}}>{page}</Text>
     {showCart && (
       <View>
-        <Cart onPress={navToCart} />
-        {cartCount > 0 && (
-          <View style={styles.cartCountContainer}>
-            <Text style={styles.cartCount}>{cartCount}</Text>
-          </View>
-        )}
+        <TouchableOpacity style={{flexDirection: 'row'}} onPress={navToCart}>
+          {cartCount > 0 && (
+            <View style={styles.cartCountContainer}>
+              <Text style={styles.cartCount}>{cartCount}</Text>
+            </View>
+          )}
+          <Cart />
+        </TouchableOpacity>
       </View>
     )}
   </View>
@@ -72,18 +75,14 @@ const styles = StyleSheet.create({
 
   cartCountContainer: {
     ...Helpers.center,
-    position: 'absolute',
-    zIndex: 999,
-    bottom: Metrics.baseMargin,
-    left: 1.5*Metrics.baseMargin,
     backgroundColor: Colors.primary,
-    width: 20,
-    height: 20,
-    borderRadius: 10,
+    width: 24,
+    height: 24,
+    borderRadius: Metrics.smallContainerRadius,
   },
 
   cartCount: {
-    ...Fonts.style.small,
+    ...Fonts.style.normal,
     color: Colors.white,
   },
 

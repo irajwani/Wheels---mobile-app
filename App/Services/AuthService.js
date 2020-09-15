@@ -16,7 +16,7 @@ function createProfile(newUser) {
 }
 
 function getProfile(payload) {
-    return ApiClient.get(`/getEmployee?uid=${payload.uid}`).then(fulfilled)
+    return ApiClient.get(`/getProfile?uid=${payload.uid}`).then(fulfilled)
 }
 
 function updateUser(payload) {

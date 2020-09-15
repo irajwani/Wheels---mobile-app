@@ -39,7 +39,6 @@ let menu = [
 
 
 function Drawer(props) {
-
   let [currentScreen, changeScreen] = useState('Shop');
 
   return (

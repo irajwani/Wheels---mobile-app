@@ -6,7 +6,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     // ...Helpers.center,
-    backgroundColor: Colors.pri,
+    backgroundColor: Colors.white,
 
   },
 
@@ -22,10 +22,27 @@ export default StyleSheet.create({
     },
 
       companyLogo: {
-        width: 265,
-        height: 100,
-        right: 10,
+        width: 150,
+        height: 150,
+        // alignSelf: 'center'
       },
+
+      bikeContainer: {
+        position: "absolute",
+        bottom: Metrics.screenHeight/2,
+        zIndex: 1,
+      },
+
+      textContainer: {
+        flexDirection: 'row',
+        ...Helpers.center,
+      },
+
+        companyName: {
+          ...Fonts.style.h2,
+          color: Colors.primary,
+          fontWeight: "500"
+        },
 
     versionContainer: {
       flex: 0.1,

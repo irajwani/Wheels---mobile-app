@@ -54,23 +54,41 @@ export const emptyCart = (state) => ({
 
 
 
+// function insertItem(array, action) {
+//   let newArray = array.slice()
+//   newArray.splice(action.index, 0, action.item)
+//   return newArray
+// }
+
+// function removeItem(array, action) {
+//   let newArray = array.slice()
+//   newArray.splice(action.index, 1)
+//   return newArray
+// }
 
 export const handleCartRequest = (state, {product, inCart}) => {
+  console.log("HERE CARTMAN");
+  console.log(product.id);
   if (inCart) {
-    state.cart = delete state.cart[product.id];
-    if (Object.keys(state.cart).length == 0) {
-      state.cart = {};
+    let {[product.id]: remove, ...others} = state.cart;
+    return {
+      ...state,
+      cart: others,
     }
-  } else if (state.cart == undefined) {
-    state.cart = {
-      [product.id]: product,
-    };
+  } else if (Object.keys(state.cart).length == 0) {
+    return {
+      ...state,
+      cart: Object.assign({}, {[product.id]: product}),
+    }
   } else {
-    Object.assign(state.cart, {[product.id]: product});
+    return {
+      ...state,
+      cart: {
+        ...state.cart,
+        [product.id]: product,
+      },
+    }
   }
-  return {
-    ...state,
-  };
 };
 
 

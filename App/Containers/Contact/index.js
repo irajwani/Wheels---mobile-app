@@ -90,7 +90,7 @@ function Contact(props) {
 
   const renderMap = () => (
     <View style={styles.mapContainer}>
-      <Text style={styles.detailText}>Visit our store for greater selection, stickers, decals, and other customization options.</Text>
+      <Text style={styles.detailText}>Visit Cycling Wycling on Badar Commercial for greater selection, bicycle repairs, stickers, decals, and other customization options.</Text>
       <Image source={Images.map} style={styles.map} />
     </View>
   );

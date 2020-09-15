@@ -44,7 +44,7 @@ class TutorialList extends Component {
           >
 
             
-              <Image source={item.image} style={styles.image}/>
+              <Image source={item.image} style={styles.image} resizeMethod={"resize"} resizeMode={'center'}/>
 
               <Text style={styles.label}>{item.text}</Text>
             

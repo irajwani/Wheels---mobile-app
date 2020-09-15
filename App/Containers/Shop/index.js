@@ -50,7 +50,7 @@ function Shop(props) {
 
   useEffect(() => {
     props.getProducts();
-  }, [props.addStatus]);
+  }, [props.addStatus, props.cart]);
 
   function applySort(products, sortBy) {
     if(sortBy == 'Recency') {
@@ -114,14 +114,14 @@ function Shop(props) {
       </View>
     );
   }
-  console.log(props.products);
+  console.log(props.cart);
   return (
     <View style={styles.container}>
       <HeaderBar
         page={"SHOP"}
         toggleDrawer={() => props.navigation.toggleDrawer()}
         cartCount={
-          Object.keys(props.cart).length > 0
+          props.cart
             ? Object.keys(props.cart).length
             : 0
         }

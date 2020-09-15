@@ -11,10 +11,13 @@ const easyTime = (time, inSeconds = false) => {
   })} ${t.getDate()}, ${t.toTimeString().split(' ')[0].slice(0, 5)}`;
 };
 
-const calculateTotal = (cart) => {
+const calculateTotal = (cart, deliveryCharges = false) => {
   let total = Object.values(cart)
     .map((product) => Number(product.price.replace(',', '')))
     .reduce((accumulator, value) => accumulator + value);
+  if (deliveryCharges) {
+    total += deliveryCharges;
+  }
   total = new Intl.NumberFormat('en-IN').format(total);
   return total;
 };

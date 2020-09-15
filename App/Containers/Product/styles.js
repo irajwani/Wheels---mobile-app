@@ -23,12 +23,13 @@ export default StyleSheet.create({
     },
 
         imageContainer: {
-            
+            justifyContent: 'flex-start',
+            // backgroundColor: 'red'
         },
 
             image: {
                 width: Metrics.screenWidth,
-                height: 300,
+                height: 250,
             },
 
         bodyContainer: {

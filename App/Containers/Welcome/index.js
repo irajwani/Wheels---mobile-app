@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView, Image, SafeAreaView, TouchableOpacity, ImageBackground, StyleSheet, CheckBox, Alert, Linking, Modal, Keyboard, KeyboardAvoidingView } from 'react-native'
+import { Text, View, ScrollView, Image, SafeAreaView, TouchableOpacity, ImageBackground, StyleSheet, Alert, Linking, Modal, Keyboard, KeyboardAvoidingView } from 'react-native'
 
 import Container from '../../Components/Container'
 import Loading from '../../Components/ActivityIndicator/Loading';
+import CheckBox from '../../Components/Button/CheckBox';
 
 import SelectPictures from '../../Components/SelectPictures';
 import AuthButton from '../../Components/Button/AuthButton';
@@ -47,10 +48,10 @@ export class Welcome extends Component {
             authenticating: false,
             newUser: true,
 
-            name: "Imad Rajwani",
-            email: "imad@gmail.com",
-            pass: "password",
-            pass2: "password",
+            name: "",
+            email: "",
+            pass: "",
+            pass2: "",
             pictureUrl: "",
 
             errors: {
@@ -535,20 +536,13 @@ export class Welcome extends Component {
         
         <View style={styles.authActionsContainer}>
             <View style={styles.rememberMeContainer}>
-                <TouchableOpacity onPress={this.toggleSaveUsernamePass} style={{height: 25, width: 25, borderWidth: 1, borderRadius: 10, borderColor: Colors.secondary, justifyContent: 'center', alignItems: 'center', marginRight: 5,}}>
-                    {this.state.saveUsernamePass ?
-                        <Check/>
-                    :
-                        null
-                    }
-                </TouchableOpacity>
-                <Text onPress={this.toggleSaveUsernamePass} style={{...Fonts.style.small, color: Colors.secondary}}>Remember Me?</Text>
+                <CheckBox checked={this.state.saveUsernamePass} text={"Remember Me?"} onPress={this.toggleSaveUsernamePass}/>
             </View>
             
             <TouchableOpacity 
             onPress={this.toggleShowPasswordReset}
             style={styles.forgotPasswordContainer}>
-                <Text style={{...Fonts.style.small, color: Colors.secondary}}>Forgot Password?</Text>
+                <Text style={{...Fonts.style.small, color: Colors.primary}}>Forgot Password?</Text>
             </TouchableOpacity>
         </View>
 
@@ -703,11 +697,14 @@ export class Welcome extends Component {
         let {authenticating, showLoginForm, name, email, pass, pass2, errors, uploadingPicture, showToast, keyboardShown} = this.state;
         let {isLoading} = this.props;
         let isProfileValid = true;
+        if (!name || !email || !pass || !pass2 || pass != pass2) {
+            isProfileValid = false;
+        }
         Object.values(errors).forEach((error) => {
             if(error) {
                 isProfileValid = false;
             }
-        })
+        });
 
         // console.log(errors);
         if(isLoading || uploadingPicture) {

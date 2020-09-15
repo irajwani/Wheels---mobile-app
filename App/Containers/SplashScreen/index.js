@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Text, SafeAreaView, View, Image} from 'react-native';
+import React, {useState, useEffect, useRef} from 'react';
+import {Text, SafeAreaView, View, Image, Easing, Animated} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 // import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk'
@@ -14,17 +14,43 @@ import AuthActions from '../../Stores/Auth/Actions';
 import {connect} from 'react-redux';
 
 import styles from './styles';
-import {Metrics, Images} from '../../Theme';
+import {Metrics, Images, Strings} from '../../Theme';
+
+let {SlowBike} = Images;
 
 let versionNumber = '1.0.0';
-const splashScreenDuration = 200;
+const splashScreenDuration = 4000;
 // FIRST CONTAINER REACT COMPONENT THAT MOUNTS
 function SplashScreen(props) {
+  let [translateXValue, setTranslateXValue] = useState(new Animated.Value(0));
+  const textOpacity = useRef(new Animated.Value(0)).current;
+
+  function beginImageTranslation() {
+    Animated.sequence([
+      Animated.timing(translateXValue, {
+        toValue: 1.5,
+        duration: 2000,
+        easing: Easing.ease,
+        useNativeDriver: true,
+      }),
+      Animated.timing(textOpacity, {
+        toValue: 1,
+        duration: 2000,
+        easing: Easing.linear,
+        useNativeDriver: true,
+      }),
+    ]).start();
+    
+  }
+
+  const translateX = translateXValue.interpolate({
+    inputRange: [0, 0.25, 0.5, 1, 1.5],
+    outputRange: [-40, 50, 65, 70, Metrics.screenWidth / 3 - 40],
+  });
+
   useEffect(() => {
-    
-    
+    beginImageTranslation();
     checkPermission();
-    
 
     setTimeout(() => {
       const subscriber = auth().onAuthStateChanged(showAppOrAuth);
@@ -87,9 +113,9 @@ function SplashScreen(props) {
       seconds_dif = Math.abs(seconds_dif);
       if (seconds_dif < 10) {
         props.navigation.navigate('AppStack');
-        // props.getProfile(user.uid);
+        props.getProfile(user.uid);
       } else {
-        // props.getProfile(user.uid);
+        props.getProfile(user.uid);
         props.navigation.navigate('AppStack');
       }
     } else {
@@ -101,9 +127,16 @@ function SplashScreen(props) {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Animated.View style={[styles.bikeContainer, { transform: [{translateX}] }]}>
+        <SlowBike />
+      </Animated.View>
       <View style={styles.logoContainer}>
-        <Image source={Images.splashScreen} style={styles.companyLogo} />
+        <Image source={Images.logo} style={styles.companyLogo} />
+        <Animated.View style={[styles.textContainer, {opacity: textOpacity}]}>
+          <Text style={styles.companyName}>{Strings.companyName}</Text>
+        </Animated.View>
       </View>
+      
       <View style={styles.versionContainer}>
         <Text style={styles.version}>Version {versionNumber}</Text>
       </View>
@@ -116,7 +149,7 @@ const mapStateToProps = (state) => ({});
 const mapDispatchToProps = (dispatch) => ({
   storeUid: (uid) => dispatch(AuthActions.storeUid(uid)),
   logOut: () => dispatch(AuthActions.logOut()),
-  // getProfile: (uid) => dispatch(AuthActions.getProfileRequest(uid)),
+  getProfile: (uid) => dispatch(AuthActions.getProfileRequest(uid)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen);

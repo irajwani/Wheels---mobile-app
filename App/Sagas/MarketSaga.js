@@ -33,6 +33,8 @@ export function* handleLike(payload) {
 
 export function* createOrder(payload) {
   const response = yield call(MarketService.createOrder, payload.payload);
+  console.log("Placed order");
+  console.log(response);
   if (response.status === 200) {
     console.log(response);
     yield put(MarketActions.createOrderSuccess(response.data));

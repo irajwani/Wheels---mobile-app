@@ -27,16 +27,16 @@ let Tutorial = [
   {
     image: Images.bikeSketchOne,
     text:
-      'Search from a number of different socials going on around your city. Whatever your preference, Awitan has got you covered.',
+      'Sign up or sign in if you wish to purchase from our selection of refurbished and second-hand Japanese bicycles.',
   },
   {
     image: Images.bikeSketchTwo,
     text:
-      'Host events and sessions to meet like minded Awitaners to broaden your circle. ',
+      'Free shipping within Karachi. Air and ground shipping available for national deliveries.',
   },
   {
     image: Images.bikeSketchThree,
-    text: 'Some pretty bad description text.',
+    text: 'Visit our store for customization options and bicycle repairs.',
   },
 ];
 
