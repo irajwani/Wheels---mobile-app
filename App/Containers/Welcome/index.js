@@ -23,7 +23,7 @@ import styles from './styles';
 import { Colors, Fonts, Images, Strings, Helpers, Metrics } from '../../Theme';
 import AuthInput from '../../Components/Input/AuthInput';
 import { connect } from 'react-redux';
-import AsyncStorage from '@react-native-community/async-storage';;
+import AsyncStorage from '@react-native-community/async-storage';
 
 let {Check, BackArrow, Close, Info} = Images;
 let { EulaTop, EulaBottom, TsAndCs, PrivacyPolicy } = Strings;
@@ -142,10 +142,10 @@ export class Welcome extends Component {
         this.setState({keyboardShown: false})
     }
 
-    componentWillUnmount() {
-        this.keyboardDidShowListener.remove();
-        this.keyboardDidHideListener.remove();
-    }
+    // componentWillUnmount() {
+    //     this.keyboardDidShowListener.remove();
+    //     this.keyboardDidHideListener.remove();
+    // }
 
 
     toggleForm = () => this.setState({showLoginForm: !this.state.showLoginForm})
@@ -168,7 +168,7 @@ export class Welcome extends Component {
             }
 
             else {
-                console.log('user has chosen picture manually through photo lib or camera, store it on cloud and generate a URL for it.')
+                // console.log('user has chosen picture manually through photo lib or camera, store it on cloud and generate a URL for it.')
                 // let resizedImage = await ImageResizer.createResizedImage(uri,resizedWidth, resizedHeight,'JPEG',suppressionLevel);
                 // const uploadUri = Platform.OS === 'ios' ? resizedImage.uri.replace('file://', '') : resizedImage.uri
                 const uploadUri = Metrics.platform == "ios" ? uri.replace('file://', '') : uri
@@ -177,8 +177,8 @@ export class Welcome extends Component {
                 storage().ref().child(`Users/${uid}/profile`)
                 .putFile(uploadUri, {contentType: mime})
                 .then(uploadTask => {
-                    console.log("HEREE")
-                    console.log(uploadTask.downloadURL);
+                    // console.log("HEREE")
+                    // console.log(uploadTask.downloadURL);
                     resolve(uploadTask.downloadURL);
                 })
                 .catch((error) => {
@@ -281,8 +281,8 @@ export class Welcome extends Component {
                     token
                     // token: "dJUd9hBupPI:APA91bHq7vv-mlMWvsplrlBFq8RI6mstf0ub8Ws6H-EYffd5M2zkP2Stg78Lk3WdzxkjmVfGUwoNm0DJmHivmgG84fqD7es3Fj8wuUisSQHLCe6yclsuITUDzRfnjuU1_j5HPdTdJ7yY",
                 }
-                console.log("HERE");
-                console.log(newUser);
+                // console.log("HERE");
+                // console.log(newUser);
                 this.props.createUser(newUser);
                 this.setState({uploadingPicture: false, isVisible: false});
             }
@@ -299,14 +299,14 @@ export class Welcome extends Component {
                     token
                     // token: "dJUd9hBupPI:APA91bHq7vv-mlMWvsplrlBFq8RI6mstf0ub8Ws6H-EYffd5M2zkP2Stg78Lk3WdzxkjmVfGUwoNm0DJmHivmgG84fqD7es3Fj8wuUisSQHLCe6yclsuITUDzRfnjuU1_j5HPdTdJ7yY",
                 }
-                console.log("HERE");
-                console.log(newUser);
+                // console.log("HERE");
+                // console.log(newUser);
                 this.props.createUser(newUser);
                 this.setState({uploadingPicture: false, isVisible: false});
             }
 
             else {
-                console.log('user has chosen picture manually through photo lib or camera, store it on cloud and generate a URL for it.')
+                // console.log('user has chosen picture manually through photo lib or camera, store it on cloud and generate a URL for it.')
                 // let resizedImage = await ImageResizer.createResizedImage(uri,resizedWidth, resizedHeight,'JPEG',suppressionLevel);
                 // const uploadUri = Platform.OS === 'ios' ? resizedImage.uri.replace('file://', '') : resizedImage.uri
                 const uploadUri = Metrics.platform == "ios" ? uri.replace('file://', '') : uri
@@ -664,7 +664,7 @@ export class Welcome extends Component {
 
     handleInput = (field, value) => {
         let {...state} = this.state;
-        console.log(value);
+        // console.log(value);
         let error = "";
         switch(field) {
             case "name":
@@ -732,6 +732,7 @@ export class Welcome extends Component {
                     }
                     return (
                         <TouchableOpacity
+                            key={index}
                             onPress={this.toggleForm}
                             style={[
                                 styles.toggleButton, 

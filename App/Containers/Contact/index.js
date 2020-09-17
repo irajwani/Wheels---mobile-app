@@ -76,8 +76,8 @@ function Contact(props) {
 
   const renderDetails = () => (
     <View style={styles.detailsContainer}>
-      {Details.map((detail) => (
-        <View style={styles.detailContainer}>
+      {Details.map((detail, index) => (
+        <View key={String(index)} style={styles.detailContainer}>
           
           {detail.icon()}
           

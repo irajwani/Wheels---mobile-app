@@ -14,7 +14,7 @@ import Container from '../Components/Container';
 import { Metrics, Colors, Fonts, Images } from '../Theme';
 import NavigationService from '../Services/NavigationService';
 
-let { Shop, Profile, Cart, People } = Images;
+let { Shop, Profile, Cart, People, BackArrow } = Images;
 
 
 let DrawerNavigator = createDrawerNavigator(
@@ -60,7 +60,13 @@ function Drawer(props) {
             <Text style={{...Fonts.style.big, marginLeft: Metrics.baseMargin, color: isCurrent ? Colors.primary : Colors.grey}}>{item.name}</Text>
           </TouchableOpacity>
         )}}
+        keyExtractor={(item, index) => String(index)}
       />
+      
+      <TouchableOpacity style={{margin: Metrics.baseMargin, flexDirection: 'row'}} onPress={() => props.navigation.toggleDrawer()}>
+          <BackArrow color={Colors.grey}/>
+        <Text style={{...Fonts.style.big, marginLeft: Metrics.baseMargin, color: Colors.grey}}>Close Drawer</Text>
+      </TouchableOpacity>
     </Container>
   )
 }

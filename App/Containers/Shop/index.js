@@ -50,18 +50,10 @@ function Shop(props) {
 
   useEffect(() => {
     props.getProducts();
-  }, [props.addStatus, props.cart]);
+  }, [props.addStatus, props.cart, sortBy]);
 
   function applySort(products, sortBy) {
-    if(sortBy == 'Recency') {
-      return products.sort((a,b) => a.createdAt._seconds - b.createdAt._seconds)
-    }
-    else if(sortBy == 'Price (ascending)') {
-      return products.sort((a,b) => Number(a.price) - Number(b.price))
-    }
-    else {
-      return products.sort((a,b) => Number(b.price) - Number(a.price))
-    }
+    
   }
 
   function renderSearch() {
@@ -79,9 +71,10 @@ function Shop(props) {
         />
         {isDrawerVisible && (
           <View style={styles.menu}>
-            {sortOptions.map((option) => {
+            {sortOptions.map((option, index) => {
               return (
                 <TouchableOpacity
+                  key={String(index)}
                   onPress={() => setSortBy(option)}
                   style={[styles.menuItem, {backgroundColor: sortBy == option ? Colors.white : "transparent"}]}>
                   <Text
@@ -114,7 +107,18 @@ function Shop(props) {
       </View>
     );
   }
-  console.log(props.cart);
+
+  if(sortBy == 'Recency') {
+    props.products.sort((a,b) => a.createdAt._seconds - b.createdAt._seconds)
+  }
+  else if(sortBy == 'Price (ascending)') {
+    props.products.sort((a,b) => Number(a.price.replace(',', '')) - Number(b.price.replace(',', '')))
+  }
+  else {
+    props.products.sort((a,b) => Number(b.price.replace(',', '')) - Number(a.price.replace(',', '')))
+  }
+  
+
   return (
     <View style={styles.container}>
       <HeaderBar
@@ -129,7 +133,7 @@ function Shop(props) {
       />
       {renderSearch()}
       <ProductList
-        data={applySort(props.products).filter((product) =>
+        data={props.products.filter((product) =>
           product.brand.toLowerCase().includes(searchInput) || product.type.toLowerCase().includes(searchInput)
         )}
         isUser={props.uid}

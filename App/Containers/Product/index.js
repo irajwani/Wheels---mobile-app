@@ -113,7 +113,7 @@ function Product(props) {
             );
           }
         }}
-        keyExtractor={(item, index) => index}
+        keyExtractor={(item, index) => String(index)}
         style={styles.featuresScroll}
         contentContainerStyle={styles.featuresContentScroll}
         horizontal

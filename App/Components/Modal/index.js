@@ -36,7 +36,7 @@ let Tutorial = [
   },
   {
     image: Images.bikeSketchThree,
-    text: 'Visit our store for customization options and bicycle repairs.',
+    text: 'Visit our physical store (Cycling Wycling on Badar Commercial) for customization options and bicycle repairs.',
   },
 ];
 

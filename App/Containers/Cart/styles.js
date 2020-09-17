@@ -11,9 +11,8 @@ export default StyleSheet.create({
         
     },
 
-        progressBarTop: {
+        progressBarPiece: {
             flexDirection: 'row',
-            flex: 0.8,
             ...Helpers.center,
         },
 
@@ -30,7 +29,7 @@ export default StyleSheet.create({
 
             stick: {
                 height: 4*StyleSheet.hairlineWidth,
-                width: (Metrics.screenWidth - 2*Metrics.baseMargin)/2 - 40,
+                width: (Metrics.screenWidth - 2*Metrics.baseMargin)/2 - 80,
             },
 
         progressBarBottom: {
@@ -39,7 +38,7 @@ export default StyleSheet.create({
             alignItems: 'center',
         },
 
-            progressText: {...Fonts.style.tiny},
+            progressText: {...Fonts.style.normal, marginHorizontal: 3,},
 
     bodyContainer: {
         // flex: 0.3,
@@ -148,7 +147,8 @@ export default StyleSheet.create({
 
                 buttonText: {
                     ...Fonts.style.normal,
-                    color: Colors.white
+                    color: Colors.white,
+                    fontWeight: "600",
                 },
 
 

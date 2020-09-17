@@ -170,14 +170,9 @@ function Cart(props) {
             }
           }
           return (
-            <View>
-              <View style={styles.progressBarTop}>
-                <Circle
-                  step={`${index + 1}`}
-                  backgroundColor={
-                    isCircleFilled ? Colors.primary : Colors.grey
-                  }
-                />
+            <View key={String(index)} style={styles.progressBarPiece}>
+              
+                <Text style={[styles.progressText, {color: isCircleFilled ? Colors.primary : Colors.grey }]}>{stepName}</Text>
                 {index <= 1 && (
                   <Stick
                     backgroundColor={
@@ -185,10 +180,10 @@ function Cart(props) {
                     }
                   />
                 )}
-              </View>
-              <View style={styles.progressBarBottom}>
-                  <Text style={styles.progressText}>{stepName}</Text>
-              </View>
+              
+              
+                  
+              
             </View>
           );
         })}
@@ -263,8 +258,8 @@ function Cart(props) {
   }
 
   function renderMethods(methods, isStatic = false) {
-    return methods.map((method) => (
-      <View style={styles.shippingRow}>
+    return methods.map((method, index) => (
+      <View key={String(index)} style={styles.shippingRow}>
         <CheckBox
           checked={method.selected}
           onPress={

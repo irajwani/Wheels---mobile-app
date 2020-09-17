@@ -47,7 +47,7 @@ const ProductList = ({
         toggleModal={toggleModal}
       />
     )}
-    keyExtractor={(item, index) => index}
+    keyExtractor={(item, index) => String(index)}
     numColumns={1}
     ListEmptyComponent={() => (
       <View style={{...Helpers.center}}>

@@ -29,7 +29,7 @@ const CartList = ({
     renderItem={(item, index) => {
       let {photoURL, brand, price} = item.item;
       return (
-      <View style={styles.productContainer}>
+      <View key={String(index)} style={styles.productContainer}>
         <View style={styles.imageContainer}>
           <Image
             source={{uri: photoURL}}

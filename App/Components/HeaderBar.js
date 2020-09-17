@@ -12,7 +12,7 @@ const HeaderBar = ({
   toggleDrawer,
   showCart = true,
   cartCount = 0,
-  navToCart = true,
+  navToCart = () => {},
   tint = false,
 }) => (
   <View

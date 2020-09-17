@@ -52,10 +52,10 @@ const OrdersList = ({
             <Divider />
 
             <View style={styles.productsContainer}>
-                {item.products.map((product) => {
+                {item.products.map((product, key) => {
                     let {photoURL, brand, type, price} = product;
                     return (
-                    <View style={styles.productContainer}>
+                    <View key={String(key)} style={styles.productContainer}>
                         <View style={styles.imageContainer}>
                         <Image
                             source={{uri: photoURL}}
@@ -99,7 +99,7 @@ const OrdersList = ({
           </View>
       )  
     }}
-    keyExtractor={(item, index) => index}
+    keyExtractor={(item, index) => String(index)}
     numColumns={1}
     ListEmptyComponent={() => (
       <View style={{...Helpers.center}}>

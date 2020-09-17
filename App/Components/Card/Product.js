@@ -83,8 +83,8 @@ export default ({
         />
         }
       </Circle>
-      <Parallelogram text={product.brand} left={30} color={Colors.primary} textColor={Colors.white} />
-      <Parallelogram text={"PKR " + product.price} right={30} color={Colors.lightgrey} textColor={Colors.black} />
+      {/* <Parallelogram text={product.brand} left={30} color={Colors.primary} textColor={Colors.white} /> */}
+      <Parallelogram text={"PKR " + product.price} right={30} color={Colors.primary} textColor={Colors.white} />
 
     </TouchableOpacity>
   );
