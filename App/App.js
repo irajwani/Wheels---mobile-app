@@ -30,7 +30,8 @@ export default class App extends Component {
 //   }
 // }
 
-// npm install apisauce react-native-reanimated react-native-gesture-handler react-navigation react-navigation-stack react-navigation-drawer react-redux redux redux-persist redux-saga reduxsauce
+// npm install @react-native-firebase/app @react-native-firebase/auth @react-native-firebase/messaging @react-native-firebase/storage react-native-date-picker react-native-svg react-native-vector-icons intl react-native-snap-carousel apisauce react-native-reanimated react-native-gesture-handler react-navigation react-navigation-stack react-navigation-drawer react-redux redux redux-persist redux-saga reduxsauce react-native-image-crop-picker react-native-image-picker react-native-image-progress react-native-indicators react-native-iphone-x-helper react-native-keyboard-aware-scroll-view react-native-lightbox react-native-linear-gradient react-native-progress 
+// npm install reactotron-react-native reactotron-redux reactotron-redux-saga seamless-immutable --save-dev
 
 // /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator -CurrentDeviceUDID D9974757-E6A8-419C-A47B-08A83A16FFE4
 

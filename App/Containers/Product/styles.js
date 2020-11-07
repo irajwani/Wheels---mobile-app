@@ -41,19 +41,25 @@ export default StyleSheet.create({
             },
 
                 name: {
-                    ...Fonts.style.big,
+                    ...Fonts.style.h1,
                     fontWeight: "bold"
                 },
 
                 detail: {
                     ...Fonts.style.normal,
-                    color: Colors.grey
+                    color: Colors.grey,
+                    fontWeight: "bold"
                 },
 
             likeButtonContainer: {
                 flex: 0.3,
                 
 
+            },
+
+            subheading: {
+                ...Fonts.style.h3,
+                fontWeight: "bold"
             },
 
             featuresScroll: {

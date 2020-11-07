@@ -95,15 +95,16 @@ function Product(props) {
                 image = require('../../Assets/Images/shocks.png');
                 feature.value = 'Shocks';
                 break;
-              case 'Frame Width':
+              default:
+                // 'Frame Width':
                 image = require('../../Assets/Images/frame.png');
                 color = Colors.darkwhite;
                 break;
-              default:
-                //Wheel Size
-                image = require('../../Assets/Images/wheel-size.png');
-                color = Colors.darkwhite;
-                break;
+              // default:
+              //   //Wheel Size
+              //   image = require('../../Assets/Images/wheel-size.png');
+              //   color = Colors.darkwhite;
+              //   break;
             }
             return (
               <View style={[styles.featureCard, {backgroundColor: color}]}>
@@ -136,7 +137,7 @@ function Product(props) {
   const _getArrowColor = () => {
     return scrollY.interpolate({
       inputRange,
-      outputRange: [Colors.white, Colors.grey, Colors.black],
+      outputRange: [Colors.primary, Colors.grey, Colors.black],
       extrapolate: 'clamp',
       useNativeDriver: true,
     });
@@ -195,13 +196,13 @@ function Product(props) {
                 unfilledColor: Colors.white,
                 alignSelf: 'center',
               }}
-              resizeMode="contain"
+              resizeMode="cover"
             />
           </Lightbox>
         </View>
 
         <View style={styles.bodyContainer}>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{flexDirection: 'row', marginBottom: 2*Metrics.baseMargin}}>
             <View style={styles.textContainer}>
               <Text style={styles.name}>{brand}</Text>
               <Text style={styles.detail}>{type}</Text>
@@ -233,7 +234,9 @@ function Product(props) {
             </View> */}
           </View>
 
+          <Text style={styles.subheading}>Features</Text>
           {renderFeatures(body)}
+          <Text style={styles.subheading}>Dimensions</Text>
           {renderFeatures(dimensions)}
         </View>
       </Animated.ScrollView>

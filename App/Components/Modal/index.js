@@ -36,12 +36,12 @@ let Tutorial = [
   },
   {
     image: Images.bikeSketchThree,
-    text: 'Visit our physical store (Cycling Wycling on Badar Commercial) for customization options and bicycle repairs.',
+    text: 'Visit our physical store (Cycling Rack on Badar Commercial) for customization options and bicycle repairs.',
   },
 ];
 
 const AuthModal = ({visible, isStatic = false, toggleModal, navToAuth, navToShop = true}) => (
-  <RNModal animationType="slide" transparent={false} visible={visible}>
+  <RNModal presentationStyle={'formSheet'} animationType="slide" transparent={false} visible={visible}>
     <View style={styles.closeContainer}>
       {isStatic ? <BackArrow onPress={navToShop}/> : <Close onPress={toggleModal} />}
     </View>

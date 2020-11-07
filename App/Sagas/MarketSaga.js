@@ -1,5 +1,4 @@
 import {put, call} from 'redux-saga/effects';
-import {AsyncStorage} from 'react-native';
 import MarketActions from '../Stores/Market/Actions';
 import MarketService from '../Services/MarketService';
 import NavigationService from '../Services/NavigationService';

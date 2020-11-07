@@ -170,6 +170,10 @@ export default {
     <Icon name="chevron-right" size={largeIcon} color={Colors.white} />
   ),
 
+  ChevronDown: () => (
+    <Icon name="chevron-down" size={largeIcon} color={Colors.black} />
+  ),
+
   Check: ({big = false, color = Colors.black}) => (
     <Icon name="check" size={big ? 32 : 22} color={color} />
   ),

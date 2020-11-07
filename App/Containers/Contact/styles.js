@@ -9,7 +9,7 @@ export default StyleSheet.create({
     },
 
         map: {
-            width: 300,
+            width: Metrics.screenWidth - 2*Metrics.baseMargin,
             height: 300,
             borderRadius: Metrics.mediumContainerRadius,
             marginTop: Metrics.baseMargin,
@@ -28,7 +28,7 @@ export default StyleSheet.create({
             marginBottom: Metrics.baseMargin
         },
 
-                detailText: {...Fonts.style.normal, color: Colors.white, marginLeft: Metrics.baseMargin},
+                detailText: {...Fonts.style.big, color: Colors.white, marginLeft: Metrics.baseMargin},
 
 
     formContainer: {

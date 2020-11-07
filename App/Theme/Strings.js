@@ -160,8 +160,8 @@ You are advised to review this Privacy Policy periodically for any changes. Chan
 Contact Us \n
 If you have any questions about this Privacy Policy, please contact us by email: imadrajwani@gmail.com`;
 
-const ContactUs = 'Please send us an email at: nadeem.evotech@hotmail.com, and we shall get back to you as soon as possible.';
-const Email = "nadeem.evotech@hotmail.com";
+const ContactUs = 'Please send us an email at: cycling.rack@gmail.com, and we shall get back to you as soon as possible.';
+const Email = "cycling.rack@gmail.com";
 const Phone = "0305-5927902";
 const Address = "Shop #1, Plot #26-2, Street #10.\nBadar Commerical, Phase V, DHA."
 // Characters

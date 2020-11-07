@@ -1,3 +1,6 @@
+import 'intl';
+import 'intl/locale-data/jsonp/en';
+
 const easyTime = (time, inSeconds = false) => {
   let t;
   if (inSeconds) {

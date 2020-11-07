@@ -120,7 +120,7 @@ function SplashScreen(props) {
       }
     } else {
       props.logOut();
-      props.navigation.navigate('AuthStack');
+      props.navigation.navigate('AppStack');
       // "USER DISCONNECTED"
     }
   }

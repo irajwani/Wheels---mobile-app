@@ -51,7 +51,7 @@ const ProductList = ({
     numColumns={1}
     ListEmptyComponent={() => (
       <View style={{...Helpers.center}}>
-        <Text style={{...Fonts.style.normal}}>Such empty, much wow!</Text>
+        <Text style={{...Fonts.style.normal}}>No bikes match your search!</Text>
       </View>
     )}
   />

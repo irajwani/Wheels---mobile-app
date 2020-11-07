@@ -46,7 +46,7 @@ const background = {
     black: '#050806',
     silver: '#C0C0C0',
     lightgrey: "#e4e4e4",
-    grey: '#333333',
+    grey: '#5f6368',
     darkwhite: '#f5f7fa',
     containerBackground: '#F2F2F2',
   }

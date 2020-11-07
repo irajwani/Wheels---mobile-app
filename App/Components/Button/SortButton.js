@@ -3,12 +3,13 @@ import {Text, TouchableOpacity, StyleSheet, View} from 'react-native';
 import {Helpers, Images, Colors, Fonts, Metrics} from '../../Theme';
 import shadowStyles from '../../StyleSheets/shadowStyles';
 
-let {Tune} = Images;
+let {ChevronDown} = Images;
 
 function SortButton({toggleOptionDrawer}) {
   return (
     <TouchableOpacity style={styles.button} onPress={toggleOptionDrawer}>
-      <Tune />
+      <Text style={{...Fonts.style.normal}}>Sort By</Text>
+      <ChevronDown />
     </TouchableOpacity>
   );
 }
@@ -17,10 +18,14 @@ export default SortButton;
 
 const styles = StyleSheet.create({
   button: {
-    flex: 0.2,
+    flex: 0.3,
+    flexDirection: 'row',
     borderBottomRightRadius: Metrics.smallContainerRadius,
     borderTopRightRadius: Metrics.smallContainerRadius,
-    backgroundColor: Colors.primary,
-    ...Helpers.center,
+    backgroundColor: Colors.silver,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    // borderLeftColor: Colors.black,
+    // borderLeftWidth: 0.4,
   },
 });

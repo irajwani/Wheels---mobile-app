@@ -580,7 +580,7 @@ export class Welcome extends Component {
 
                 <AuthButton
                     disabled={this.state.errors.email}
-                    text={"Reset Password"}
+                    text={"Send password reset email"}
                     onPress={this.resetPassword}  
                     extraStyles={{marginTop: 3*Metrics.baseMargin}}
                 />

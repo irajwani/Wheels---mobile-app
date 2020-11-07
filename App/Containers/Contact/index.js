@@ -90,7 +90,7 @@ function Contact(props) {
 
   const renderMap = () => (
     <View style={styles.mapContainer}>
-      <Text style={styles.detailText}>Visit Cycling Wycling on Badar Commercial for greater selection, bicycle repairs, stickers, decals, and other customization options.</Text>
+      <Text style={styles.detailText}>Visit Cycling Rack on Badar Commercial for greater selection, bicycle repairs, stickers, decals, and other customization options.</Text>
       <Image source={Images.map} style={styles.map} />
     </View>
   );
@@ -108,7 +108,7 @@ function Contact(props) {
     <ScrollContainer style={{backgroundColor: Colors.primary}}>
       <HeaderBar
         tint
-        page={'CONTACT'}
+        page={'CONTACT US'}
         toggleDrawer={() => props.navigation.toggleDrawer()}
         showCart={false}
       />
@@ -117,7 +117,7 @@ function Contact(props) {
       {renderMap()}
 
       <View style={styles.formContainer}>
-        <Text style={{...Fonts.style.normal, color: Colors.white}}>For questions, details about orders or any other concern, please send us a message. Our representative will get back to you within 3 business days.</Text>
+        <Text style={{...Fonts.style.big, color: Colors.white}}>For questions, details about orders or any other concern, please send us a message. Our representative will get back to you within 3 business days.</Text>
         <FieldInput
           label={'Email'}
           value={email}

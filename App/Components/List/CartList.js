@@ -57,7 +57,7 @@ const CartList = ({
         </View>
       </View>
     )}}
-    keyExtractor={(item, index) => index}
+    keyExtractor={(item, index) => String(index)}
     numColumns={1}
     ListEmptyComponent={() => (
       <View style={{...Helpers.center}}>

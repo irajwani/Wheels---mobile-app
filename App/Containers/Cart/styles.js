@@ -38,7 +38,7 @@ export default StyleSheet.create({
             alignItems: 'center',
         },
 
-            progressText: {...Fonts.style.normal, marginHorizontal: 3,},
+            progressText: {...Fonts.style.normal, fontSize: 16, marginHorizontal: 3,},
 
     bodyContainer: {
         // flex: 0.3,

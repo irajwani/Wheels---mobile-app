@@ -47,6 +47,10 @@
 	<string>$(PRODUCT_NAME) would like your permission to access your photo library, to assign picture to a claim.</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>BerkshireSwash.ttf</string>
+		<string>TurretRoad.ttf</string>
+		<string>IndieFlower.ttf</string>
+		<string>GrenzeGotisch.ttf</string>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>

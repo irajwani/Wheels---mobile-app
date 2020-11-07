@@ -1,51 +1,54 @@
+import Metrics from "./Metrics"
+
 const size = {
     h1: 40,
     h2: 32,
     h3: 30,
     h4: 24,
-    input: 16,
+    input: 18,
     big: 24,
-    regular: 16,
-    medium: 16,
+    regular: 18,
+    medium: 18,
     small: 12,
-    tiny: 8,
+    tiny: 10,
   }
   
   const style = {
     h1: {
-      fontFamily: 'Avenir Next',
+      fontFamily: Metrics.platform == 'ios' ? 'Turret Road' : 'TurretRoad.ttf',
       fontSize: size.h1,
     },
     h2: {
-      fontFamily: 'Avenir Next',
+      fontFamily: Metrics.platform == 'ios' ? 'Turret Road' : 'TurretRoad.ttf',
       fontSize: size.h2,
     },
     h3: {
-      fontFamily: 'Avenir Next',
+      fontFamily: Metrics.platform == 'ios' ? 'Turret Road' : 'TurretRoad.ttf',
       fontSize: size.h3,
     },
     h4: {
-      fontFamily: 'Avenir Next',
+      fontFamily: Metrics.platform == 'ios' ? 'Turret Road' : 'TurretRoad.ttf',
       fontSize: size.h4,
     },
     big: {
-      fontFamily: 'Avenir Next',
+      fontFamily: Metrics.platform == 'ios' ? 'Turret Road' : 'TurretRoad.ttf',
       fontSize: size.big,
     },
     normal: {
-      fontFamily: 'Avenir Next',
+      fontFamily: Metrics.platform == 'ios' ? 'Turret Road' : 'TurretRoad.ttf',
       fontSize: size.regular,
+      fontWeight: "600"
     },
     medium: {
-      fontFamily: 'Avenir Next',
+      fontFamily: Metrics.platform == 'ios' ? 'Turret Road' : 'TurretRoad.ttf',
       fontSize: size.medium
     },
     small: {
-      fontFamily: 'Avenir Next',
+      fontFamily: Metrics.platform == 'ios' ? 'Turret Road' : 'TurretRoad.ttf',
       fontSize: size.small
     },
     tiny: {
-      fontFamily: 'Avenir Next',
+      fontFamily: Metrics.platform == 'ios' ? 'Turret Road' : 'TurretRoad.ttf',
       fontSize: size.tiny
     },
   }

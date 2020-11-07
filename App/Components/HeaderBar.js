@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Image, Text} from 'react-native';
-import {logoGreen} from '../colors';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+
 import {Images, Colors, Fonts, Metrics, Helpers} from '../Theme';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 

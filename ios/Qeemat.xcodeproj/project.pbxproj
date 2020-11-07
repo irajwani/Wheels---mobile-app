@@ -13,14 +13,18 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1D3D5EC0D3034D484AB3E205 /* libPods-Qeemat-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9D4182AC79634DAA496AA3 /* libPods-Qeemat-tvOSTests.a */; };
+		2953171EC4484B29A57E0841 /* IndieFlower.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 618E1BC772244DE5967D820C /* IndieFlower.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* QeematTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* QeematTests.m */; };
 		3573206DFF6E6BDF56AFCBD5 /* libPods-Qeemat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E9AD4C2F2C6D42F8B20537 /* libPods-Qeemat.a */; };
+		622B24B4EF3E4087BCDF313F /* BerkshireSwash.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D16511C3B2B347BDA3DD7745 /* BerkshireSwash.ttf */; };
 		6AAEF1DD24CD80E100D00588 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AAEF1DC24CD80E100D00588 /* GoogleService-Info.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A74910D616EE0C5292936987 /* libPods-Qeemat-QeematTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF01001C96D0993C41684D8C /* libPods-Qeemat-QeematTests.a */; };
+		E79105D37C04400EB5899D3B /* TurretRoad.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21ADB85B4F5D4744A19D40E8 /* TurretRoad.ttf */; };
+		F4089E6DA3934F1C8363ADA6 /* GrenzeGotisch.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FBC818B2FF214A078BAB4851 /* GrenzeGotisch.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,30 +49,50 @@
 		00E356EE1AD99517003FC87E /* QeematTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QeematTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* QeematTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QeematTests.m; sourceTree = "<group>"; };
+		0703A916ABEE4EAFA3D05CFA /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		08114069458145358BB30EAE /* Pods-Qeemat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qeemat.release.xcconfig"; path = "Target Support Files/Pods-Qeemat/Pods-Qeemat.release.xcconfig"; sourceTree = "<group>"; };
+		09537856B36A4917AC7D2233 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		09963E07FC4AA2E797C97F42 /* Pods-Qeemat-QeematTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qeemat-QeematTests.release.xcconfig"; path = "Target Support Files/Pods-Qeemat-QeematTests/Pods-Qeemat-QeematTests.release.xcconfig"; sourceTree = "<group>"; };
+		0A88723D34404C78B9BF48E0 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		0B9D4182AC79634DAA496AA3 /* libPods-Qeemat-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Qeemat-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		11E81E3330B1485A8299F226 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		138DC81BA65144C18E44329E /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Bike Rack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bike Rack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Qeemat/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Qeemat/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Qeemat/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Qeemat/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Qeemat/main.m; sourceTree = "<group>"; };
+		184E223591744EE094689041 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		1EEEC833669644FCB8D0F3A0 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		1EF0BCC57F7757AACCE15F19 /* Pods-Qeemat-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qeemat-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Qeemat-tvOS/Pods-Qeemat-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		21ADB85B4F5D4744A19D40E8 /* TurretRoad.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = TurretRoad.ttf; path = ../fonts/TurretRoad.ttf; sourceTree = "<group>"; };
+		26D5FCA7791E45FFAB842633 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Qeemat-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Qeemat-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Qeemat-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Qeemat-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35468A687F773C17FD553052 /* Pods-Qeemat-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qeemat-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Qeemat-tvOSTests/Pods-Qeemat-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		447A48DBC02A463AA45ECB59 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		48E9AD4C2F2C6D42F8B20537 /* libPods-Qeemat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Qeemat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D2B5F6C741ADC7F931D8CD3 /* Pods-Qeemat-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qeemat-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Qeemat-tvOS/Pods-Qeemat-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		618E1BC772244DE5967D820C /* IndieFlower.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = IndieFlower.ttf; path = ../fonts/IndieFlower.ttf; sourceTree = "<group>"; };
 		6A22119A24C15CA200AB5845 /* Qeemat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Qeemat.entitlements; path = Qeemat/Qeemat.entitlements; sourceTree = "<group>"; };
 		6AAEF1DC24CD80E100D00588 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Qeemat/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		930C774E0EAD2B5E18B7E22D /* Pods-Qeemat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qeemat.debug.xcconfig"; path = "Target Support Files/Pods-Qeemat/Pods-Qeemat.debug.xcconfig"; sourceTree = "<group>"; };
+		9D6DA02F75AE4524A761390E /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		CBED26B8F3C9436A9759F78C /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		CCD61EE0FD530C511E0C1C8A /* Pods-Qeemat-QeematTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qeemat-QeematTests.debug.xcconfig"; path = "Target Support Files/Pods-Qeemat-QeematTests/Pods-Qeemat-QeematTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE4EFC3A8D7DFA7AD0889050 /* Pods-Qeemat-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qeemat-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Qeemat-tvOSTests/Pods-Qeemat-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D16511C3B2B347BDA3DD7745 /* BerkshireSwash.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = BerkshireSwash.ttf; path = ../fonts/BerkshireSwash.ttf; sourceTree = "<group>"; };
+		D25A2EE2C67748138BBF1BC6 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		D577FB86ADCF70A0095557AB /* libPods-Qeemat-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Qeemat-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBC7A1906D344DEA87E677D8 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		DF78ECD88B8F4539B458125A /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		E082195368944DA4952F1017 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		EBADBEC3E554491E9A350D12 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		FBC818B2FF214A078BAB4851 /* GrenzeGotisch.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = GrenzeGotisch.ttf; path = ../fonts/GrenzeGotisch.ttf; sourceTree = "<group>"; };
 		FF01001C96D0993C41684D8C /* libPods-Qeemat-QeematTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Qeemat-QeematTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -185,6 +209,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				1C6C4A8660A878D9B2F35FE2 /* Pods */,
+				91206EC1160A4A68BE40D944 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -200,6 +225,33 @@
 				2D02E4901E0B4A5D006451C7 /* Qeemat-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		91206EC1160A4A68BE40D944 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D16511C3B2B347BDA3DD7745 /* BerkshireSwash.ttf */,
+				EBADBEC3E554491E9A350D12 /* AntDesign.ttf */,
+				DBC7A1906D344DEA87E677D8 /* Entypo.ttf */,
+				0A88723D34404C78B9BF48E0 /* EvilIcons.ttf */,
+				184E223591744EE094689041 /* Feather.ttf */,
+				11E81E3330B1485A8299F226 /* FontAwesome.ttf */,
+				09537856B36A4917AC7D2233 /* FontAwesome5_Brands.ttf */,
+				138DC81BA65144C18E44329E /* FontAwesome5_Regular.ttf */,
+				1EEEC833669644FCB8D0F3A0 /* FontAwesome5_Solid.ttf */,
+				D25A2EE2C67748138BBF1BC6 /* Fontisto.ttf */,
+				0703A916ABEE4EAFA3D05CFA /* Foundation.ttf */,
+				DF78ECD88B8F4539B458125A /* Ionicons.ttf */,
+				E082195368944DA4952F1017 /* MaterialCommunityIcons.ttf */,
+				9D6DA02F75AE4524A761390E /* MaterialIcons.ttf */,
+				26D5FCA7791E45FFAB842633 /* Octicons.ttf */,
+				447A48DBC02A463AA45ECB59 /* SimpleLineIcons.ttf */,
+				CBED26B8F3C9436A9759F78C /* Zocial.ttf */,
+				FBC818B2FF214A078BAB4851 /* GrenzeGotisch.ttf */,
+				618E1BC772244DE5967D820C /* IndieFlower.ttf */,
+				21ADB85B4F5D4744A19D40E8 /* TurretRoad.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,6 +402,10 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				6AAEF1DD24CD80E100D00588 /* GoogleService-Info.plist in Resources */,
+				622B24B4EF3E4087BCDF313F /* BerkshireSwash.ttf in Resources */,
+				F4089E6DA3934F1C8363ADA6 /* GrenzeGotisch.ttf in Resources */,
+				2953171EC4484B29A57E0841 /* IndieFlower.ttf in Resources */,
+				E79105D37C04400EB5899D3B /* TurretRoad.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,12 +804,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Qeemat/Qeemat.entitlements;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 83T6KRJL5P;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Qeemat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1;
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -775,11 +831,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Qeemat/Qeemat.entitlements;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 83T6KRJL5P;
 				INFOPLIST_FILE = Qeemat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1;
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

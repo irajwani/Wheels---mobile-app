@@ -28,7 +28,7 @@ const SearchInput = ({value, placeholder, onChangeText}) => (
 
 export default SearchInput;
 
-
+ 
 const styles = StyleSheet.create({
 
     inputStyle: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: Metrics.smallContainerRadius,
         borderBottomLeftRadius: Metrics.smallContainerRadius,
         // borderWidth: 0.4,
-        flex: 0.8,
+        flex: 0.7,
         height: 50,marginBottom: 0, padding: 10, ...Fonts.style.normal,
     }
 })
